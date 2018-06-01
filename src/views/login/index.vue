@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     findAll: function(){
-        axios.get('/api/usdts').then(res=>{
+        axios.get('/api/coins').then(res=>{
             debugger;
             this.coins = eval('(' + res.data + ')');
         }).catch(error=>console.log(error));

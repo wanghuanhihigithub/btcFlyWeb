@@ -1,6 +1,7 @@
 <<template>
     <div style="padding:20px;" id="app">
-        <el-table :data="coins"  style="width: 100%">
+        <el-button type="primary" icon="el-icon-search" v-on:click=search>高级查询</el-button>
+        <el-table :data="coins"  style="width: 100%;margin-top:20px">
           <el-table-column  prop="fromType"  label="fromType"  width="120"/>
           <el-table-column  prop="toType"  label="toType"  width="90"/>
           <el-table-column  prop="fromMinSalePrice"  label="fromMinSalePrice"  width="120"/>
@@ -24,15 +25,18 @@ export default {
     return {coins:[]}
   },
   mounted: function(){
-    self = this;
+    self = this
+    this.findAll()
     setInterval(function() {self.findAll()}, 20000)
   },
   methods: {
     findAll: function(){
-        axios.get('/api/coins').then(res=>{
-            debugger;
+        axios.get('/api/api/coins').then(res=>{
             this.coins = eval('(' + res.data + ')');
         }).catch(error=>console.log(error));
+    },
+    search: function(){
+        this.$router.push({path:"/search"})
     }
   }
 }

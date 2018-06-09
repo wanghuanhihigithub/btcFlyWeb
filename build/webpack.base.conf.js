@@ -57,7 +57,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader?cacheDirectory',
-                include: [resolve('src'), resolve('test')]
+                include: [resolve('src'), resolve('test')],
+                query: {presets: ['es2015']},
+                exclude: /node_modules/
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -76,10 +78,5 @@ module.exports = {
                 }
             }
         ]
-    },
-    //注入全局mixin
-    // sassResources: path.join(__dirname, '../src/styles/mixin.scss'),
-    // sassLoader: {
-    //     data:  path.join(__dirname, '../src/styles/index.scss')
-    // },
+    }
 }

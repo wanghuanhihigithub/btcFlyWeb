@@ -58,7 +58,6 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader?cacheDirectory',
                 include: [resolve('src'), resolve('test')],
-                query: {presets: ['es2015']},
                 exclude: /node_modules/
             },
             {

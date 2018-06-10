@@ -49,7 +49,7 @@ export default {
     search: function(){
        var params = {createdTimeStart:this.createdTimeBegin,createdTimeEnd:this.createdTimeEnd,page:this.currentPage}
        var self = this;
-       axios.get('/api/api/coins/params',{params:params}).then(res=>{
+       axios.get('/api/coins/params',{params:params}).then(res=>{
                console.log(res)
                self.coins = res.data.coins;
                self.currentPage = res.data.page.page_index

@@ -60,7 +60,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     findAll: function () {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/api/coins').then(res => {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coins').then(res => {
         this.coins = eval('(' + res.data + ')');
       }).catch(error => console.log(error));
     },
@@ -130,7 +130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     search: function () {
       var params = { createdTimeStart: this.createdTimeBegin, createdTimeEnd: this.createdTimeEnd, page: this.currentPage };
       var self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/api/coins/params', { params: params }).then(res => {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coins/params', { params: params }).then(res => {
         console.log(res);
         self.coins = res.data.coins;
         self.currentPage = res.data.page.page_index;
@@ -1119,4 +1119,4 @@ module.exports = Component.exports
 /***/ })
 
 },[126]);
-//# sourceMappingURL=app.47624494de328cab2841.js.map
+//# sourceMappingURL=app.b339d1cc902d0803a976.js.map

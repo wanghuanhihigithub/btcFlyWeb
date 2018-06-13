@@ -14,7 +14,7 @@
           <el-table-column  prop="createdTime"  label="createdTime"  width="180"/>
          </el-table>
 
-         <audio src="./static/dog.wav" controls="controls" id="dogAudio"></audio>
+         <audio src="./dog.wav" controls="controls" id="dogAudio"></audio>
     </div>
 </template>
 

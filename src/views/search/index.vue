@@ -1,5 +1,6 @@
 <<template>
     <div style="padding:20px;" id="app">
+        <el-button @click="goBack">导航</el-button>
         <el-date-picker
               v-model="createdTimeBegin"
               type="datetime"
@@ -64,6 +65,9 @@ export default {
         debugger;
         this.currentPage = currentPage;
         this.search()
+    },
+    goBack: function(){
+            this.$router.push({ path: '/' })
     }
   }
 }

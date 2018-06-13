@@ -1,6 +1,12 @@
-import * as Login from '../views/login/';
+import * as Nav from '../views/nav/';
 import * as Search from '../views/search'
+import * as Setting from '../views/setting'
+import * as Oken from '../views/oken'
+
+
 export const constantRouterMap = [
-    {path:'/',component:Login},//,hidden:true
-   {path: '/search', component: Search}
+    {path:'/',component:Nav},
+    {path: '/search', component: Search},
+    {path: '/setting', component: Setting},
+    {path:'/oken', component:Oken}
 ];

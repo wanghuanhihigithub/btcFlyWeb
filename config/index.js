@@ -36,7 +36,7 @@ module.exports = {
             '/api': {
                 target: 'http://127.0.0.1:9000',
                 changeOrigin: true, //如果接口跨域，需要进行这个参数配置
-                pathRewrite: { '^/api': '/'}
+                pathRewrite: { '^/': '/'}
             }
         },
         // CSS Sourcemaps off by default because relative paths are "buggy"

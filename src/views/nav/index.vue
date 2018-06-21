@@ -23,7 +23,7 @@ export default {
     return {coins:[]}
   },
   mounted: function(){
-    s = new WebSocket("ws://127.0.0.1:88");
+        ws = new WebSocket("ws://127.0.0.1:88");
         ws.onopen =  function (msg) {
           console.log('webSocket opened');
         };

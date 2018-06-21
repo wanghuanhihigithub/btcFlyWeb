@@ -324,31 +324,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'hello',
   data: function () {
-    return { coins: [] };
+    return { form: { price: 0 }, coins: [] };
   },
-  mounted: function () {
-    ws = new WebSocket("wss://api.huobi.pro/ws");
-    ws.onopen = function (msg) {
-      console.log('webSocket opened');
-    };
-    ws.onmessage = function (message) {
-      console.log('receive message : ' + message.data);
-    };
-    ws.onerror = function (error) {
-      console.log('error :' + error.name + error.number);
-    };
-
-    ws.onclose = function () {
-      console.log('webSocket closed');
-    };
-  },
-  methods: {}
+  mounted: function () {},
+  methods: {
+    start: function () {
+      this.getCoinsVs();
+      self = this;
+      this.interval = setInterval(function () {
+        self.getCoinsVs();
+      }, 1000 * 2);
+    },
+    getCoinsVs: function () {
+      self = this;
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVs').then(res => {
+        var last = res.data.ticker.last;
+        console.log(res);
+        console.log(last);
+        var now = new Date();
+        console.log(now);
+        self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: self.form.price * last, last: last }];
+      }).catch(error => console.log(error));
+    },
+    end: function () {
+      clearInterval(this.interval);
+    }
+  }
 });
 
 /***/ }),
@@ -1465,30 +1475,62 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "app"
     }
-  }, [_c('el-col', {
+  }, [_c('el-form', {
+    ref: "form",
     attrs: {
-      "span": 4
+      "model": _vm.form,
+      "label-width": "180px"
     }
-  }, [_c('el-menu', {
-    staticClass: "el-menu-vertical-demo",
+  }, [_c('el-form-item', {
     attrs: {
-      "default-active": _vm.$route.path,
-      "theme": "dark",
-      "router": ""
+      "label": "乘数"
     }
-  }, [_c('el-menu-item', {
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.form.price),
+      callback: function($$v) {
+        _vm.form.price = $$v
+      },
+      expression: "form.price "
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
-      "index": "/oken"
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.start
     }
-  }, [_vm._v("实时数据")]), _vm._v(" "), _c('el-menu-item', {
+  }, [_vm._v("开始")]), _vm._v(" "), _c('el-button', {
+    on: {
+      "click": _vm.end
+    }
+  }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "80%",
+      "margin": "20px"
+    },
     attrs: {
-      "index": "/search"
+      "data": _vm.coins
     }
-  }, [_vm._v("高级查询")]), _vm._v(" "), _c('el-menu-item', {
+  }, [_c('el-table-column', {
     attrs: {
-      "index": "/setting"
+      "prop": "now",
+      "label": "时间",
+      "width": "300"
     }
-  }, [_vm._v("系统设置")])], 1)], 1), _vm._v(" "), _c('router-view')], 1)
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "乘数 * last",
+      "width": "300"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "last",
+      "width": "300"
+    }
+  })], 1)], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -1530,4 +1572,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.7828bfa9cac60da904d4.js.map
+//# sourceMappingURL=app.536cf273728d89c1ecc6.js.map

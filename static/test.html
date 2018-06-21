@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    ws = new WebSocket("ws://127.0.0.1:88");
+    ws.onopen =  function (msg) {
+      console.log('webSocket opened');
+    };
+    ws.onmessage = function (message) {
+      console.log('receive message : ' + message.data);
+    };
+    ws.onerror = function (error) {
+      console.log('error :' + error.name + error.number);
+    };
+
+    ws.onclose =  function () {
+      console.log('webSocket closed');
+    };
+  </script>
+</body>
+</html>

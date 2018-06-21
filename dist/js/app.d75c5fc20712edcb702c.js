@@ -333,9 +333,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return { coins: [] };
   },
   mounted: function () {
-    self = this;
-    //this.findAll()
-    //setInterval(function() {self.findAll()}, 20000)
+    s = new WebSocket("ws://127.0.0.1:88");
+    ws.onopen = function (msg) {
+      console.log('webSocket opened');
+    };
+    ws.onmessage = function (message) {
+      console.log('receive message : ' + message.data);
+    };
+    ws.onerror = function (error) {
+      console.log('error :' + error.name + error.number);
+    };
+
+    ws.onclose = function () {
+      console.log('webSocket closed');
+    };
   },
   methods: {
     findAll: function () {
@@ -420,6 +431,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           }
         }
         if (playVedio) {
+          debugger;
           document.getElementById("dogAudio").play();
         }
         this.coins = coins;
@@ -1540,4 +1552,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.79c5f001157e687b2fb7.js.map
+//# sourceMappingURL=app.d75c5fc20712edcb702c.js.map

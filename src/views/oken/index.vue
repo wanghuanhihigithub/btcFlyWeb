@@ -46,6 +46,7 @@ export default {
                }
             }
              if(playVedio){
+                  debugger;
                   document.getElementById("dogAudio").play()
              }
             this.coins = coins;

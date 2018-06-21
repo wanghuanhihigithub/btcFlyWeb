@@ -23,9 +23,20 @@ export default {
     return {coins:[]}
   },
   mounted: function(){
-    self = this
-    //this.findAll()
-    //setInterval(function() {self.findAll()}, 20000)
+    s = new WebSocket("ws://127.0.0.1:88");
+        ws.onopen =  function (msg) {
+          console.log('webSocket opened');
+        };
+        ws.onmessage = function (message) {
+          console.log('receive message : ' + message.data);
+        };
+        ws.onerror = function (error) {
+          console.log('error :' + error.name + error.number);
+        };
+
+        ws.onclose =  function () {
+          console.log('webSocket closed');
+        };
   },
   methods: {
     findAll: function(){

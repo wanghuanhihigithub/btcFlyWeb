@@ -23,7 +23,7 @@ export default {
     return {coins:[]}
   },
   mounted: function(){
-        ws = new WebSocket("ws://127.0.0.1:88");
+        ws = new WebSocket("wss://api.huobi.pro/ws");
         ws.onopen =  function (msg) {
           console.log('webSocket opened');
         };
@@ -39,27 +39,7 @@ export default {
         };
   },
   methods: {
-    findAll: function(){
-        axios.get('/api/coins').then(res=>{
-            var coins = eval('(' + res.data + ')')
-            var playVedio = false;
-            if(coins.length > 3){
-               for(var i = 0; i < 3; i ++){
-                      var coin = coins[i]
-                      if(coin.fromToProfit > 0 || coin.toFromProfit > 0){
-                            playVedio = true
-                      }
-               }
-            }
-             if(playVedio){
-                  document.getElementById("dogAudio").play()
-             }
-            this.coins = coins;
-        }).catch(error=>console.log(error));
-    },
-    search: function(){
-        this.$router.push({path:"/search"})
-    }
+
   }
 }
 </script>

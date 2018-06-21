@@ -333,7 +333,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return { coins: [] };
   },
   mounted: function () {
-    s = new WebSocket("ws://127.0.0.1:88");
+    ws = new WebSocket("ws://127.0.0.1:88");
     ws.onopen = function (msg) {
       console.log('webSocket opened');
     };
@@ -1552,4 +1552,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.d75c5fc20712edcb702c.js.map
+//# sourceMappingURL=app.955431a38996415099c1.js.map

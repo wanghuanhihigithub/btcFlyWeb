@@ -328,6 +328,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -1533,6 +1534,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
+      "prop": "low",
+      "label": "乘数 * low",
+      "width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
       "prop": "last",
       "label": "last",
       "width": "300"
@@ -1579,4 +1586,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.befb08b1e0fcc6333488.js.map
+//# sourceMappingURL=app.5e2322a53e18c85e8e75.js.map

@@ -12,7 +12,8 @@
          <el-table :data="coins"  style="width: 80%;margin:20px">
             <el-table-column  prop="now"  label="时间"  width="300"/>
             <el-table-column  prop="calc"  label="乘数 * last"  width="200"/>
-             <el-table-column  prop="high"  label="乘数 * high"  width="200"/>
+            <el-table-column  prop="high"  label="乘数 * high"  width="200"/>
+             <el-table-column  prop="low"  label="乘数 * low"  width="200"/>
             <el-table-column  prop="last"  label="last"  width="300"/>
           </el-table>
     </div>

@@ -327,6 +327,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -349,10 +350,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVs').then(res => {
         var last = res.data.ticker.last;
         console.log(res);
-        console.log(last);
         var now = new Date();
-        console.log(now);
-        self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: self.form.price * last, last: last }];
+        var high = res.data.ticker.high;
+        var low = res.data.ticker.low;
+        self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: self.form.price * last, last: last, high: self.form.price * high, low: self.form.price * low }];
       }).catch(error => console.log(error));
     },
     end: function () {
@@ -1522,7 +1523,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "300"
+      "width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "high",
+      "label": "乘数 * high",
+      "width": "200"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -1572,4 +1579,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.536cf273728d89c1ecc6.js.map
+//# sourceMappingURL=app.befb08b1e0fcc6333488.js.map

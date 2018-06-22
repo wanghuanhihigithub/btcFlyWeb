@@ -11,7 +11,8 @@
          </el-form>
          <el-table :data="coins"  style="width: 80%;margin:20px">
             <el-table-column  prop="now"  label="时间"  width="300"/>
-            <el-table-column  prop="calc"  label="乘数 * last"  width="300"/>
+            <el-table-column  prop="calc"  label="乘数 * last"  width="200"/>
+             <el-table-column  prop="high"  label="乘数 * high"  width="200"/>
             <el-table-column  prop="last"  label="last"  width="300"/>
           </el-table>
     </div>
@@ -39,10 +40,10 @@ export default {
             axios.get('/api/coinsVs').then(res=>{
                    var last = res.data.ticker.last
                    console.log(res)
-                   console.log(last)
                    var now = new Date()
-                   console.log(now)
-                   self.coins = [{now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc : self.form.price * last, last: last}]
+                   var high = res.data.ticker.high
+                   var low = res.data.ticker.low
+                   self.coins = [{now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc : self.form.price * last, last: last, high:self.form.price * high,low:self.form.price * low}]
                }).catch(error=>console.log(error));
       },
       end:function(){

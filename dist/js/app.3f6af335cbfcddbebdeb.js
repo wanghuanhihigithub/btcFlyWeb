@@ -358,7 +358,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: self.form.price * last, last: last }];
       }).catch(error => console.log(error));
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
-        console.log(res);
+        console.log("火币网返回数据");
+        conole.log(res);
       }).catch(error => console.log(error));
     },
     end: function () {
@@ -1523,19 +1524,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "now",
       "label": "时间",
-      "width": "300"
+      "width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "200"
+      "width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
       "label": "last",
-      "width": "300"
+      "width": "100"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
@@ -1550,19 +1551,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "now",
       "label": "时间",
-      "width": "300"
+      "width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "200"
+      "width": "100"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
       "label": "last",
-      "width": "300"
+      "width": "100"
     }
   })], 1)], 1)
 },staticRenderFns: []}
@@ -1606,4 +1607,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.ffca97dd20c52593ec58.js.map
+//# sourceMappingURL=app.3f6af335cbfcddbebdeb.js.map

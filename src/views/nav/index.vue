@@ -47,7 +47,7 @@ export default {
                    var last = res.data.ticker.last
                    console.log(res)
                    var now = new Date()
-                   self.coins = [{now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc : self.form.price * last, last: last}]
+                   self.coins = [{now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc : (self.form.price * last).toFixed(2), last: last}]
             }).catch(error=>console.log(error));
 
       },
@@ -55,7 +55,7 @@ export default {
         axios.get('/api/huobiCoinsVs').then(res=>{
             var data = eval('(' + res.data + ')')
              console.log("火币网返回数据", res)
-            self.huobiCoins = [{now: data.createdTime, calc : self.form.price * data.close.toFixed(2), last: data.close}]
+            self.huobiCoins = [{now: data.createdTime, calc : (self.form.price * data.close).toFixed(2), last: data.close}]
         }).catch(error=>console.log(error));
       },
       end:function(){

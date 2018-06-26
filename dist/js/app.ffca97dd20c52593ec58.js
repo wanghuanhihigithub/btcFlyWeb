@@ -329,13 +329,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'hello',
   data: function () {
-    return { form: { price: 0 }, coins: [] };
+    return { form: { price: 0 }, coins: [], huobiCoins: [] };
   },
   mounted: function () {},
   methods: {
@@ -352,9 +355,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var last = res.data.ticker.last;
         console.log(res);
         var now = new Date();
-        var high = res.data.ticker.high;
-        var low = res.data.ticker.low;
-        self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: self.form.price * last, last: last, high: self.form.price * high, low: self.form.price * low }];
+        self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: self.form.price * last, last: last }];
+      }).catch(error => console.log(error));
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
+        console.log(res);
       }).catch(error => console.log(error));
     },
     end: function () {
@@ -1508,8 +1512,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "80%",
-      "margin": "20px"
+      "width": "40%",
+      "margin": "20px",
+      "float": "left"
     },
     attrs: {
       "data": _vm.coins
@@ -1528,14 +1533,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "high",
-      "label": "乘数 * high",
-      "width": "200"
+      "prop": "last",
+      "label": "last",
+      "width": "300"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "40%",
+      "margin": "20px",
+      "float": "left"
+    },
+    attrs: {
+      "data": _vm.huobiCoins
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间",
+      "width": "300"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "low",
-      "label": "乘数 * low",
+      "prop": "calc",
+      "label": "乘数 * last",
       "width": "200"
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -1586,4 +1606,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.5e2322a53e18c85e8e75.js.map
+//# sourceMappingURL=app.ffca97dd20c52593ec58.js.map

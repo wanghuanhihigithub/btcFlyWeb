@@ -9,13 +9,16 @@
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
-         <el-table :data="coins"  style="width: 80%;margin:20px">
+         <el-table :data="coins"  style="width: 40%;margin:20px;float:left">
             <el-table-column  prop="now"  label="时间"  width="300"/>
             <el-table-column  prop="calc"  label="乘数 * last"  width="200"/>
-            <el-table-column  prop="high"  label="乘数 * high"  width="200"/>
-             <el-table-column  prop="low"  label="乘数 * low"  width="200"/>
             <el-table-column  prop="last"  label="last"  width="300"/>
           </el-table>
+          <el-table :data="huobiCoins"  style="width: 40%;margin:20px;float:left">
+              <el-table-column  prop="now"  label="时间"  width="300"/>
+              <el-table-column  prop="calc"  label="乘数 * last"  width="200"/>
+              <el-table-column  prop="last"  label="last"  width="300"/>
+            </el-table>
     </div>
 </template>
 
@@ -25,7 +28,7 @@ import axios from 'axios'
 export default {
   name: 'hello',
   data: function(){
-    return {form:{price:0},coins:[]}
+    return {form:{price:0},coins:[],huobiCoins:[]}
   },
   mounted: function(){
 
@@ -42,10 +45,11 @@ export default {
                    var last = res.data.ticker.last
                    console.log(res)
                    var now = new Date()
-                   var high = res.data.ticker.high
-                   var low = res.data.ticker.low
-                   self.coins = [{now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc : self.form.price * last, last: last, high:self.form.price * high,low:self.form.price * low}]
-               }).catch(error=>console.log(error));
+                   self.coins = [{now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc : self.form.price * last, last: last}]
+            }).catch(error=>console.log(error));
+            axios.get('/api/huobiCoinsVs').then(res=>{
+                console.log(res)
+            }).catch(error=>console.log(error));
       },
       end:function(){
         clearInterval(this.interval)

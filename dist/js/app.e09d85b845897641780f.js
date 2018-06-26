@@ -344,9 +344,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     start: function () {
       this.getCoinsVs();
+      this.getHuobiCoinsVs();
       self = this;
       this.interval = setInterval(function () {
         self.getCoinsVs();
+      }, 1000 * 2);
+      this.interval = setInterval(function () {
+        self.getHuobiCoinsVs();
       }, 1000 * 2);
     },
     getCoinsVs: function () {
@@ -357,9 +361,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var now = new Date();
         self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: self.form.price * last, last: last }];
       }).catch(error => console.log(error));
+    },
+    getHuobiCoinsVs: function () {
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
         console.log("火币网返回数据");
-        conole.log(res);
+        console.log(res);
       }).catch(error => console.log(error));
     },
     end: function () {
@@ -1524,19 +1530,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "now",
       "label": "时间",
-      "width": "100"
+      "width": "200"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "100"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
       "label": "last",
-      "width": "100"
+      "width": "150"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
@@ -1551,19 +1557,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "now",
       "label": "时间",
-      "width": "100"
+      "width": "200"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "100"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
       "label": "last",
-      "width": "100"
+      "width": "150"
     }
   })], 1)], 1)
 },staticRenderFns: []}
@@ -1607,4 +1613,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.3f6af335cbfcddbebdeb.js.map
+//# sourceMappingURL=app.e09d85b845897641780f.js.map

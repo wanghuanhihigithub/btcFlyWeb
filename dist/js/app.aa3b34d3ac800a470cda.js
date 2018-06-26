@@ -364,8 +364,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     getHuobiCoinsVs: function () {
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
-        console.log("火币网返回数据");
-        console.log(res);
+        var data = eval('(' + res.data + ')');
+        console.log("火币网返回数据", res);
+        self.huobiCoins = [{ now: data.createdTime, calc: self.form.price * data.close, last: data.close }];
       }).catch(error => console.log(error));
     },
     end: function () {
@@ -1613,4 +1614,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.e09d85b845897641780f.js.map
+//# sourceMappingURL=app.aa3b34d3ac800a470cda.js.map

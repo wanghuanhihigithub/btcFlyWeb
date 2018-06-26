@@ -53,8 +53,9 @@ export default {
       },
       getHuobiCoinsVs:function(){
         axios.get('/api/huobiCoinsVs').then(res=>{
-                        console.log("火币网返回数据")
-                        console.log(res)
+            var data = eval('(' + res.data + ')')
+             console.log("火币网返回数据", res)
+            self.huobiCoins = [{now: data.createdTime, calc : self.form.price * data.close, last: data.close}]
         }).catch(error=>console.log(error));
       },
       end:function(){

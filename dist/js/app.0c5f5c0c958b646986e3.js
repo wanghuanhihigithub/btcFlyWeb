@@ -356,6 +356,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getCoinsVs: function () {
       self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVs').then(res => {
+        res.data = eval('(' + res.data + ')');
         var last = res.data.ticker.last;
         console.log(res);
         var now = new Date();
@@ -1614,4 +1615,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.aea2e805702d7eb838ae.js.map
+//# sourceMappingURL=app.0c5f5c0c958b646986e3.js.map

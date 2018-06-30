@@ -357,7 +357,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVs').then(res => {
         console.log(res);
-        var last = res.data.data.last;
+        var last = res.data.ticker.last;
         self.coins = [{ now: res.data.createdTime, calc: (self.form.price * last).toFixed(2), last: last }];
       }).catch(error => console.log(error));
     },
@@ -1613,4 +1613,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.78dd6e26b82c8fbcae2c.js.map
+//# sourceMappingURL=app.a616a2c11a136374a763.js.map

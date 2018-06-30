@@ -46,7 +46,7 @@ export default {
             axios.get('/api/coinsVs').then(res=>{
                    var last = res.data.ticker.last
                    console.log(res)
-                   self.coins = [{now:data.createdTime , calc : (self.form.price * last).toFixed(2), last: last}]
+                   self.coins = [{now:res.data.createdTime , calc : (self.form.price * last).toFixed(2), last: last}]
             }).catch(error=>console.log(error));
 
       },

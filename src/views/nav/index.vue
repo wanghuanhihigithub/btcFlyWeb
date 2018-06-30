@@ -38,6 +38,7 @@ export default {
            this.getCoinsVs()
            this.getHuobiCoinsVs()
            self = this
+           //this.interval = setInterval(function() {self.getCoinsVs()}, 1000 * 2)
            this.interval = setInterval(function() {self.getHuobiCoinsVs()}, 1000 * 2)
       },
       getCoinsVs:function(){

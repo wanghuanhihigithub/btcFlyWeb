@@ -31,7 +31,7 @@ export default {
     return {form:{price:0},coins:[],huobiCoins:[]}
   },
   mounted: function(){
-
+    document.title = 456
   },
   methods: {
       start:function(){
@@ -39,21 +39,23 @@ export default {
            this.getHuobiCoinsVs()
            self = this
            this.interval = setInterval(function() {self.getCoinsVs()}, 1000 * 2)
-           this.interval = setInterval(function() {self.getHuobiCoinsVs()}, 1000 * 2)
+           //this.interval = setInterval(function() {self.getHuobiCoinsVs()}, 1000 * 2)
       },
       getCoinsVs:function(){
             self = this
             axios.get('/api/coinsVs').then(res=>{
                    console.log(res)
                    var last = res.data.ticker.last
-                   self.coins = [{now:res.data.createdTime , calc : (self.form.price * last).toFixed(2), last: last}]
+                   var calc = (self.form.price * last).toFixed(2)
+                   document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                   self.coins = [{now:res.data.createdTime , calc : calc, last: last}]
             }).catch(error=>console.log(error));
 
       },
       getHuobiCoinsVs:function(){
         axios.get('/api/huobiCoinsVs').then(res=>{
             var data = eval('(' + res.data + ')')
-             console.log("火币网返回数据", res)
+            console.log("火币网返回数据", res)
             self.huobiCoins = [{now: data.createdTime, calc : (self.form.price * data.close).toFixed(2), last: data.close}]
         }).catch(error=>console.log(error));
       },

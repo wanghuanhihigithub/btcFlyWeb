@@ -356,11 +356,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getCoinsVs: function () {
       self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVs').then(res => {
-        res.data = eval('(' + res.data + ')');
         var last = res.data.ticker.last;
         console.log(res);
-        var now = new Date();
-        self.coins = [{ now: now.toLocaleDateString() + " " + now.toLocaleTimeString(), calc: (self.form.price * last).toFixed(2), last: last }];
+        self.coins = [{ now: data.createdTime, calc: (self.form.price * last).toFixed(2), last: last }];
       }).catch(error => console.log(error));
     },
     getHuobiCoinsVs: function () {
@@ -1615,4 +1613,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.0c5f5c0c958b646986e3.js.map
+//# sourceMappingURL=app.70a891ab107826b4b1b9.js.map

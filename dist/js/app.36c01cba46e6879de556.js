@@ -332,6 +332,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -340,9 +342,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function () {
     return { form: { price: 0 }, coins: [], huobiCoins: [] };
   },
-  mounted: function () {
-    document.title = 456;
-  },
+  mounted: function () {},
   methods: {
     start: function () {
       this.getCoinsVs();
@@ -362,14 +362,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var last = res.data.ticker.last;
         var calc = (self.form.price * last).toFixed(2);
         document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-        self.coins = [{ now: res.data.createdTime, calc: calc, last: last }];
+        self.coins = [{ now: res.data.createdTime, calc: calc, last: last, name: "oken" }];
       }).catch(error => console.log(error));
     },
     getHuobiCoinsVs: function () {
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
         var data = eval('(' + res.data + ')');
         console.log("火币网返回数据", res);
-        self.huobiCoins = [{ now: data.createdTime, calc: (self.form.price * data.close).toFixed(2), last: data.close }];
+        self.huobiCoins = [{ now: data.createdTime, calc: (self.form.price * data.close).toFixed(2), last: data.close, name: "火币" }];
       }).catch(error => console.log(error));
     },
     end: function () {
@@ -1523,14 +1523,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "40%",
-      "margin": "20px",
-      "float": "left"
+      "width": "80%",
+      "margin": "20px"
     },
     attrs: {
       "data": _vm.coins
     }
   }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台",
+      "width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
       "label": "时间",
@@ -1550,14 +1555,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "40%",
-      "margin": "20px",
-      "float": "left"
+      "width": "80%",
+      "margin": "20px"
     },
     attrs: {
       "data": _vm.huobiCoins
     }
   }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台",
+      "width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
       "label": "时间",
@@ -1617,4 +1627,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.6a88a7f0ecb7d2f4bdd7.js.map
+//# sourceMappingURL=app.36c01cba46e6879de556.js.map

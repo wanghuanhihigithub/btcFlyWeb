@@ -351,7 +351,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.interval = setInterval(function () {
         self.getCoinsVs();
       }, 1000 * 2);
-      //this.interval = setInterval(function() {self.getHuobiCoinsVs()}, 1000 * 2)
+      this.interval = setInterval(function () {
+        self.getHuobiCoinsVs();
+      }, 500);
     },
     getCoinsVs: function () {
       self = this;
@@ -1615,4 +1617,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.25e7663980be1f26d8b4.js.map
+//# sourceMappingURL=app.ab8fffe5986f6f554537.js.map

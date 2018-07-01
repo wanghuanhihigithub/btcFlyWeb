@@ -9,12 +9,14 @@
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
-         <el-table :data="coins"  style="width: 40%;margin:20px;float:left">
+         <el-table :data="coins"  style="width: 80%;margin:20px;">
+             <el-table-column  prop="name"  label="平台"  width="200"/>
              <el-table-column  prop="now"  label="时间"  width="200"/>
              <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
              <el-table-column  prop="last"  label="last"  width="150"/>
           </el-table>
-          <el-table :data="huobiCoins"  style="width: 40%;margin:20px;float:left">
+          <el-table :data="huobiCoins"  style="width: 80%;margin:20px;">
+              <el-table-column  prop="name"  label="平台"  width="200"/>
               <el-table-column  prop="now"  label="时间"  width="200"/>
               <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
               <el-table-column  prop="last"  label="last"  width="150"/>
@@ -31,7 +33,6 @@ export default {
     return {form:{price:0},coins:[],huobiCoins:[]}
   },
   mounted: function(){
-    document.title = 456
   },
   methods: {
       start:function(){
@@ -48,7 +49,7 @@ export default {
                    var last = res.data.ticker.last
                    var calc = (self.form.price * last).toFixed(2)
                    document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
-                   self.coins = [{now:res.data.createdTime , calc : calc, last: last}]
+                   self.coins = [{now:res.data.createdTime , calc : calc, last: last,name:"oken"}]
             }).catch(error=>console.log(error));
 
       },
@@ -56,7 +57,7 @@ export default {
         axios.get('/api/huobiCoinsVs').then(res=>{
             var data = eval('(' + res.data + ')')
             console.log("火币网返回数据", res)
-            self.huobiCoins = [{now: data.createdTime, calc : (self.form.price * data.close).toFixed(2), last: data.close}]
+            self.huobiCoins = [{now: data.createdTime, calc : (self.form.price * data.close).toFixed(2), last: data.close,name:"火币"}]
         }).catch(error=>console.log(error));
       },
       end:function(){

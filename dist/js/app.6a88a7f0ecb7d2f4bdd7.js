@@ -1540,7 +1540,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "150"
+      "width": "180"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -1567,7 +1567,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "150"
+      "width": "180"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -1617,4 +1617,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.ab8fffe5986f6f554537.js.map
+//# sourceMappingURL=app.6a88a7f0ecb7d2f4bdd7.js.map

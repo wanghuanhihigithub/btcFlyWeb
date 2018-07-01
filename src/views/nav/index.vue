@@ -11,12 +11,12 @@
          </el-form>
          <el-table :data="coins"  style="width: 40%;margin:20px;float:left">
              <el-table-column  prop="now"  label="时间"  width="200"/>
-             <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
+             <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
              <el-table-column  prop="last"  label="last"  width="150"/>
           </el-table>
           <el-table :data="huobiCoins"  style="width: 40%;margin:20px;float:left">
               <el-table-column  prop="now"  label="时间"  width="200"/>
-              <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
+              <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
               <el-table-column  prop="last"  label="last"  width="150"/>
             </el-table>
     </div>

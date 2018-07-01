@@ -9,18 +9,24 @@
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
-         <el-table :data="coins"  style="width: 80%;margin:20px;">
+         <el-table :data="coins"  style="width: 60%;margin:20px;">
              <el-table-column  prop="name"  label="平台"  width="200"/>
-             <el-table-column  prop="now"  label="时间"  width="200"/>
+             <el-table-column  prop="now"  label="时间"  width="300"/>
              <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
              <el-table-column  prop="last"  label="last"  width="150"/>
           </el-table>
-          <el-table :data="huobiCoins"  style="width: 80%;margin:20px;">
+          <el-table :data="huobiCoins"  style="width: 60%;margin:20px;">
               <el-table-column  prop="name"  label="平台"  width="200"/>
-              <el-table-column  prop="now"  label="时间"  width="200"/>
+              <el-table-column  prop="now"  label="时间"  width="300"/>
               <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
               <el-table-column  prop="last"  label="last"  width="150"/>
-            </el-table>
+          </el-table>
+          <el-table :data="fcoins"  style="width: 60%;margin:20px;">
+              <el-table-column  prop="name"  label="平台"  width="200"/>
+              <el-table-column  prop="now"  label="时间"  width="300"/>
+              <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
+              <el-table-column  prop="last"  label="last"  width="150"/>
+           </el-table>
     </div>
 </template>
 
@@ -30,7 +36,7 @@ import axios from 'axios'
 export default {
   name: 'hello',
   data: function(){
-    return {form:{price:0},coins:[],huobiCoins:[]}
+    return {form:{price:0},coins:[],huobiCoins:[],fcoins:[]}
   },
   mounted: function(){
   },
@@ -38,20 +44,21 @@ export default {
       start:function(){
            this.getCoinsVs()
            this.getHuobiCoinsVs()
+           this.getFCoinsVs()
            self = this
-           this.interval = setInterval(function() {self.getCoinsVs()}, 1000 * 2)
-           this.interval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
+           //this.interval = setInterval(function() {self.getCoinsVs()}, 1000 * 2)
+           //this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
+           this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
       },
       getCoinsVs:function(){
-            self = this
-            axios.get('/api/coinsVs').then(res=>{
-                   console.log(res)
-                   var last = res.data.ticker.last
-                   var calc = (self.form.price * last).toFixed(2)
-                   document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
-                   self.coins = [{now:res.data.createdTime , calc : calc, last: last,name:"oken"}]
-            }).catch(error=>console.log(error));
-
+        self = this
+        axios.get('/api/coinsVs').then(res=>{
+               console.log(res)
+               var last = res.data.ticker.last
+               var calc = (self.form.price * last).toFixed(2)
+               document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+               self.coins = [{now:res.data.createdTime , calc : calc, last: last,name:"oken"}]
+        }).catch(error=>console.log(error));
       },
       getHuobiCoinsVs:function(){
         axios.get('/api/huobiCoinsVs').then(res=>{
@@ -60,8 +67,16 @@ export default {
             self.huobiCoins = [{now: data.createdTime, calc : (self.form.price * data.close).toFixed(2), last: data.close,name:"火币"}]
         }).catch(error=>console.log(error));
       },
+      getFCoinsVs:function(){
+         axios.get('/api/fcoinVs').then(res=>{
+            var last = res.data.data.ticker[0]
+            self.fcoins = [{now: res.data.createdTime, calc : (self.form.price * last).toFixed(2), last: last,name:"fcoin"}]
+         }).catch(error=>console.log(error));
+      },
       end:function(){
         clearInterval(this.interval)
+        clearInterval(this.huobiInterval)
+        clearInterval(this.fcoinInterval)
       }
   }
 }

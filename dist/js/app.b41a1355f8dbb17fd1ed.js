@@ -340,13 +340,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'hello',
   data: function () {
-    return { form: { price: 0 }, coins: [], huobiCoins: [], fcoins: [] };
+    return { form: { price: 0 }, coins: [], huobiCoins: [], fcoins: [], coinEx: [] };
   },
   mounted: function () {},
   methods: {
@@ -354,6 +360,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.getCoinsVs();
       this.getHuobiCoinsVs();
       this.getFCoinsVs();
+      this.getCoinEx();
       self = this;
       this.interval = setInterval(function () {
         self.getCoinsVs();
@@ -363,6 +370,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }, 500);
       this.fcoinInterval = setInterval(function () {
         self.getFCoinsVs();
+      }, 2000);
+      this.coinExInterval = setInterval(function () {
+        self.getCoinEx();
       }, 2000);
     },
     getCoinsVs: function () {
@@ -388,10 +398,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         self.fcoins = [{ now: res.data.createdTime, calc: (self.form.price * last).toFixed(2), last: last, name: "fcoin" }];
       }).catch(error => console.log(error));
     },
+    getCoinEx: function () {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinEx').then(res => {
+        var last = res.data.data.ticker.last;
+        self.coinEx = [{ now: res.data.createdTime, calc: (self.form.price * last).toFixed(2), last: last, name: "coinEx" }];
+      }).catch(error => console.log(error));
+    },
     end: function () {
       clearInterval(this.interval);
       clearInterval(this.huobiInterval);
       clearInterval(this.fcoinInterval);
+      clearInterval(this.coinExInterval);
     }
   }
 });
@@ -1563,7 +1580,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "180"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -1574,10 +1591,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
       "width": "60%",
-      "margin": "20px"
+      "margin": "20px",
+      "margin-top": "0px"
     },
     attrs: {
-      "data": _vm.huobiCoins
+      "data": _vm.huobiCoins,
+      "show-header": false
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -1595,7 +1614,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "180"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -1609,7 +1628,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "margin": "20px"
     },
     attrs: {
-      "data": _vm.fcoins
+      "data": _vm.fcoins,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台",
+      "width": "200"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间",
+      "width": "300"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "乘数 * last",
+      "width": "150"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "last",
+      "width": "150"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "60%",
+      "margin": "20px"
+    },
+    attrs: {
+      "data": _vm.coinEx,
+      "show-header": false
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -1677,4 +1730,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.8f177b47f8790a01a81c.js.map
+//# sourceMappingURL=app.b41a1355f8dbb17fd1ed.js.map

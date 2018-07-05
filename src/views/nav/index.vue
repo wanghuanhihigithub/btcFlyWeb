@@ -12,20 +12,26 @@
          <el-table :data="coins"  style="width: 60%;margin:20px;">
              <el-table-column  prop="name"  label="平台"  width="200"/>
              <el-table-column  prop="now"  label="时间"  width="300"/>
-             <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
+             <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
              <el-table-column  prop="last"  label="last"  width="150"/>
           </el-table>
-          <el-table :data="huobiCoins"  style="width: 60%;margin:20px;">
-              <el-table-column  prop="name"  label="平台"  width="200"/>
-              <el-table-column  prop="now"  label="时间"  width="300"/>
-              <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
-              <el-table-column  prop="last"  label="last"  width="150"/>
+          <el-table :data="huobiCoins"  style="width: 60%;margin:20px;margin-top:0px" :show-header="false">
+               <el-table-column  prop="name"  label="平台"  width="200"/>
+               <el-table-column  prop="now"  label="时间"  width="300"/>
+               <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
+               <el-table-column  prop="last"  label="last"  width="150"/>
           </el-table>
-          <el-table :data="fcoins"  style="width: 60%;margin:20px;">
+          <el-table :data="fcoins"  style="width: 60%;margin:20px;" :show-header="false">
               <el-table-column  prop="name"  label="平台"  width="200"/>
               <el-table-column  prop="now"  label="时间"  width="300"/>
-              <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
+              <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
               <el-table-column  prop="last"  label="last"  width="150"/>
+           </el-table>
+           <el-table :data="coinEx"  style="width: 60%;margin:20px;" :show-header="false">
+                 <el-table-column  prop="name"  label="平台"  width="200"/>
+                 <el-table-column  prop="now"  label="时间"  width="300"/>
+                 <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
+                 <el-table-column  prop="last"  label="last"  width="150"/>
            </el-table>
     </div>
 </template>
@@ -36,7 +42,7 @@ import axios from 'axios'
 export default {
   name: 'hello',
   data: function(){
-    return {form:{price:0},coins:[],huobiCoins:[],fcoins:[]}
+    return {form:{price:0},coins:[],huobiCoins:[],fcoins:[],coinEx:[]}
   },
   mounted: function(){
   },
@@ -45,10 +51,12 @@ export default {
            this.getCoinsVs()
            this.getHuobiCoinsVs()
            this.getFCoinsVs()
+           this.getCoinEx()
            self = this
            this.interval = setInterval(function() {self.getCoinsVs()}, 1000 * 2)
            this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
            this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
+           this.coinExInterval = setInterval(function() {self.getCoinEx()}, 2000)
       },
       getCoinsVs:function(){
         self = this
@@ -73,10 +81,17 @@ export default {
             self.fcoins = [{now: res.data.createdTime, calc : (self.form.price * last).toFixed(2), last: last,name:"fcoin"}]
          }).catch(error=>console.log(error));
       },
+      getCoinEx:function(){
+        axios.get('/api/coinEx').then(res=>{
+            var last = res.data.data.ticker.last
+            self.coinEx = [{now: res.data.createdTime, calc : (self.form.price * last).toFixed(2), last: last,name:"coinEx"}]
+        }).catch(error=>console.log(error));
+      },
       end:function(){
         clearInterval(this.interval)
         clearInterval(this.huobiInterval)
         clearInterval(this.fcoinInterval)
+        clearInterval(this.coinExInterval)
       }
   }
 }

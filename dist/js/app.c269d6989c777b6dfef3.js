@@ -1680,7 +1680,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "prop": "calc",
       "label": "乘数 * last",
-      "width": "180"
+      "width": "150"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
@@ -1730,4 +1730,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.b41a1355f8dbb17fd1ed.js.map
+//# sourceMappingURL=app.c269d6989c777b6dfef3.js.map

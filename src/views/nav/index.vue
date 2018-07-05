@@ -30,7 +30,7 @@
            <el-table :data="coinEx"  style="width: 60%;margin:20px;" :show-header="false">
                  <el-table-column  prop="name"  label="平台"  width="200"/>
                  <el-table-column  prop="now"  label="时间"  width="300"/>
-                 <el-table-column  prop="calc"  label="乘数 * last"  width="180"/>
+                 <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
                  <el-table-column  prop="last"  label="last"  width="150"/>
            </el-table>
     </div>

@@ -346,13 +346,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'hello',
   data: function () {
-    return { form: { price: 0 }, coins: [], huobiCoins: [], fcoins: [], coinEx: [] };
+    return { form: { price: 0 }, coins: [], huobiCoins: [], fcoins: [], coinEx: [], titleCoin: 1 };
   },
   mounted: function () {},
   methods: {
@@ -378,10 +384,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getCoinsVs: function () {
       self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVs').then(res => {
-        console.log(res);
+        console.log("oken返回数据", res);
         var last = res.data.ticker.last;
         var calc = (self.form.price * last).toFixed(2);
-        document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+        if (self.titleCoin == 1) {
+          document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+        }
         self.coins = [{ now: res.data.createdTime, calc: calc, last: last, name: "oken" }];
       }).catch(error => console.log(error));
     },
@@ -389,19 +397,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
         var data = eval('(' + res.data + ')');
         console.log("火币网返回数据", res);
-        self.huobiCoins = [{ now: data.createdTime, calc: (self.form.price * data.close).toFixed(2), last: data.close, name: "火币" }];
+        var calc = (self.form.price * data.close).toFixed(2);
+        if (self.titleCoin == 2) {
+          document.title = data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+        }
+        self.huobiCoins = [{ now: data.createdTime, calc: calc, last: data.close, name: "火币" }];
       }).catch(error => console.log(error));
     },
     getFCoinsVs: function () {
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/fcoinVs').then(res => {
         var last = res.data.data.ticker[0];
-        self.fcoins = [{ now: res.data.createdTime, calc: (self.form.price * last).toFixed(2), last: last, name: "fcoin" }];
+        var calc = (self.form.price * last).toFixed(2);
+        if (self.titleCoin == 3) {
+          document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+        }
+        self.fcoins = [{ now: res.data.createdTime, calc: calc, last: last, name: "fcoin" }];
       }).catch(error => console.log(error));
     },
     getCoinEx: function () {
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinEx').then(res => {
         var last = res.data.data.ticker.last;
-        self.coinEx = [{ now: res.data.createdTime, calc: (self.form.price * last).toFixed(2), last: last, name: "coinEx" }];
+        var calc = (self.form.price * last).toFixed(2);
+        if (self.titleCoin == 4) {
+          document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+        }
+        self.coinEx = [{ now: res.data.createdTime, calc: calc, last: last, name: "coinEx" }];
       }).catch(error => console.log(error));
     },
     end: function () {
@@ -409,6 +429,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       clearInterval(this.huobiInterval);
       clearInterval(this.fcoinInterval);
       clearInterval(this.coinExInterval);
+    },
+    selectTitleCoin: function (label) {
+      alert(a);
     }
   }
 });
@@ -1556,7 +1579,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.end
     }
-  }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-radio-group', {
+    staticStyle: {
+      "margin-left": "120px"
+    },
+    on: {
+      "change": _vm.selectTitleCoin
+    },
+    model: {
+      value: (_vm.titleCoin),
+      callback: function($$v) {
+        _vm.titleCoin = $$v
+      },
+      expression: "titleCoin"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("oken")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("火币")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 3
+    }
+  }, [_vm._v("fcoin")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 4
+    }
+  }, [_vm._v("coinEx")])], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
       "width": "60%",
       "margin": "20px"
@@ -1730,4 +1783,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.c269d6989c777b6dfef3.js.map
+//# sourceMappingURL=app.6bc1b382d7bb4d8a4135.js.map

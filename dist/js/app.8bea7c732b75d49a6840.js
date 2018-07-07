@@ -396,7 +396,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * last).toFixed(2);
         if (self.titleCoin == 1) {
           document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-          self.ring(calc);
+          self.ring(calc, self);
         }
         self.coins = [{ now: res.data.createdTime, calc: calc, last: last, name: "oken" }];
       }).catch(error => console.log(error));
@@ -408,7 +408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * data.close).toFixed(2);
         if (self.titleCoin == 2) {
           document.title = data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-          self.ring(calc);
+          self.ring(calc, self);
         }
         self.huobiCoins = [{ now: data.createdTime, calc: calc, last: data.close, name: "火币" }];
       }).catch(error => console.log(error));
@@ -419,7 +419,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * last).toFixed(2);
         if (self.titleCoin == 3) {
           document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-          self.ring(calc);
+          self.ring(calc, self);
         }
         self.fcoins = [{ now: res.data.createdTime, calc: calc, last: last, name: "fcoin" }];
       }).catch(error => console.log(error));
@@ -430,7 +430,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * last).toFixed(2);
         if (self.titleCoin == 4) {
           document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-          self.ring(calc);
+          self.ring(calc, self);
         }
         self.coinEx = [{ now: res.data.createdTime, calc: calc, last: last, name: "coinEx" }];
       }).catch(error => console.log(error));
@@ -441,9 +441,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       clearInterval(this.fcoinInterval);
       clearInterval(this.coinExInterval);
     },
-    ring: function (price) {
+    ring: function (price, self) {
       if (price > self.maxPrice | price < self.minPrice) {
-        debugger;
         document.getElementById("dogAudio").play();
       }
     }
@@ -1827,4 +1826,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.aa63c27cde0bd60565ec.js.map
+//# sourceMappingURL=app.8bea7c732b75d49a6840.js.map

@@ -125,7 +125,7 @@ export default {
         clearInterval(this.coinExInterval)
       },
       ring:function(price){
-        if(price > maxPrice | price < minPrice){
+        if(price > self.maxPrice | price < self.minPrice){
             document.getElementById("dogAudio").play()
         }
       }

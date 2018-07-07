@@ -442,7 +442,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       clearInterval(this.coinExInterval);
     },
     ring: function (price) {
-      if (price > maxPrice | price < minPrice) {
+      if (price > self.maxPrice | price < self.minPrice) {
         document.getElementById("dogAudio").play();
       }
     }
@@ -1826,4 +1826,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.d921fad883537136ae91.js.map
+//# sourceMappingURL=app.31e113e739835f4dfebc.js.map

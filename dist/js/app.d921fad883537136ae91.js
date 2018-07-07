@@ -352,13 +352,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'hello',
   data: function () {
-    return { form: { price: 0 }, coins: [], huobiCoins: [], fcoins: [], coinEx: [], titleCoin: 1 };
+    return { form: { price: 0, minPrice: 40000, maxPrice: 50000 }, coins: [], huobiCoins: [], fcoins: [], coinEx: [], titleCoin: 1 };
   },
   mounted: function () {},
   methods: {
@@ -389,6 +396,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * last).toFixed(2);
         if (self.titleCoin == 1) {
           document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+          self.ring(calc);
         }
         self.coins = [{ now: res.data.createdTime, calc: calc, last: last, name: "oken" }];
       }).catch(error => console.log(error));
@@ -400,6 +408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * data.close).toFixed(2);
         if (self.titleCoin == 2) {
           document.title = data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+          self.ring(calc);
         }
         self.huobiCoins = [{ now: data.createdTime, calc: calc, last: data.close, name: "火币" }];
       }).catch(error => console.log(error));
@@ -410,6 +419,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * last).toFixed(2);
         if (self.titleCoin == 3) {
           document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+          self.ring(calc);
         }
         self.fcoins = [{ now: res.data.createdTime, calc: calc, last: last, name: "fcoin" }];
       }).catch(error => console.log(error));
@@ -420,6 +430,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var calc = (self.form.price * last).toFixed(2);
         if (self.titleCoin == 4) {
           document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+          self.ring(calc);
         }
         self.coinEx = [{ now: res.data.createdTime, calc: calc, last: last, name: "coinEx" }];
       }).catch(error => console.log(error));
@@ -430,8 +441,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       clearInterval(this.fcoinInterval);
       clearInterval(this.coinExInterval);
     },
-    selectTitleCoin: function (label) {
-      alert(a);
+    ring: function (price) {
+      if (price > maxPrice | price < minPrice) {
+        document.getElementById("dogAudio").play();
+      }
     }
   }
 });
@@ -1568,6 +1581,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.price "
     }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "报警最小阈值"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.form.minPrice),
+      callback: function($$v) {
+        _vm.form.minPrice = $$v
+      },
+      expression: "form.minPrice "
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "报警最大阈值"
+    }
+  }, [_c('el-input', {
+    model: {
+      value: (_vm.form.maxPrice),
+      callback: function($$v) {
+        _vm.form.maxPrice = $$v
+      },
+      expression: "form.maxPrice "
+    }
   })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
@@ -1741,7 +1778,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "last",
       "width": "150"
     }
-  })], 1)], 1)
+  })], 1), _vm._v(" "), _c('audio', {
+    attrs: {
+      "src": "./dog.wav",
+      "controls": "controls",
+      "id": "dogAudio"
+    }
+  })], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -1783,4 +1826,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.6bc1b382d7bb4d8a4135.js.map
+//# sourceMappingURL=app.d921fad883537136ae91.js.map

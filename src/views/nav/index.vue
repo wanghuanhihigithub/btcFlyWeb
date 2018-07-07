@@ -4,6 +4,12 @@
              <el-form-item label="乘数">
                   <el-input  v-model="form.price "></el-input>
              </el-form-item>
+             <el-form-item label="报警最小阈值">
+                  <el-input  v-model="form.minPrice "></el-input>
+             </el-form-item>
+             <el-form-item label="报警最大阈值">
+                  <el-input  v-model="form.maxPrice "></el-input>
+             </el-form-item>
              <el-form-item>
                  <el-button type="primary" @click="start">开始</el-button>
                  <el-button @click="end">结束</el-button>
@@ -39,6 +45,7 @@
                  <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
                  <el-table-column  prop="last"  label="last"  width="150"/>
            </el-table>
+           <audio src="./dog.wav" controls="controls" id="dogAudio"></audio>
     </div>
 </template>
 
@@ -48,7 +55,7 @@ import axios from 'axios'
 export default {
   name: 'hello',
   data: function(){
-    return {form:{price:0},coins:[],huobiCoins:[],fcoins:[],coinEx:[],titleCoin:1}
+    return {form:{price:0,minPrice:40000,maxPrice:50000},coins:[],huobiCoins:[],fcoins:[],coinEx:[],titleCoin:1}
   },
   mounted: function(){
   },
@@ -72,6 +79,7 @@ export default {
                var calc = (self.form.price * last).toFixed(2)
                if(self.titleCoin == 1){
                   document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                  self.ring(calc)
                }
                self.coins = [{now:res.data.createdTime , calc : calc, last: last,name:"oken"}]
         }).catch(error=>console.log(error));
@@ -82,7 +90,8 @@ export default {
             console.log("火币网返回数据", res)
             var calc = (self.form.price * data.close).toFixed(2)
              if(self.titleCoin == 2){
-                   document.title = data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                document.title = data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                self.ring(calc)
              }
             self.huobiCoins = [{now: data.createdTime, calc :calc, last: data.close,name:"火币"}]
         }).catch(error=>console.log(error));
@@ -93,6 +102,7 @@ export default {
             var calc = (self.form.price * last).toFixed(2)
            if(self.titleCoin == 3){
               document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+              self.ring(calc)
            }
             self.fcoins = [{now: res.data.createdTime, calc : calc, last: last,name:"fcoin"}]
          }).catch(error=>console.log(error));
@@ -100,9 +110,10 @@ export default {
       getCoinEx:function(){
         axios.get('/api/coinEx').then(res=>{
             var last = res.data.data.ticker.last
-             var calc = (self.form.price * last).toFixed(2)
+            var calc = (self.form.price * last).toFixed(2)
            if(self.titleCoin == 4){
               document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+              self.ring(calc)
            }
             self.coinEx = [{now: res.data.createdTime, calc : calc, last: last,name:"coinEx"}]
         }).catch(error=>console.log(error));
@@ -113,8 +124,10 @@ export default {
         clearInterval(this.fcoinInterval)
         clearInterval(this.coinExInterval)
       },
-      selectTitleCoin:function(label){
-        alert(a)
+      ring:function(price){
+        if(price > maxPrice | price < minPrice){
+            document.getElementById("dogAudio").play()
+        }
       }
   }
 }

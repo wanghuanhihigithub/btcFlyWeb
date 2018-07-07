@@ -126,6 +126,7 @@ export default {
       },
       ring:function(price){
         if(price > self.maxPrice | price < self.minPrice){
+            debugger
             document.getElementById("dogAudio").play()
         }
       }

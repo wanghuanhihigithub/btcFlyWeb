@@ -443,6 +443,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     ring: function (price) {
       if (price > self.maxPrice | price < self.minPrice) {
+        debugger;
         document.getElementById("dogAudio").play();
       }
     }
@@ -1826,4 +1827,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[128]);
-//# sourceMappingURL=app.31e113e739835f4dfebc.js.map
+//# sourceMappingURL=app.aa63c27cde0bd60565ec.js.map

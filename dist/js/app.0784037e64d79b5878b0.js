@@ -543,7 +543,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     getCoinsVs: function () {
       self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVs').then(res => {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/oken/api/coinsVs').then(res => {
         console.log("oken返回数据", res);
         var last = res.data.ticker.last;
         var calc = (self.form.price * last).toFixed(2);
@@ -555,7 +555,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(error => console.log(error));
     },
     getHuobiCoinsVs: function () {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/oken/api/huobiCoinsVs').then(res => {
         var data = eval('(' + res.data + ')');
         console.log("火币网返回数据", res);
         var calc = (self.form.price * data.close).toFixed(2);
@@ -2253,4 +2253,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.135dbaab65545725ac19.js.map
+//# sourceMappingURL=app.0784037e64d79b5878b0.js.map

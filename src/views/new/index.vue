@@ -73,7 +73,7 @@ export default {
       },
       getCoinsVs:function(){
         self = this
-        axios.get('/api/coinsVs').then(res=>{
+        axios.get('/oken/api/coinsVs').then(res=>{
                console.log("oken返回数据", res)
                var last = res.data.ticker.last
                var calc = (self.form.price * last).toFixed(2)
@@ -85,7 +85,7 @@ export default {
         }).catch(error=>console.log(error));
       },
       getHuobiCoinsVs:function(){
-        axios.get('/api/huobiCoinsVs').then(res=>{
+        axios.get('/oken/api/huobiCoinsVs').then(res=>{
             var data = eval('(' + res.data + ')')
             console.log("火币网返回数据", res)
             var calc = (self.form.price * data.close).toFixed(2)

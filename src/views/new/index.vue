@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-         <el-button type="primary" @click="goNew()">进入新页面</el-button>
          <el-form ref="form" :model="form" label-width="180px">
              <el-form-item label="乘数">
                   <el-input  v-model="form.price "></el-input>
@@ -98,7 +97,7 @@ export default {
         }).catch(error=>console.log(error));
       },
       getFCoinsVs:function(){
-         axios.get('/api/fcoinVs').then(res=>{
+         axios.get('/fcoinVs/api/fcoinVs').then(res=>{
             var last = res.data.data.ticker[0]
             var calc = (self.form.price * last).toFixed(2)
            if(self.titleCoin == 3){
@@ -109,7 +108,7 @@ export default {
          }).catch(error=>console.log(error));
       },
       getCoinEx:function(){
-        axios.get('/api/coinEx').then(res=>{
+        axios.get('/coinEx/api/coinEx').then(res=>{
             var last = res.data.data.ticker.last
             var calc = (self.form.price * last).toFixed(2)
            if(self.titleCoin == 4){
@@ -129,9 +128,6 @@ export default {
         if(price > this.form.maxPrice | price < this.form.minPrice){
             document.getElementById("dogAudio").play()
         }
-      },
-      goNew:function(){
-        this.$router.push({ path: '/new' })
       }
   }
 }

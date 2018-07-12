@@ -62,12 +62,12 @@ export default {
   methods: {
       start:function(){
            this.getCoinsVs()
-           //this.getHuobiCoinsVs()
+           this.getHuobiCoinsVs()
            //this.getFCoinsVs()
            //this.getCoinEx()
            self = this
-           this.interval = setInterval(function() {self.getCoinsVs()}, 1000 * 2)
-           //this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
+           this.interval = setInterval(function() {self.getCoinsVs()}, 500)
+           this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
            //this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
            //this.coinExInterval = setInterval(function() {self.getCoinEx()}, 2000)
       },

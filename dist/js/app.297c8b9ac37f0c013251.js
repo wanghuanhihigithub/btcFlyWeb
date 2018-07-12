@@ -518,6 +518,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -1592,9 +1593,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "margin-left": "120px"
     },
-    on: {
-      "change": _vm.selectTitleCoin
-    },
     model: {
       value: (_vm.titleCoin),
       callback: function($$v) {
@@ -1618,9 +1616,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": 4
     }
-  }, [_vm._v("coinEx")])], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("coinEx")])], 1), _vm._v(" "), _c('div', {
     staticStyle: {
-      "width": "50%"
+      "height": "20px"
+    }
+  }), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "50%",
+      "float": "left"
     },
     attrs: {
       "data": _vm.coins
@@ -1628,26 +1631,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "平台",
-      "width": "200"
+      "label": "平台"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
-      "label": "时间",
-      "width": "300"
+      "label": "时间"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
+      "label": "btc人民币"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "last",
-      "width": "150"
+      "label": "btc美元"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
@@ -1659,26 +1658,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "平台",
-      "width": "200"
+      "label": "平台"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
-      "label": "时间",
-      "width": "300"
+      "label": "时间"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
+      "label": "eth人民币"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "last",
-      "width": "150"
+      "label": "eth美元"
     }
   })], 1), _vm._v(" "), _vm._v("\">\n           "), _c('el-table-column', {
     attrs: {
@@ -2298,4 +2293,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.c9a03decca67438c8a5c.js.map
+//# sourceMappingURL=app.297c8b9ac37f0c013251.js.map

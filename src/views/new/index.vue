@@ -15,23 +15,24 @@
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
-         <el-radio-group v-model="titleCoin" style="margin-left:120px" @change="selectTitleCoin">
+         <el-radio-group v-model="titleCoin" style="margin-left:120px">
              <el-radio :label="1">oken</el-radio>
              <el-radio :label="2">火币</el-radio>
              <el-radio :label="3">fcoin</el-radio>
              <el-radio :label="4">coinEx</el-radio>
            </el-radio-group>
-         <el-table :data="coins"  style="width: 50%;">
-             <el-table-column  prop="name"  label="平台"  width="200"/>
-             <el-table-column  prop="now"  label="时间"  width="300"/>
-             <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-             <el-table-column  prop="last"  label="last"  width="150"/>
+           <div style="height:20px;"/>
+         <el-table :data="coins"  style="width: 50%;float:left;">
+             <el-table-column  prop="name"  label="平台"/>
+             <el-table-column  prop="now"  label="时间"/>
+             <el-table-column  prop="calc"  label="btc人民币"/>
+             <el-table-column  prop="last"  label="btc美元"/>
           </el-table>
           <el-table :data="okenUsdtEth"  style="width: 50%;">
-              <el-table-column  prop="name"  label="平台"  width="200"/>
-              <el-table-column  prop="now"  label="时间"  width="300"/>
-              <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-              <el-table-column  prop="last"  label="last"  width="150"/>
+              <el-table-column  prop="name"  label="平台"/>
+              <el-table-column  prop="now"  label="时间"/>
+              <el-table-column  prop="calc"  label="eth人民币"/>
+              <el-table-column  prop="last"  label="eth美元"/>
           </el-table>
           <el-table :data="huobiCoins"  style="width: 50%; :show-header="false">
                <el-table-column  prop="name"  label="平台"  width="200"/>

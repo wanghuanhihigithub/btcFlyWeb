@@ -360,6 +360,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -375,6 +382,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.getHuobiCoinsVs();
       this.getFCoinsVs();
       this.getCoinEx();
+      this.getOkenUsdtEth();
       self = this;
       this.interval = setInterval(function () {
         self.getCoinsVs();
@@ -388,6 +396,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.coinExInterval = setInterval(function () {
         self.getCoinEx();
       }, 2000);
+      setInterval(function () {
+        self.getOkenUsdtEth();
+      }, 500);
     },
     getCoinsVs: function () {
       self = this;
@@ -449,6 +460,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     goNew: function () {
       this.$router.push({ path: '/new' });
+    },
+    getOkenUsdtEth: function () {
+      self = this;
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/okenUsdtEth').then(res => {
+        console.log("oken返回数据", res);
+        var data = eval('(' + res.data + ')');
+        var last = data.last;
+        var calc = (self.form.price * last).toFixed(2);
+        var date = new Date(data.timestamp);
+        if (self.titleCoin == 1) {
+          document.title = date.getMinutes() + ":" + date.getSeconds() + "  " + calc.split(".")[0] + "  " + self.form.price;
+          self.ring(calc);
+        }
+        var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        self.okenUsdtEth = [{ now: now, calc: calc, last: last, name: "oken" }];
+      }).catch(error => console.log(error));
     }
   }
 });
@@ -2087,9 +2114,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "margin-left": "120px"
     },
-    on: {
-      "change": _vm.selectTitleCoin
-    },
     model: {
       value: (_vm.titleCoin),
       callback: function($$v) {
@@ -2113,10 +2137,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": 4
     }
-  }, [_vm._v("coinEx")])], 1), _vm._v(" "), _c('el-table', {
+  }, [_vm._v("coinEx")])], 1), _vm._v(" "), _c('div', {
     staticStyle: {
-      "width": "60%",
-      "margin": "20px"
+      "height": "20px"
+    }
+  }), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "50%",
+      "float": "left"
     },
     attrs: {
       "data": _vm.coins
@@ -2124,32 +2152,53 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "平台",
-      "width": "200"
+      "label": "平台"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
-      "label": "时间",
-      "width": "300"
+      "label": "时间"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
+      "label": "btc人民币"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "last",
-      "width": "150"
+      "label": "btc美元"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "60%",
-      "margin": "20px",
-      "margin-top": "0px"
+      "width": "50%"
+    },
+    attrs: {
+      "data": _vm.okenUsdtEth
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "eth人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "eth美元"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "50%"
     },
     attrs: {
       "data": _vm.huobiCoins,
@@ -2158,31 +2207,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "平台",
-      "width": "200"
+      "label": "平台"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
-      "label": "时间",
-      "width": "300"
+      "label": "时间"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
+      "label": "乘数 * last"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "last",
-      "width": "150"
+      "label": "last"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "60%",
-      "margin": "20px"
+      "width": "50%"
     },
     attrs: {
       "data": _vm.fcoins,
@@ -2191,31 +2235,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "平台",
-      "width": "200"
+      "label": "平台"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
-      "label": "时间",
-      "width": "300"
+      "label": "时间"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
+      "label": "乘数 * last"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "last",
-      "width": "150"
+      "label": "last"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "60%",
-      "margin": "20px"
+      "width": "50%"
     },
     attrs: {
       "data": _vm.coinEx,
@@ -2224,28 +2263,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "name",
-      "label": "平台",
-      "width": "200"
+      "label": "平台"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
-      "label": "时间",
-      "width": "300"
+      "label": "时间"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
+      "label": "乘数 * last"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "last",
-      "width": "150"
+      "label": "last"
     }
   })], 1), _vm._v(" "), _c('audio', {
+    staticStyle: {
+      "display": "none"
+    },
     attrs: {
       "src": "./dog.wav",
       "controls": "controls",
@@ -2293,4 +2331,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.297c8b9ac37f0c013251.js.map
+//# sourceMappingURL=app.bab398a2c953b9fa7885.js.map

@@ -16,37 +16,44 @@
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
-         <el-radio-group v-model="titleCoin" style="margin-left:120px" @change="selectTitleCoin">
+         <el-radio-group v-model="titleCoin" style="margin-left:120px">
              <el-radio :label="1">oken</el-radio>
              <el-radio :label="2">火币</el-radio>
              <el-radio :label="3">fcoin</el-radio>
              <el-radio :label="4">coinEx</el-radio>
            </el-radio-group>
-         <el-table :data="coins"  style="width: 60%;margin:20px;">
-             <el-table-column  prop="name"  label="平台"  width="200"/>
-             <el-table-column  prop="now"  label="时间"  width="300"/>
-             <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-             <el-table-column  prop="last"  label="last"  width="150"/>
+           <div style="height:20px;"/>
+         <el-table :data="coins"  style="width: 50%;float:left;">
+                      <el-table-column  prop="name"  label="平台"/>
+                      <el-table-column  prop="now"  label="时间"/>
+                      <el-table-column  prop="calc"  label="btc人民币"/>
+                      <el-table-column  prop="last"  label="btc美元"/>
+                   </el-table>
+                   <el-table :data="okenUsdtEth"  style="width: 50%;">
+                       <el-table-column  prop="name"  label="平台"/>
+                       <el-table-column  prop="now"  label="时间"/>
+                       <el-table-column  prop="calc"  label="eth人民币"/>
+                       <el-table-column  prop="last"  label="eth美元"/>
+                   </el-table>
+          <el-table :data="huobiCoins"  style="width: 50%;" :show-header="false">
+               <el-table-column  prop="name"  label="平台"/>
+               <el-table-column  prop="now"  label="时间"/>
+               <el-table-column  prop="calc"  label="乘数 * last"/>
+               <el-table-column  prop="last"  label="last"/>
           </el-table>
-          <el-table :data="huobiCoins"  style="width: 60%;margin:20px;margin-top:0px" :show-header="false">
-               <el-table-column  prop="name"  label="平台"  width="200"/>
-               <el-table-column  prop="now"  label="时间"  width="300"/>
-               <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-               <el-table-column  prop="last"  label="last"  width="150"/>
-          </el-table>
-          <el-table :data="fcoins"  style="width: 60%;margin:20px;" :show-header="false">
-              <el-table-column  prop="name"  label="平台"  width="200"/>
-              <el-table-column  prop="now"  label="时间"  width="300"/>
-              <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-              <el-table-column  prop="last"  label="last"  width="150"/>
+          <el-table :data="fcoins"  style="width: 50%;" :show-header="false">
+              <el-table-column  prop="name"  label="平台"/>
+              <el-table-column  prop="now"  label="时间"/>
+              <el-table-column  prop="calc"  label="乘数 * last"/>
+              <el-table-column  prop="last"  label="last"/>
            </el-table>
-           <el-table :data="coinEx"  style="width: 60%;margin:20px;" :show-header="false">
-                 <el-table-column  prop="name"  label="平台"  width="200"/>
-                 <el-table-column  prop="now"  label="时间"  width="300"/>
-                 <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-                 <el-table-column  prop="last"  label="last"  width="150"/>
+           <el-table :data="coinEx"  style="width: 50%;" :show-header="false">
+                 <el-table-column  prop="name"  label="平台"/>
+                 <el-table-column  prop="now"  label="时间"/>
+                 <el-table-column  prop="calc"  label="乘数 * last"/>
+                 <el-table-column  prop="last"  label="last"/>
            </el-table>
-           <audio src="./dog.wav" controls="controls" id="dogAudio"></audio>
+           <audio src="./dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
     </div>
 </template>
 
@@ -66,11 +73,13 @@ export default {
            this.getHuobiCoinsVs()
            this.getFCoinsVs()
            this.getCoinEx()
+           this.getOkenUsdtEth()
            self = this
            this.interval = setInterval(function() {self.getCoinsVs()}, 1000 * 2)
            this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
            this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
            this.coinExInterval = setInterval(function() {self.getCoinEx()}, 2000)
+           setInterval(function() {self.getOkenUsdtEth()}, 500)
       },
       getCoinsVs:function(){
         self = this
@@ -132,7 +141,23 @@ export default {
       },
       goNew:function(){
         this.$router.push({ path: '/new' })
-      }
+      },
+      getOkenUsdtEth:function(){
+                       self = this
+                       axios.get('/api/okenUsdtEth').then(res=>{
+                              console.log("oken返回数据", res)
+                              var data = eval('(' + res.data + ')')
+                              var last = data.last
+                              var calc = (self.form.price * last).toFixed(2)
+                              var date = new Date(data.timestamp)
+                              if(self.titleCoin == 1){
+                                 document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
+                                 self.ring(calc)
+                              }
+                              var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+                              self.okenUsdtEth = [{now: now , calc : calc, last: last,name:"oken"}]
+                       }).catch(error=>console.log(error));
+            }
   }
 }
 </script>

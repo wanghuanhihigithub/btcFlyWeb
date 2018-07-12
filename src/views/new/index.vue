@@ -87,7 +87,7 @@ export default {
         }).catch(error=>console.log(error));
       },
       getHuobiCoinsVs:function(){
-        axios.get('/oken/api/huobiCoinsVs').then(res=>{
+        axios.get('/api/huobiCoinsVs').then(res=>{
             var data = eval('(' + res.data + ')')
             console.log("火币网返回数据", res)
             var calc = (self.form.price * data.close).toFixed(2)

@@ -367,7 +367,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -470,10 +469,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var last = data.last;
         var calc = (self.form.price * last).toFixed(2);
         var date = new Date(data.timestamp);
-        if (self.titleCoin == 1) {
-          document.title = date.getMinutes() + ":" + date.getSeconds() + "  " + calc.split(".")[0] + "  " + self.form.price;
-          self.ring(calc);
-        }
         var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         self.okenUsdtEth = [{ now: now, calc: calc, last: last, name: "oken" }];
       }).catch(error => console.log(error));
@@ -2179,11 +2174,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
-      "prop": "name",
-      "label": "平台"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
       "prop": "now",
       "label": "时间"
     }
@@ -2336,4 +2326,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.882762e65f8fdef578a3.js.map
+//# sourceMappingURL=app.a56a708328f6322c778b.js.map

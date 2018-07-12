@@ -30,7 +30,6 @@
                       <el-table-column  prop="last"  label="btc美元"/>
                    </el-table>
                    <el-table :data="okenUsdtEth"  style="width: 50%;">
-                       <el-table-column  prop="name"  label="平台"/>
                        <el-table-column  prop="now"  label="时间"/>
                        <el-table-column  prop="calc"  label="eth人民币"/>
                        <el-table-column  prop="last"  label="eth美元"/>
@@ -151,10 +150,6 @@ export default {
                               var last = data.last
                               var calc = (self.form.price * last).toFixed(2)
                               var date = new Date(data.timestamp)
-                              if(self.titleCoin == 1){
-                                 document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
-                                 self.ring(calc)
-                              }
                               var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
                               self.okenUsdtEth = [{now: now , calc : calc, last: last,name:"oken"}]
                        }).catch(error=>console.log(error));

@@ -78,7 +78,7 @@ export default {
                var data = eval('(' + res.data + ')')
                var last = data.last
                var calc = (self.form.price * last).toFixed(2)
-               var date = new Date(res.data.timestamp)
+               var date = new Date(data.timestamp)
                if(self.titleCoin == 1){
                   document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
                   self.ring(calc)

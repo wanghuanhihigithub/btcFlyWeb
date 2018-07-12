@@ -542,7 +542,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var data = eval('(' + res.data + ')');
         var last = data.last;
         var calc = (self.form.price * last).toFixed(2);
-        var date = new Date(res.data.timestamp);
+        var date = new Date(data.timestamp);
         if (self.titleCoin == 1) {
           document.title = date.getMinutes() + ":" + date.getSeconds() + "  " + calc.split(".")[0] + "  " + self.form.price;
           self.ring(calc);
@@ -2249,4 +2249,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.1b314393ba59e96d81c7.js.map
+//# sourceMappingURL=app.bec89aa087593f452218.js.map

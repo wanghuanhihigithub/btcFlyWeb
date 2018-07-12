@@ -83,7 +83,8 @@ export default {
                   document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
                   self.ring(calc)
                }
-               self.coins = [{now: date.toLocaleString() , calc : calc, last: last,name:"oken"}]
+               var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+               self.coins = [{now: now , calc : calc, last: last,name:"oken"}]
         }).catch(error=>console.log(error));
       },
       getHuobiCoinsVs:function(){

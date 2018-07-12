@@ -21,13 +21,19 @@
              <el-radio :label="3">fcoin</el-radio>
              <el-radio :label="4">coinEx</el-radio>
            </el-radio-group>
-         <el-table :data="coins"  style="width: 60%;margin:20px;">
+         <el-table :data="coins"  style="width: 50%;">
              <el-table-column  prop="name"  label="平台"  width="200"/>
              <el-table-column  prop="now"  label="时间"  width="300"/>
              <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
              <el-table-column  prop="last"  label="last"  width="150"/>
           </el-table>
-          <el-table :data="huobiCoins"  style="width: 60%;margin:20px;margin-top:0px" :show-header="false">
+          <el-table :data="okenUsdtEth"  style="width: 50%;">
+              <el-table-column  prop="name"  label="平台"  width="200"/>
+              <el-table-column  prop="now"  label="时间"  width="300"/>
+              <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
+              <el-table-column  prop="last"  label="last"  width="150"/>
+          </el-table>
+          <el-table :data="huobiCoins"  style="width: 50%; :show-header="false">
                <el-table-column  prop="name"  label="平台"  width="200"/>
                <el-table-column  prop="now"  label="时间"  width="300"/>
                <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
@@ -55,7 +61,7 @@ import axios from 'axios'
 export default {
   name: 'hello',
   data: function(){
-    return {form:{price:0,minPrice:40000,maxPrice:50000},coins:[],huobiCoins:[],fcoins:[],coinEx:[],titleCoin:1}
+    return {form:{price:0,minPrice:40000,maxPrice:50000},coins:[],huobiCoins:[],fcoins:[],coinEx:[],titleCoin:1,okenUsdtEth:[]}
   },
   mounted: function(){
   },
@@ -65,9 +71,11 @@ export default {
            this.getHuobiCoinsVs()
            //this.getFCoinsVs()
            //this.getCoinEx()
+           this.getOkenUsdtEth()
            self = this
            this.interval = setInterval(function() {self.getCoinsVs()}, 500)
            this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
+           setInterval(function() {self.getOkenUsdtEth()}, 500)
            //this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
            //this.coinExInterval = setInterval(function() {self.getCoinEx()}, 2000)
       },
@@ -131,6 +139,22 @@ export default {
         if(price > this.form.maxPrice | price < this.form.minPrice){
             document.getElementById("dogAudio").play()
         }
+      },
+      getOkenUsdtEth:function(){
+                 self = this
+                 axios.get('/api/okenUsdtEth').then(res=>{
+                        console.log("oken返回数据", res)
+                        var data = eval('(' + res.data + ')')
+                        var last = data.last
+                        var calc = (self.form.price * last).toFixed(2)
+                        var date = new Date(data.timestamp)
+                        if(self.titleCoin == 1){
+                           document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
+                           self.ring(calc)
+                        }
+                        var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+                        self.okenUsdtEth = [{now: now , calc : calc, last: last,name:"oken"}]
+                 }).catch(error=>console.log(error));
       }
   }
 }

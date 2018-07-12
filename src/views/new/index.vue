@@ -75,14 +75,15 @@ export default {
         self = this
         axios.get('/api/coinsVsWebsocket').then(res=>{
                console.log("oken返回数据", res)
-               var last = res.data.last
+               var data = eval('(' + res.data + ')')
+               var last = data.last
                var calc = (self.form.price * last).toFixed(2)
+               var date = new Date(res.data.timestamp)
                if(self.titleCoin == 1){
-                  document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                  document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
                   self.ring(calc)
                }
-               var date = new Date(res.data.timestamp)
-               self.coins = [{now:date.toLocaleDateString() + date.toLocaleString() , calc : calc, last: last,name:"oken"}]
+               self.coins = [{now: date.toLocaleString() , calc : calc, last: last,name:"oken"}]
         }).catch(error=>console.log(error));
       },
       getHuobiCoinsVs:function(){

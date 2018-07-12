@@ -539,13 +539,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVsWebsocket').then(res => {
         console.log("oken返回数据", res);
-        /*var last = res.data.ticker.last
-        var calc = (self.form.price * last).toFixed(2)
-        if(self.titleCoin == 1){
-           document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
-           self.ring(calc)
+        var last = res.data.last;
+        var calc = (self.form.price * last).toFixed(2);
+        if (self.titleCoin == 1) {
+          document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+          self.ring(calc);
         }
-        self.coins = [{now:res.data.createdTime , calc : calc, last: last,name:"oken"}]*/
+        var date = new Date(res.data.timestamp);
+        self.coins = [{ now: date.toLocaleDateString() + date.toLocaleString(), calc: calc, last: last, name: "oken" }];
       }).catch(error => console.log(error));
     },
     getHuobiCoinsVs: function () {
@@ -2247,4 +2248,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.b0f3fce5215bc5d81ceb.js.map
+//# sourceMappingURL=app.c7d13062b0deaa1a6c31.js.map

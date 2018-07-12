@@ -524,34 +524,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     start: function () {
       this.getCoinsVs();
-      this.getHuobiCoinsVs();
-      this.getFCoinsVs();
-      this.getCoinEx();
+      //this.getHuobiCoinsVs()
+      //this.getFCoinsVs()
+      //this.getCoinEx()
       self = this;
       this.interval = setInterval(function () {
         self.getCoinsVs();
       }, 1000 * 2);
-      this.huobiInterval = setInterval(function () {
-        self.getHuobiCoinsVs();
-      }, 500);
-      this.fcoinInterval = setInterval(function () {
-        self.getFCoinsVs();
-      }, 2000);
-      this.coinExInterval = setInterval(function () {
-        self.getCoinEx();
-      }, 2000);
+      //this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
+      //this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
+      //this.coinExInterval = setInterval(function() {self.getCoinEx()}, 2000)
     },
     getCoinsVs: function () {
       self = this;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/oken/api/coinsVs').then(res => {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVsWebsocket').then(res => {
         console.log("oken返回数据", res);
-        var last = res.data.ticker.last;
-        var calc = (self.form.price * last).toFixed(2);
-        if (self.titleCoin == 1) {
-          document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-          self.ring(calc);
+        /*var last = res.data.ticker.last
+        var calc = (self.form.price * last).toFixed(2)
+        if(self.titleCoin == 1){
+           document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+           self.ring(calc)
         }
-        self.coins = [{ now: res.data.createdTime, calc: calc, last: last, name: "oken" }];
+        self.coins = [{now:res.data.createdTime , calc : calc, last: last,name:"oken"}]*/
       }).catch(error => console.log(error));
     },
     getHuobiCoinsVs: function () {
@@ -2253,4 +2247,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.0784037e64d79b5878b0.js.map
+//# sourceMappingURL=app.b0f3fce5215bc5d81ceb.js.map

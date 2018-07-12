@@ -367,6 +367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -2196,7 +2197,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "last",
       "label": "eth美元"
     }
-  })], 1), _vm._v(" "), _c('el-table', {
+  })], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "clear": "both"
+    }
+  }), _vm._v(" "), _c('el-table', {
     staticStyle: {
       "width": "50%"
     },
@@ -2331,4 +2336,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.bab398a2c953b9fa7885.js.map
+//# sourceMappingURL=app.882762e65f8fdef578a3.js.map

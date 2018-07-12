@@ -35,6 +35,7 @@
                        <el-table-column  prop="calc"  label="eth人民币"/>
                        <el-table-column  prop="last"  label="eth美元"/>
                    </el-table>
+                   <div style="clear:both;"/>
           <el-table :data="huobiCoins"  style="width: 50%;" :show-header="false">
                <el-table-column  prop="name"  label="平台"/>
                <el-table-column  prop="now"  label="时间"/>

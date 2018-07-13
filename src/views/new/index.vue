@@ -167,7 +167,7 @@ export default {
                   console.log("fcoin " + fromType + "-" + toType + ":", data)
                   var calc = (self.form.price * data[0]).toFixed(2)
                   if(self.titleCoin == 3 && "btc" == toType){
-                     document.title = data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                     document.title = data[data.length - 1].split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
                      self.ring(calc)
                   }
                   if("btc" == toType){

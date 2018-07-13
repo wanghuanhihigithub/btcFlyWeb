@@ -540,11 +540,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function () {},
   methods: {
     start: function () {
-      if (isRunning) {
+      if (this.isRunning) {
         alert("已经开始执行，不能再开始");
         return;
       }
-      isRunning = true;
+      this.isRunning = true;
       getOken("usdt", "btc");
       getOken("usdt", "eth");
       this.okenUsdtBtcInterval = setInterval(function () {
@@ -557,6 +557,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     end: function () {
       clearInterval(this.okenUsdtBtcInterval);
       clearInterval(this.okenUsdtEthInterval);
+      this.isRunning = false;
     },
     getOken: function (fromType, toType) {
       self = this;
@@ -2197,4 +2198,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.9127b06e02ac846b1de1.js.map
+//# sourceMappingURL=app.20456993a43d7b7dc4b3.js.map

@@ -55,11 +55,11 @@ export default {
   },
   methods: {
       start:function(){
-         if(isRunning){
+         if(this.isRunning){
             alert("已经开始执行，不能再开始")
             return;
          }
-         isRunning = true;
+         this.isRunning = true;
          getOken("usdt","btc")
          getOken("usdt","eth")
          this.okenUsdtBtcInterval = setInterval(function() {self. getOken("usdt","btc")}, 500)
@@ -68,6 +68,7 @@ export default {
       end:function(){
          clearInterval(this.okenUsdtBtcInterval)
          clearInterval(this.okenUsdtEthInterval)
+         this.isRunning = false;
       },
       getOken:function(fromType, toType){
             self = this

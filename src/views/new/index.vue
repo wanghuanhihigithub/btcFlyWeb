@@ -84,17 +84,11 @@ export default {
                      document.title = date.getMinutes() + ":" + date.getSeconds() + "  "  + calc.split(".")[0] + "  "  + self.form.price
                      self.ring(calc)
                   }
-                  console.log(fromType)
-                  console.log(toType)
                   if("btc" == toType){
-                    self.btcCoins[0].now = now;
-                    self.btcCoins[0].calc = calc;
-                    self.btcCoins[0].last = last;
+                      self.btcCoins[0] = {name:"oken", now: now, calc : calc, last : last}
                   }
                   if("eth" == toType){
-                      self.ethCoins[0].now = now;
-                      self.ethCoins[0].calc = calc;
-                      self.ethCoins[0].last = last;
+                      self.ethCoins[0] = {name:"oken", now: now, calc : calc, last : last}
                   }
            }).catch(error=>console.log(error));
       },

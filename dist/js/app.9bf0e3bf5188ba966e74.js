@@ -573,6 +573,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           document.title = date.getMinutes() + ":" + date.getSeconds() + "  " + calc.split(".")[0] + "  " + self.form.price;
           self.ring(calc);
         }
+        console.log(fromType);
+        console.log(toType);
         if ("btc" == toType) {
           self.btcCoins[0].now = now;
           self.btcCoins[0].calc = calc;
@@ -2198,4 +2200,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.d2e1a713d4d6ecb40567.js.map
+//# sourceMappingURL=app.9bf0e3bf5188ba966e74.js.map

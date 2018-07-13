@@ -84,6 +84,8 @@ export default {
                      document.title = date.getMinutes() + ":" + date.getSeconds() + "  "  + calc.split(".")[0] + "  "  + self.form.price
                      self.ring(calc)
                   }
+                  console.log(fromType)
+                  console.log(toType)
                   if("btc" == toType){
                     self.btcCoins[0].now = now;
                     self.btcCoins[0].calc = calc;

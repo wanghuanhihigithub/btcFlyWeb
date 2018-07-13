@@ -73,9 +73,9 @@ export default {
       getOken:function(fromType, toType){
             self = this
             axios.get('/api/oken?fromType=' + fromType + "&toType=" + toType).then(res=>{
-                  console.log("oken网" + fromType + "-" + toType + ":", res)
                   //返回的String类型 因此需要转换
                   var data = eval('(' + res.data + ')')
+                  console.log("oken网" + fromType + "-" + toType + ":", data)
                   var last = data.last
                   var calc = (self.form.price * last).toFixed(2)
                   var date = new Date(data.timestamp)

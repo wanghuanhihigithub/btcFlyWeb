@@ -562,9 +562,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getOken: function (fromType, toType) {
       self = this;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/oken?fromType=' + fromType + "&toType=" + toType).then(res => {
-        console.log("oken网" + fromType + "-" + toType + ":", res);
         //返回的String类型 因此需要转换
         var data = eval('(' + res.data + ')');
+        console.log("oken网" + fromType + "-" + toType + ":", data);
         var last = data.last;
         var calc = (self.form.price * last).toFixed(2);
         var date = new Date(data.timestamp);
@@ -2198,4 +2198,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.638c2a1f085c3c4459ab.js.map
+//# sourceMappingURL=app.d2e1a713d4d6ecb40567.js.map

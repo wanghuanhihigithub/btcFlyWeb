@@ -61,6 +61,19 @@
                 <el-table-column  prop="last"  label="eth美元"/>
             </el-table>
          </div>
+         <div style="clear:both;">
+             <el-table :data="coinExBtcCoin" style="width:56%;float:left;" :show-header="false">
+                  <el-table-column  prop="name"  label="平台"/>
+                  <el-table-column  prop="now"  label="时间"/>
+                  <el-table-column  prop="calc"  label="btc人民币"/>
+                  <el-table-column  prop="last"  label="btc美元"/>
+             </el-table>
+             <el-table :data="coinExEthCoin" style="width:42%;" :show-header="false">
+                 <el-table-column  prop="now"  label="时间"/>
+                 <el-table-column  prop="calc"  label="eth人民币"/>
+                 <el-table-column  prop="last"  label="eth美元"/>
+             </el-table>
+         </div>
          <audio src="./dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
     </div>
 </template>
@@ -80,7 +93,9 @@ export default {
         huoBiBtcCoin:[],
         huoBiEthCoin:[],
         fcoinBtcCoin:[],
-        fcoinEthCoin:[]
+        fcoinEthCoin:[],
+        coinExBtcCoin:[],
+        coinExEthCoin:[]
     }
   },
   mounted: function(){
@@ -98,12 +113,16 @@ export default {
          this.getHuoBi("usdt","eth")
          this.getFcoin("usdt","btc")
          this.getFcoin("usdt","eth")
+         this.getCoinEx("usdt","btc")
+         this.getCoinEx("usdt","eth")
          this.okenUsdtBtcInterval = setInterval(function() {self. getOken("usdt","btc")}, 500)
          this.okenUsdtEthInterval = setInterval(function() {self. getOken("usdt","eth")}, 500)
          this.huoBiUsdtBtcInterval = setInterval(function() {self. getHuoBi("usdt","btc")}, 500)
          this.huoBiUsdtEthInterval = setInterval(function() {self. getHuoBi("usdt","eth")}, 500)
          this.fcoinUsdtBtcInterval = setInterval(function() {self. getFcoin("usdt","btc")}, 500)
          this.fcoinUsdtEthInterval = setInterval(function() {self. getFcoin("usdt","eth")}, 500)
+         this.coinExUsdtBtcInterval = setInterval(function() {self. getCoinEx("usdt","btc")}, 500)
+         this.coinExUsdtEthInterval = setInterval(function() {self. getCoinEx("usdt","eth")}, 500)
       },
       end:function(){
          clearInterval(this.okenUsdtBtcInterval)
@@ -112,6 +131,8 @@ export default {
          clearInterval(this.huoBiUsdtEthInterval)
          clearInterval(this.fcoinUsdtBtcInterval)
          clearInterval(this.fcoinUsdtBtcInterval)
+         clearInterval(this.coinExUsdtBtcInterval)
+         clearInterval(this.coinExUsdtEthInterval)
          this.isRunning = false;
       },
       getOken:function(fromType, toType){
@@ -182,6 +203,22 @@ export default {
             if(price > this.form.maxPrice | price < this.form.minPrice){
                 document.getElementById("dogAudio").play()
             }
+      },
+      getCoinEx:function(){
+         axios.get('/api/coinEx?fromType=' + fromType + "&toType=" + toType).then(res=>{
+            var last = res.data.data.ticker.last
+            var calc = (self.form.price * last).toFixed(2)
+            if(self.titleCoin == 4 && "btc" == toType){
+              document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
+              self.ring(calc)
+           }
+            if("btc" == toType){
+                 self.coinExBtcCoin = [{name:"coinEx", now: res.data.createdTime, calc : calc, last :  last}]
+            }
+            if("eth" == toType){
+                 self.coinExEthCoin = [{name:"coinEx", now: res.data.createdTime, calc : calc, last : last}]
+            }
+        }).catch(error=>console.log(error));
       }
   }
 }

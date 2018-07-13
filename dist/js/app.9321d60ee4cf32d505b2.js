@@ -551,6 +551,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -566,7 +579,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             huoBiBtcCoin: [],
             huoBiEthCoin: [],
             fcoinBtcCoin: [],
-            fcoinEthCoin: []
+            fcoinEthCoin: [],
+            coinExBtcCoin: [],
+            coinExEthCoin: []
         };
     },
     mounted: function () {},
@@ -583,6 +598,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.getHuoBi("usdt", "eth");
             this.getFcoin("usdt", "btc");
             this.getFcoin("usdt", "eth");
+            this.getCoinEx("usdt", "btc");
+            this.getCoinEx("usdt", "eth");
             this.okenUsdtBtcInterval = setInterval(function () {
                 self.getOken("usdt", "btc");
             }, 500);
@@ -601,6 +618,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.fcoinUsdtEthInterval = setInterval(function () {
                 self.getFcoin("usdt", "eth");
             }, 500);
+            this.coinExUsdtBtcInterval = setInterval(function () {
+                self.getCoinEx("usdt", "btc");
+            }, 500);
+            this.coinExUsdtEthInterval = setInterval(function () {
+                self.getCoinEx("usdt", "eth");
+            }, 500);
         },
         end: function () {
             clearInterval(this.okenUsdtBtcInterval);
@@ -609,6 +632,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             clearInterval(this.huoBiUsdtEthInterval);
             clearInterval(this.fcoinUsdtBtcInterval);
             clearInterval(this.fcoinUsdtBtcInterval);
+            clearInterval(this.coinExUsdtBtcInterval);
+            clearInterval(this.coinExUsdtEthInterval);
             this.isRunning = false;
         },
         getOken: function (fromType, toType) {
@@ -679,6 +704,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (price > this.form.maxPrice | price < this.form.minPrice) {
                 document.getElementById("dogAudio").play();
             }
+        },
+        getCoinEx: function () {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinEx?fromType=' + fromType + "&toType=" + toType).then(res => {
+                var last = res.data.data.ticker.last;
+                var calc = (self.form.price * last).toFixed(2);
+                if (self.titleCoin == 4 && "btc" == toType) {
+                    document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
+                    self.ring(calc);
+                }
+                if ("btc" == toType) {
+                    self.coinExBtcCoin = [{ name: "coinEx", now: res.data.createdTime, calc: calc, last: last }];
+                }
+                if ("eth" == toType) {
+                    self.coinExEthCoin = [{ name: "coinEx", now: res.data.createdTime, calc: calc, last: last }];
+                }
+            }).catch(error => console.log(error));
         }
     }
 });
@@ -1859,6 +1900,62 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "last",
       "label": "eth美元"
     }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "clear": "both"
+    }
+  }, [_c('el-table', {
+    staticStyle: {
+      "width": "56%",
+      "float": "left"
+    },
+    attrs: {
+      "data": _vm.coinExBtcCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "btc人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "btc美元"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "42%"
+    },
+    attrs: {
+      "data": _vm.coinExEthCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "eth人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "eth美元"
+    }
   })], 1)], 1), _vm._v(" "), _c('audio', {
     staticStyle: {
       "display": "none"
@@ -2400,4 +2497,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.fe35c64d43ec5550b501.js.map
+//# sourceMappingURL=app.9321d60ee4cf32d505b2.js.map

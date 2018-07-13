@@ -204,7 +204,7 @@ export default {
                 document.getElementById("dogAudio").play()
             }
       },
-      getCoinEx:function(){
+      getCoinEx:function(fromType, toType){
          axios.get('/api/coinEx?fromType=' + fromType + "&toType=" + toType).then(res=>{
             var last = res.data.data.ticker.last
             var calc = (self.form.price * last).toFixed(2)

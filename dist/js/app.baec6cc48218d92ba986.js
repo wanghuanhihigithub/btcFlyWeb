@@ -705,7 +705,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 document.getElementById("dogAudio").play();
             }
         },
-        getCoinEx: function () {
+        getCoinEx: function (fromType, toType) {
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinEx?fromType=' + fromType + "&toType=" + toType).then(res => {
                 var last = res.data.data.ticker.last;
                 var calc = (self.form.price * last).toFixed(2);
@@ -2497,4 +2497,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.9321d60ee4cf32d505b2.js.map
+//# sourceMappingURL=app.baec6cc48218d92ba986.js.map

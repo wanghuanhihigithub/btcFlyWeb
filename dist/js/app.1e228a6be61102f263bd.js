@@ -651,7 +651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }).catch(error => console.log(error));
         },
-        getHuoBi: function (fromType, toType) {
+        getFcoin: function (fromType, toType) {
             self = this;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/fcoin?fromType=' + fromType + "&toType=" + toType).then(res => {
                 var data = eval('(' + res.data + ')');
@@ -2394,4 +2394,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.c0736a6f19529a695379.js.map
+//# sourceMappingURL=app.1e228a6be61102f263bd.js.map

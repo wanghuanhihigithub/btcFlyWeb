@@ -154,7 +154,7 @@ export default {
                 }
          }).catch(error=>console.log(error));
       },
-      getHuoBi:function(fromType, toType){
+      getFcoin:function(fromType, toType){
             self = this
             axios.get('/api/fcoin?fromType=' + fromType + "&toType=" + toType).then(res=>{
                   var data = eval('(' + res.data + ')')

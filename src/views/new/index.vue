@@ -1,58 +1,39 @@
 <template>
     <div id="app">
          <el-form ref="form" :model="form" label-width="180px">
-             <el-form-item label="乘数">
-                  <el-input  v-model="form.price "></el-input>
+             <el-form-item label="乘数" style="float:left;">
+                  <el-input  v-model="form.price" style="width:100px;"/>
              </el-form-item>
-             <el-form-item label="报警最小阈值">
-                  <el-input  v-model="form.minPrice "></el-input>
+             <el-form-item label="报警最小阈值" style="float:left;">
+                  <el-input  v-model="form.minPrice" style="width:180px;"/>
              </el-form-item>
-             <el-form-item label="报警最大阈值">
-                  <el-input  v-model="form.maxPrice "></el-input>
+             <el-form-item label="报警最大阈值" style="float:left;">
+                  <el-input  v-model="form.maxPrice" style="width:180px;"/>
              </el-form-item>
-             <el-form-item>
+             <el-form-item style="float:right;">
                  <el-button type="primary" @click="start">开始</el-button>
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
-         <el-radio-group v-model="titleCoin" style="margin-left:120px">
+         <el-radio-group v-model="titleCoin" style="margin-left:140px">
              <el-radio :label="1">oken</el-radio>
              <el-radio :label="2">火币</el-radio>
              <el-radio :label="3">fcoin</el-radio>
              <el-radio :label="4">coinEx</el-radio>
            </el-radio-group>
            <div style="height:20px;"/>
-         <el-table :data="coins"  style="width: 50%;float:left;">
-             <el-table-column  prop="name"  label="平台"/>
-             <el-table-column  prop="now"  label="时间"/>
-             <el-table-column  prop="calc"  label="btc人民币"/>
-             <el-table-column  prop="last"  label="btc美元"/>
-          </el-table>
-          <el-table :data="okenUsdtEth"  style="width: 50%;">
-              <el-table-column  prop="name"  label="平台"/>
-              <el-table-column  prop="now"  label="时间"/>
-              <el-table-column  prop="calc"  label="eth人民币"/>
-              <el-table-column  prop="last"  label="eth美元"/>
-          </el-table>
-          <el-table :data="huobiCoins"  style="width: 50%; :show-header="false">
-               <el-table-column  prop="name"  label="平台"  width="200"/>
-               <el-table-column  prop="now"  label="时间"  width="300"/>
-               <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-               <el-table-column  prop="last"  label="last"  width="150"/>
-          </el-table>
-          <el-table :data="fcoins"  style="width: 60%;margin:20px;" :show-header="false">
-              <el-table-column  prop="name"  label="平台"  width="200"/>
-              <el-table-column  prop="now"  label="时间"  width="300"/>
-              <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-              <el-table-column  prop="last"  label="last"  width="150"/>
+           <el-table :data="btcCoins" style="width:56%;float:left;">
+                 <el-table-column  prop="name"  label="平台"/>
+                 <el-table-column  prop="now"  label="时间"/>
+                 <el-table-column  prop="calc"  label="btc人民币"/>
+                 <el-table-column  prop="last"  label="btc美元"/>
            </el-table>
-           <el-table :data="coinEx"  style="width: 60%;margin:20px;" :show-header="false">
-                 <el-table-column  prop="name"  label="平台"  width="200"/>
-                 <el-table-column  prop="now"  label="时间"  width="300"/>
-                 <el-table-column  prop="calc"  label="乘数 * last"  width="150"/>
-                 <el-table-column  prop="last"  label="last"  width="150"/>
-           </el-table>
-           <audio src="./dog.wav" controls="controls" id="dogAudio"></audio>
+           <el-table :data="ethCoins" style="width:42%;">
+                <el-table-column  prop="now"  label="时间"/>
+                <el-table-column  prop="calc"  label="eth人民币"/>
+                <el-table-column  prop="last"  label="eth美元"/>
+          </el-table>
+          <audio src="./dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
     </div>
 </template>
 
@@ -62,100 +43,62 @@ import axios from 'axios'
 export default {
   name: 'hello',
   data: function(){
-    return {form:{price:0,minPrice:40000,maxPrice:50000},coins:[],huobiCoins:[],fcoins:[],coinEx:[],titleCoin:1,okenUsdtEth:[]}
+    return {
+        form:{price:0,minPrice:40000,maxPrice:50000},
+        titleCoin:1,
+        btcCoins:[{name:"oken"},{name:"火币"},{name:"fcoin"},{name:"coinEx"}],
+        ethCoins:[{name:"oken"},{name:"火币"},{name:"fcoin"},{name:"coinEx"}],
+        isRunning:true
+    }
   },
   mounted: function(){
   },
   methods: {
       start:function(){
-           this.getCoinsVs()
-           this.getHuobiCoinsVs()
-           //this.getFCoinsVs()
-           //this.getCoinEx()
-           this.getOkenUsdtEth()
-           self = this
-           this.interval = setInterval(function() {self.getCoinsVs()}, 500)
-           this.huobiInterval = setInterval(function() {self.getHuobiCoinsVs()}, 500)
-           setInterval(function() {self.getOkenUsdtEth()}, 500)
-           //this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
-           //this.coinExInterval = setInterval(function() {self.getCoinEx()}, 2000)
-      },
-      getCoinsVs:function(){
-        self = this
-        axios.get('/api/coinsVsWebsocket').then(res=>{
-               console.log("oken返回数据", res)
-               var data = eval('(' + res.data + ')')
-               var last = data.last
-               var calc = (self.form.price * last).toFixed(2)
-               var date = new Date(data.timestamp)
-               if(self.titleCoin == 1){
-                  document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
-                  self.ring(calc)
-               }
-               var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
-               self.coins = [{now: now , calc : calc, last: last,name:"oken"}]
-        }).catch(error=>console.log(error));
-      },
-      getHuobiCoinsVs:function(){
-        axios.get('/api/huobiCoinsVs').then(res=>{
-            var data = eval('(' + res.data + ')')
-            console.log("火币网返回数据", res)
-            var calc = (self.form.price * data.close).toFixed(2)
-             if(self.titleCoin == 2){
-                document.title = data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
-                self.ring(calc)
-             }
-            self.huobiCoins = [{now: data.createdTime, calc :calc, last: data.close,name:"火币"}]
-        }).catch(error=>console.log(error));
-      },
-      getFCoinsVs:function(){
-         axios.get('/fcoinVs/api/fcoinVs').then(res=>{
-            var last = res.data.data.ticker[0]
-            var calc = (self.form.price * last).toFixed(2)
-           if(self.titleCoin == 3){
-              document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
-              self.ring(calc)
-           }
-            self.fcoins = [{now: res.data.createdTime, calc : calc, last: last,name:"fcoin"}]
-         }).catch(error=>console.log(error));
-      },
-      getCoinEx:function(){
-        axios.get('/coinEx/api/coinEx').then(res=>{
-            var last = res.data.data.ticker.last
-            var calc = (self.form.price * last).toFixed(2)
-           if(self.titleCoin == 4){
-              document.title = res.data.createdTime.split(" ")[1].substring(3,8) + "  "  + calc.split(".")[0] + "  "  + self.form.price
-              self.ring(calc)
-           }
-            self.coinEx = [{now: res.data.createdTime, calc : calc, last: last,name:"coinEx"}]
-        }).catch(error=>console.log(error));
+         if(isRunning){
+            alert("已经开始执行，不能再开始")
+            return;
+         }
+         isRunning = true;
+         getOken("usdt","btc")
+         getOken("usdt","eth")
+         this.okenUsdtBtcInterval = setInterval(function() {self. getOken("usdt","btc")}, 500)
+         this.okenUsdtEthInterval = setInterval(function() {self. getOken("usdt","eth")}, 500)
       },
       end:function(){
-        clearInterval(this.interval)
-        clearInterval(this.huobiInterval)
-        clearInterval(this.fcoinInterval)
-        clearInterval(this.coinExInterval)
+         clearInterval(this.okenUsdtBtcInterval)
+         clearInterval(this.okenUsdtEthInterval)
+      },
+      getOken:function(fromType, toType){
+            self = this
+            axios.get('/api/oken?fromType=' + fromType + "&toType=" + toType).then(res=>{
+                  console.log("oken网" + fromType + "-" + toType + ":", res)
+                  //返回的String类型 因此需要转换
+                  var data = eval('(' + res.data + ')')
+                  var last = data.last
+                  var calc = (self.form.price * last).toFixed(2)
+                  var date = new Date(data.timestamp)
+                  var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+                   if(self.titleCoin == 1 && "btc" == toType){
+                     document.title = date.getMinutes() + ":" + date.getSeconds() + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                     self.ring(calc)
+                  }
+                  if("btc" == toType){
+                    btcCoins[0].now = now;
+                    btcCoins[0].calc = calc;
+                    btcCoins[0].last = last;
+                  }
+                  if("eth" == toType){
+                      ethCoins[0].now = now;
+                      ethCoins[0].calc = calc;
+                      ethCoins[0].last = last;
+                  }
+           }).catch(error=>console.log(error));
       },
       ring:function(price){
         if(price > this.form.maxPrice | price < this.form.minPrice){
             document.getElementById("dogAudio").play()
         }
-      },
-      getOkenUsdtEth:function(){
-                 self = this
-                 axios.get('/api/okenUsdtEth').then(res=>{
-                        console.log("oken返回数据", res)
-                        var data = eval('(' + res.data + ')')
-                        var last = data.last
-                        var calc = (self.form.price * last).toFixed(2)
-                        var date = new Date(data.timestamp)
-                        if(self.titleCoin == 1){
-                           document.title =  date.getMinutes() + ":" + date.getSeconds() +  "  "  + calc.split(".")[0] + "  "  + self.form.price
-                           self.ring(calc)
-                        }
-                        var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
-                        self.okenUsdtEth = [{now: now , calc : calc, last: last,name:"oken"}]
-                 }).catch(error=>console.log(error));
       }
   }
 }

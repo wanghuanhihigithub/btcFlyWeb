@@ -523,132 +523,73 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-   name: 'hello',
-   data: function () {
-      return { form: { price: 0, minPrice: 40000, maxPrice: 50000 }, coins: [], huobiCoins: [], fcoins: [], coinEx: [], titleCoin: 1, okenUsdtEth: [] };
-   },
-   mounted: function () {},
-   methods: {
-      start: function () {
-         this.getCoinsVs();
-         this.getHuobiCoinsVs();
-         //this.getFCoinsVs()
-         //this.getCoinEx()
-         this.getOkenUsdtEth();
-         self = this;
-         this.interval = setInterval(function () {
-            self.getCoinsVs();
-         }, 500);
-         this.huobiInterval = setInterval(function () {
-            self.getHuobiCoinsVs();
-         }, 500);
-         setInterval(function () {
-            self.getOkenUsdtEth();
-         }, 500);
-         //this.fcoinInterval = setInterval(function() {self.getFCoinsVs()}, 2000)
-         //this.coinExInterval = setInterval(function() {self.getCoinEx()}, 2000)
-      },
-      getCoinsVs: function () {
-         self = this;
-         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinsVsWebsocket').then(res => {
-            console.log("oken返回数据", res);
-            var data = eval('(' + res.data + ')');
-            var last = data.last;
-            var calc = (self.form.price * last).toFixed(2);
-            var date = new Date(data.timestamp);
-            if (self.titleCoin == 1) {
-               document.title = date.getMinutes() + ":" + date.getSeconds() + "  " + calc.split(".")[0] + "  " + self.form.price;
-               self.ring(calc);
-            }
-            var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-            self.coins = [{ now: now, calc: calc, last: last, name: "oken" }];
-         }).catch(error => console.log(error));
-      },
-      getHuobiCoinsVs: function () {
-         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huobiCoinsVs').then(res => {
-            var data = eval('(' + res.data + ')');
-            console.log("火币网返回数据", res);
-            var calc = (self.form.price * data.close).toFixed(2);
-            if (self.titleCoin == 2) {
-               document.title = data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-               self.ring(calc);
-            }
-            self.huobiCoins = [{ now: data.createdTime, calc: calc, last: data.close, name: "火币" }];
-         }).catch(error => console.log(error));
-      },
-      getFCoinsVs: function () {
-         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/fcoinVs/api/fcoinVs').then(res => {
-            var last = res.data.data.ticker[0];
-            var calc = (self.form.price * last).toFixed(2);
-            if (self.titleCoin == 3) {
-               document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-               self.ring(calc);
-            }
-            self.fcoins = [{ now: res.data.createdTime, calc: calc, last: last, name: "fcoin" }];
-         }).catch(error => console.log(error));
-      },
-      getCoinEx: function () {
-         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/coinEx/api/coinEx').then(res => {
-            var last = res.data.data.ticker.last;
-            var calc = (self.form.price * last).toFixed(2);
-            if (self.titleCoin == 4) {
-               document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-               self.ring(calc);
-            }
-            self.coinEx = [{ now: res.data.createdTime, calc: calc, last: last, name: "coinEx" }];
-         }).catch(error => console.log(error));
-      },
-      end: function () {
-         clearInterval(this.interval);
-         clearInterval(this.huobiInterval);
-         clearInterval(this.fcoinInterval);
-         clearInterval(this.coinExInterval);
-      },
-      ring: function (price) {
-         if (price > this.form.maxPrice | price < this.form.minPrice) {
-            document.getElementById("dogAudio").play();
-         }
-      },
-      getOkenUsdtEth: function () {
-         self = this;
-         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/okenUsdtEth').then(res => {
-            console.log("oken返回数据", res);
-            var data = eval('(' + res.data + ')');
-            var last = data.last;
-            var calc = (self.form.price * last).toFixed(2);
-            var date = new Date(data.timestamp);
-            if (self.titleCoin == 1) {
-               document.title = date.getMinutes() + ":" + date.getSeconds() + "  " + calc.split(".")[0] + "  " + self.form.price;
-               self.ring(calc);
-            }
-            var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-            self.okenUsdtEth = [{ now: now, calc: calc, last: last, name: "oken" }];
-         }).catch(error => console.log(error));
+  name: 'hello',
+  data: function () {
+    return {
+      form: { price: 0, minPrice: 40000, maxPrice: 50000 },
+      titleCoin: 1,
+      btcCoins: [{ name: "oken" }, { name: "火币" }, { name: "fcoin" }, { name: "coinEx" }],
+      ethCoins: [{ name: "oken" }, { name: "火币" }, { name: "fcoin" }, { name: "coinEx" }],
+      isRunning: true
+    };
+  },
+  mounted: function () {},
+  methods: {
+    start: function () {
+      if (isRunning) {
+        alert("已经开始执行，不能再开始");
+        return;
       }
-   }
+      isRunning = true;
+      getOken("usdt", "btc");
+      getOken("usdt", "eth");
+      this.okenUsdtBtcInterval = setInterval(function () {
+        self.getOken("usdt", "btc");
+      }, 500);
+      this.okenUsdtEthInterval = setInterval(function () {
+        self.getOken("usdt", "eth");
+      }, 500);
+    },
+    end: function () {
+      clearInterval(this.okenUsdtBtcInterval);
+      clearInterval(this.okenUsdtEthInterval);
+    },
+    getOken: function (fromType, toType) {
+      self = this;
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/oken?fromType=' + fromType + "&toType=" + toType).then(res => {
+        console.log("oken网" + fromType + "-" + toType + ":", res);
+        //返回的String类型 因此需要转换
+        var data = eval('(' + res.data + ')');
+        var last = data.last;
+        var calc = (self.form.price * last).toFixed(2);
+        var date = new Date(data.timestamp);
+        var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        if (self.titleCoin == 1 && "btc" == toType) {
+          document.title = date.getMinutes() + ":" + date.getSeconds() + "  " + calc.split(".")[0] + "  " + self.form.price;
+          self.ring(calc);
+        }
+        if ("btc" == toType) {
+          btcCoins[0].now = now;
+          btcCoins[0].calc = calc;
+          btcCoins[0].last = last;
+        }
+        if ("eth" == toType) {
+          ethCoins[0].now = now;
+          ethCoins[0].calc = calc;
+          ethCoins[0].last = last;
+        }
+      }).catch(error => console.log(error));
+    },
+    ring: function (price) {
+      if (price > this.form.maxPrice | price < this.form.minPrice) {
+        document.getElementById("dogAudio").play();
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -1566,42 +1507,64 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label-width": "180px"
     }
   }, [_c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
     attrs: {
       "label": "乘数"
     }
   }, [_c('el-input', {
+    staticStyle: {
+      "width": "100px"
+    },
     model: {
       value: (_vm.form.price),
       callback: function($$v) {
         _vm.form.price = $$v
       },
-      expression: "form.price "
+      expression: "form.price"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
     attrs: {
       "label": "报警最小阈值"
     }
   }, [_c('el-input', {
+    staticStyle: {
+      "width": "180px"
+    },
     model: {
       value: (_vm.form.minPrice),
       callback: function($$v) {
         _vm.form.minPrice = $$v
       },
-      expression: "form.minPrice "
+      expression: "form.minPrice"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
     attrs: {
       "label": "报警最大阈值"
     }
   }, [_c('el-input', {
+    staticStyle: {
+      "width": "180px"
+    },
     model: {
       value: (_vm.form.maxPrice),
       callback: function($$v) {
         _vm.form.maxPrice = $$v
       },
-      expression: "form.maxPrice "
+      expression: "form.maxPrice"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "right"
+    }
+  }, [_c('el-button', {
     attrs: {
       "type": "primary"
     },
@@ -1614,7 +1577,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-radio-group', {
     staticStyle: {
-      "margin-left": "120px"
+      "margin-left": "140px"
     },
     model: {
       value: (_vm.titleCoin),
@@ -1645,11 +1608,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "50%",
+      "width": "56%",
       "float": "left"
     },
     attrs: {
-      "data": _vm.coins
+      "data": _vm.btcCoins
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -1673,17 +1636,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-table', {
     staticStyle: {
-      "width": "50%"
+      "width": "42%"
     },
     attrs: {
-      "data": _vm.okenUsdtEth
+      "data": _vm.ethCoins
     }
   }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
       "label": "时间"
@@ -1698,97 +1656,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "last",
       "label": "eth美元"
     }
-  })], 1), _vm._v(" "), _vm._v("\">\n           "), _c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台",
-      "width": "200"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间",
-      "width": "300"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "last",
-      "width": "150"
-    }
-  }), _vm._v(" "), _c('el-table', {
-    staticStyle: {
-      "width": "60%",
-      "margin": "20px"
-    },
-    attrs: {
-      "data": _vm.fcoins,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台",
-      "width": "200"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间",
-      "width": "300"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "last",
-      "width": "150"
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    staticStyle: {
-      "width": "60%",
-      "margin": "20px"
-    },
-    attrs: {
-      "data": _vm.coinEx,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台",
-      "width": "200"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间",
-      "width": "300"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "乘数 * last",
-      "width": "150"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "last",
-      "width": "150"
-    }
   })], 1), _vm._v(" "), _c('audio', {
+    staticStyle: {
+      "display": "none"
+    },
     attrs: {
       "src": "./dog.wav",
       "controls": "controls",
@@ -2326,4 +2197,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.a56a708328f6322c778b.js.map
+//# sourceMappingURL=app.9127b06e02ac846b1de1.js.map

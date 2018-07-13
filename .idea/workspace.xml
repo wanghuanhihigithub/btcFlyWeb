@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6c95971-fe70-4532-813c-63e2dda093b3" name="Default" comment="1111">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/app.b46c63b644ac887b594d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/app.b46c63b644ac887b594d.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/manifest.9f1b9704a44475bcd1b9.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/manifest.9f1b9704a44475bcd1b9.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/new/index.vue" afterPath="$PROJECT_DIR$/src/views/new/index.vue" />
-    </list>
+    <list default="true" id="a6c95971-fe70-4532-813c-63e2dda093b3" name="Default" comment="1111" />
     <ignored path="btcFlyWeb.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -883,7 +875,7 @@
       <workItem from="1531262750406" duration="713000" />
       <workItem from="1531398623028" duration="6879000" />
       <workItem from="1531410151593" duration="100000" />
-      <workItem from="1531447288797" duration="6988000" />
+      <workItem from="1531447288797" duration="7194000" />
     </task>
     <task id="LOCAL-00001" summary="前端更新">
       <created>1528896477713</created>
@@ -1001,7 +993,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198483000" />
+    <option name="totallyTimeSpent" value="198689000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="2" width="1378" height="733" extended-state="0" />

@@ -22,17 +22,20 @@
              <el-radio :label="4">coinEx</el-radio>
            </el-radio-group>
            <div style="height:20px;"/>
-           <el-table :data="btcCoins" style="width:56%;float:left;">
-                 <el-table-column  prop="name"  label="平台"/>
-                 <el-table-column  prop="now"  label="时间"/>
-                 <el-table-column  prop="calc"  label="btc人民币"/>
-                 <el-table-column  prop="last"  label="btc美元"/>
-           </el-table>
-           <el-table :data="ethCoins" style="width:42%;">
-                <el-table-column  prop="now"  label="时间"/>
-                <el-table-column  prop="calc"  label="eth人民币"/>
-                <el-table-column  prop="last"  label="eth美元"/>
-          </el-table>
+           <div>
+                <el-table :data="okenBtcCoin" style="width:56%;float:left;">
+                     <el-table-column  prop="name"  label="平台"/>
+                     <el-table-column  prop="now"  label="时间"/>
+                     <el-table-column  prop="calc"  label="btc人民币"/>
+                     <el-table-column  prop="last"  label="btc美元"/>
+                </el-table>
+                <el-table :data="okenEthCoin" style="width:42%;">
+                    <el-table-column  prop="now"  label="时间"/>
+                    <el-table-column  prop="calc"  label="eth人民币"/>
+                    <el-table-column  prop="last"  label="eth美元"/>
+                </el-table>
+           </div>
+
           <audio src="./dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
     </div>
 </template>
@@ -46,8 +49,8 @@ export default {
     return {
         form:{price:0,minPrice:40000,maxPrice:50000},
         titleCoin:1,
-        btcCoins:[{name:"oken"},{name:"火币"},{name:"fcoin"},{name:"coinEx"}],
-        ethCoins:[{name:"oken"},{name:"火币"},{name:"fcoin"},{name:"coinEx"}],
+        okenBtcCoin:[],
+        okenEthCoin:[],
         isRunning:false
     }
   },
@@ -85,10 +88,10 @@ export default {
                      self.ring(calc)
                   }
                   if("btc" == toType){
-                      self.btcCoins[0] = {name:"oken", now: now, calc : calc, last : last}
+                      self.okenBtcCoin = [{name:"oken", now: now, calc : calc, last : last}]
                   }
                   if("eth" == toType){
-                      self.ethCoins[0] = {name:"oken", now: now, calc : calc, last : last}
+                      self.okenEthCoin = [{name:"oken", now: now, calc : calc, last : last}]
                   }
            }).catch(error=>console.log(error));
       },

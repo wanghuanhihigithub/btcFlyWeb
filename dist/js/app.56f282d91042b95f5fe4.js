@@ -523,6 +523,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -532,8 +535,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             form: { price: 0, minPrice: 40000, maxPrice: 50000 },
             titleCoin: 1,
-            btcCoins: [{ name: "oken" }, { name: "火币" }, { name: "fcoin" }, { name: "coinEx" }],
-            ethCoins: [{ name: "oken" }, { name: "火币" }, { name: "fcoin" }, { name: "coinEx" }],
+            okenBtcCoin: [],
+            okenEthCoin: [],
             isRunning: false
         };
     },
@@ -574,10 +577,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     self.ring(calc);
                 }
                 if ("btc" == toType) {
-                    self.btcCoins[0] = { name: "oken", now: now, calc: calc, last: last };
+                    self.okenBtcCoin = [{ name: "oken", now: now, calc: calc, last: last }];
                 }
                 if ("eth" == toType) {
-                    self.ethCoins[0] = { name: "oken", now: now, calc: calc, last: last };
+                    self.okenEthCoin = [{ name: "oken", now: now, calc: calc, last: last }];
                 }
             }).catch(error => console.log(error));
         },
@@ -1603,13 +1606,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "height": "20px"
     }
-  }), _vm._v(" "), _c('el-table', {
+  }), _vm._v(" "), _c('div', [_c('el-table', {
     staticStyle: {
       "width": "56%",
       "float": "left"
     },
     attrs: {
-      "data": _vm.btcCoins
+      "data": _vm.okenBtcCoin
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -1636,7 +1639,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "42%"
     },
     attrs: {
-      "data": _vm.ethCoins
+      "data": _vm.okenEthCoin
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -1653,7 +1656,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "prop": "last",
       "label": "eth美元"
     }
-  })], 1), _vm._v(" "), _c('audio', {
+  })], 1)], 1), _vm._v(" "), _c('audio', {
     staticStyle: {
       "display": "none"
     },
@@ -2194,4 +2197,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.6c85526af948ef6e9942.js.map
+//# sourceMappingURL=app.56f282d91042b95f5fe4.js.map

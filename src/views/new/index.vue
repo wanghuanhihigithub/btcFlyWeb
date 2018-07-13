@@ -60,8 +60,8 @@ export default {
             return;
          }
          this.isRunning = true;
-         getOken("usdt","btc")
-         getOken("usdt","eth")
+         this.getOken("usdt","btc")
+         this.getOken("usdt","eth")
          this.okenUsdtBtcInterval = setInterval(function() {self. getOken("usdt","btc")}, 500)
          this.okenUsdtEthInterval = setInterval(function() {self. getOken("usdt","eth")}, 500)
       },

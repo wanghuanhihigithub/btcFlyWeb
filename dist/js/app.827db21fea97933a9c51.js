@@ -662,10 +662,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     self.ring(calc);
                 }
                 if ("btc" == toType) {
-                    self.fcoinBtcCoin = [{ name: "fcoin", now: data.createdTime, calc: calc, last: data[0] }];
+                    self.fcoinBtcCoin = [{ name: "fcoin", now: data[data.length - 1], calc: calc, last: data[0] }];
                 }
                 if ("eth" == toType) {
-                    self.fcoinEthCoin = [{ name: "fcoin", now: data.createdTime, calc: calc, last: data.close }];
+                    self.fcoinEthCoin = [{ name: "fcoin", now: data[data.length - 1], calc: calc, last: data[0] }];
                 }
             }).catch(error => console.log(error));
         },
@@ -2394,4 +2394,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.1e228a6be61102f263bd.js.map
+//# sourceMappingURL=app.827db21fea97933a9c51.js.map

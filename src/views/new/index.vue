@@ -165,10 +165,10 @@ export default {
                      self.ring(calc)
                   }
                   if("btc" == toType){
-                      self.fcoinBtcCoin = [{name:"fcoin", now: data.createdTime, calc : calc, last :  data[0]}]
+                      self.fcoinBtcCoin = [{name:"fcoin", now: data[data.length - 1], calc : calc, last :  data[0]}]
                   }
                   if("eth" == toType){
-                      self.fcoinEthCoin = [{name:"fcoin", now: data.createdTime, calc : calc, last :  data.close}]
+                      self.fcoinEthCoin = [{name:"fcoin", now: data[data.length - 1], calc : calc, last :  data[0]}]
                   }
              }).catch(error=>console.log(error));
       },

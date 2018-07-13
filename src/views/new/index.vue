@@ -123,9 +123,15 @@ export default {
                   var last = data.last
                   var calc = (self.form.price * last).toFixed(2)
                   var date = new Date(data.timestamp)
-                  var now = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +   date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+                  var year = date.getFullYear()
+                  var month =  (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)
+                  var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
+                  var hour = date.getHours() < 10 ? "0" + date.getHours(): date.getHours()
+                  var minute = date.getMinutes() < 10 ? "0"  + date.getMinutes() : date.getMinutes()
+                  var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
+                  var now = year + "-" + month + "-" + day + " " +   hour + ":" + minute + ":" + second
                    if(self.titleCoin == 1 && "btc" == toType){
-                     document.title = date.getMinutes() + ":" + date.getSeconds() + "  "  + calc.split(".")[0] + "  "  + self.form.price
+                     document.title = minute + ":" + second + "  "  + calc.split(".")[0] + "  "  + self.form.price
                      self.ring(calc)
                   }
                   if("btc" == toType){

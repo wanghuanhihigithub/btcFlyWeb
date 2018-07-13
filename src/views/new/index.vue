@@ -85,14 +85,14 @@ export default {
                      self.ring(calc)
                   }
                   if("btc" == toType){
-                    btcCoins[0].now = now;
-                    btcCoins[0].calc = calc;
-                    btcCoins[0].last = last;
+                    self.btcCoins[0].now = now;
+                    self.btcCoins[0].calc = calc;
+                    self.btcCoins[0].last = last;
                   }
                   if("eth" == toType){
-                      ethCoins[0].now = now;
-                      ethCoins[0].calc = calc;
-                      ethCoins[0].last = last;
+                      self.ethCoins[0].now = now;
+                      self.ethCoins[0].calc = calc;
+                      self.ethCoins[0].last = last;
                   }
            }).catch(error=>console.log(error));
       },

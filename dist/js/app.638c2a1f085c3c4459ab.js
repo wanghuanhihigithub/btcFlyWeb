@@ -574,14 +574,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           self.ring(calc);
         }
         if ("btc" == toType) {
-          btcCoins[0].now = now;
-          btcCoins[0].calc = calc;
-          btcCoins[0].last = last;
+          self.btcCoins[0].now = now;
+          self.btcCoins[0].calc = calc;
+          self.btcCoins[0].last = last;
         }
         if ("eth" == toType) {
-          ethCoins[0].now = now;
-          ethCoins[0].calc = calc;
-          ethCoins[0].last = last;
+          self.ethCoins[0].now = now;
+          self.ethCoins[0].calc = calc;
+          self.ethCoins[0].last = last;
         }
       }).catch(error => console.log(error));
     },
@@ -2198,4 +2198,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.194418fc815efa2a81f3.js.map
+//# sourceMappingURL=app.638c2a1f085c3c4459ab.js.map

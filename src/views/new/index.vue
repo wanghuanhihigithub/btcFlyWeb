@@ -48,7 +48,7 @@ export default {
         titleCoin:1,
         btcCoins:[{name:"oken"},{name:"火币"},{name:"fcoin"},{name:"coinEx"}],
         ethCoins:[{name:"oken"},{name:"火币"},{name:"fcoin"},{name:"coinEx"}],
-        isRunning:true
+        isRunning:false
     }
   },
   mounted: function(){

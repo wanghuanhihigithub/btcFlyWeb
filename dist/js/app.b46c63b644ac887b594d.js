@@ -534,7 +534,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       titleCoin: 1,
       btcCoins: [{ name: "oken" }, { name: "火币" }, { name: "fcoin" }, { name: "coinEx" }],
       ethCoins: [{ name: "oken" }, { name: "火币" }, { name: "fcoin" }, { name: "coinEx" }],
-      isRunning: true
+      isRunning: false
     };
   },
   mounted: function () {},
@@ -2198,4 +2198,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.20456993a43d7b7dc4b3.js.map
+//# sourceMappingURL=app.b46c63b644ac887b594d.js.map

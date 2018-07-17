@@ -602,28 +602,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.getCoinEx("usdt", "eth");
             this.okenUsdtBtcInterval = setInterval(function () {
                 self.getOken("usdt", "btc");
-            }, 500);
+            }, 1000);
             this.okenUsdtEthInterval = setInterval(function () {
                 self.getOken("usdt", "eth");
-            }, 500);
+            }, 1000);
             this.huoBiUsdtBtcInterval = setInterval(function () {
                 self.getHuoBi("usdt", "btc");
-            }, 500);
+            }, 1000);
             this.huoBiUsdtEthInterval = setInterval(function () {
                 self.getHuoBi("usdt", "eth");
-            }, 500);
+            }, 1000);
             this.fcoinUsdtBtcInterval = setInterval(function () {
                 self.getFcoin("usdt", "btc");
-            }, 500);
+            }, 1000);
             this.fcoinUsdtEthInterval = setInterval(function () {
                 self.getFcoin("usdt", "eth");
-            }, 500);
+            }, 1000);
             this.coinExUsdtBtcInterval = setInterval(function () {
                 self.getCoinEx("usdt", "btc");
-            }, 500);
+            }, 2000);
             this.coinExUsdtEthInterval = setInterval(function () {
                 self.getCoinEx("usdt", "eth");
-            }, 500);
+            }, 2000);
         },
         end: function () {
             clearInterval(this.okenUsdtBtcInterval);
@@ -631,7 +631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             clearInterval(this.huoBiUsdtBtcInterval);
             clearInterval(this.huoBiUsdtEthInterval);
             clearInterval(this.fcoinUsdtBtcInterval);
-            clearInterval(this.fcoinUsdtBtcInterval);
+            clearInterval(this.fcoinUsdtEthInterval);
             clearInterval(this.coinExUsdtBtcInterval);
             clearInterval(this.coinExUsdtEthInterval);
             this.isRunning = false;
@@ -2267,13 +2267,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "form.maxPrice "
     }
   })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.start
-    }
-  }, [_vm._v("开始")]), _vm._v(" "), _c('el-button', {
     on: {
       "click": _vm.end
     }
@@ -2497,4 +2490,4 @@ webpackContext.id = 181;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.baec6cc48218d92ba986.js.map
+//# sourceMappingURL=app.a2d78833a6b6f3a76155.js.map

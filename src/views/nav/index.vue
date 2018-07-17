@@ -12,7 +12,7 @@
                   <el-input  v-model="form.maxPrice "></el-input>
              </el-form-item>
              <el-form-item>
-                 <el-button type="primary" @click="start">开始</el-button>
+                <!-- <el-button type="primary" @click="start">开始</el-button>-->
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>

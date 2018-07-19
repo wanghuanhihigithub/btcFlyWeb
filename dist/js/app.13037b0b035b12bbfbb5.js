@@ -1918,6 +1918,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form', {
     ref: "form",
+    staticStyle: {
+      "margin-left": "0px"
+    },
     attrs: {
       "model": _vm.form,
       "label-width": "180px"
@@ -2036,12 +2039,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "btc人民币"
+      "label": "btc¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "btc美元"
+      "label": "btc$"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     attrs: {
@@ -2060,12 +2063,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "eth人民币"
+      "label": "eth¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "eth美元"
+      "label": "eth$"
     }
   })], 1)], 1), _vm._v(" "), _c('div', {
     staticStyle: {
@@ -2088,12 +2091,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "btc人民币"
+      "label": "btc¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "btc美元"
+      "label": "btc$"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     attrs: {
@@ -2112,12 +2115,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "eth人民币"
+      "label": "eth¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "eth美元"
+      "label": "eth$"
     }
   })], 1)], 1), _vm._v(" "), _c('div', {
     staticStyle: {
@@ -2140,12 +2143,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "btc人民币"
+      "label": "btc¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "btc美元"
+      "label": "btc$"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     attrs: {
@@ -2164,12 +2167,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "eth人民币"
+      "label": "eth¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "eth美元"
+      "label": "eth$"
     }
   })], 1)], 1), _vm._v(" "), _c('div', {
     staticStyle: {
@@ -2192,12 +2195,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "btc人民币"
+      "label": "btc¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "btc美元"
+      "label": "btc$"
     }
   })], 1), _vm._v(" "), _c('el-table', {
     attrs: {
@@ -2216,12 +2219,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "calc",
-      "label": "eth人民币"
+      "label": "eth¥"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "last",
-      "label": "eth美元"
+      "label": "eth$"
     }
   })], 1)], 1), _vm._v(" "), _c('audio', {
     staticStyle: {
@@ -3102,4 +3105,4 @@ webpackContext.id = 185;
 
 /***/ })
 ],[130]);
-//# sourceMappingURL=app.fa0ec602cc3bd0fcc81f.js.map
+//# sourceMappingURL=app.13037b0b035b12bbfbb5.js.map

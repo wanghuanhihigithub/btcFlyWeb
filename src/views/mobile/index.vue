@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-         <el-form ref="form" :model="form" label-width="180px">
+         <el-form ref="form" :model="form" label-width="180px" style="margin-left:0px;">
              <el-form-item label="乘数" style="float:left;">
                   <el-input  v-model="form.price" style="width:100px;"/>
              </el-form-item>
@@ -26,56 +26,56 @@
             <el-table :data="okenBtcCoin">
                  <el-table-column  prop="name"  label="平台"/>
                  <el-table-column  prop="now"  label="时间"/>
-                 <el-table-column  prop="calc"  label="btc人民币"/>
-                 <el-table-column  prop="last"  label="btc美元"/>
+                 <el-table-column  prop="calc"  label="btc¥"/>
+                 <el-table-column  prop="last"  label="btc$"/>
             </el-table>
             <el-table :data="okenEthCoin">
                 <el-table-column  prop="name"  label="平台"/>
                 <el-table-column  prop="now"  label="时间"/>
-                <el-table-column  prop="calc"  label="eth人民币"/>
-                <el-table-column  prop="last"  label="eth美元"/>
+                <el-table-column  prop="calc"  label="eth¥"/>
+                <el-table-column  prop="last"  label="eth$"/>
             </el-table>
          </div>
          <div style="clear:both;">
            <el-table :data="huoBiBtcCoin">
                 <el-table-column  prop="name"  label="平台"/>
                 <el-table-column  prop="now"  label="时间"/>
-                <el-table-column  prop="calc"  label="btc人民币"/>
-                <el-table-column  prop="last"  label="btc美元"/>
+                <el-table-column  prop="calc"  label="btc¥"/>
+                <el-table-column  prop="last"  label="btc$"/>
            </el-table>
            <el-table :data="huoBiEthCoin">
                <el-table-column  prop="name"  label="平台"/>
                <el-table-column  prop="now"  label="时间"/>
-               <el-table-column  prop="calc"  label="eth人民币"/>
-               <el-table-column  prop="last"  label="eth美元"/>
+               <el-table-column  prop="calc"  label="eth¥"/>
+               <el-table-column  prop="last"  label="eth$"/>
            </el-table>
          </div>
          <div style="clear:both;">
             <el-table :data="fcoinBtcCoin">
                  <el-table-column  prop="name"  label="平台"/>
                  <el-table-column  prop="now"  label="时间"/>
-                 <el-table-column  prop="calc"  label="btc人民币"/>
-                 <el-table-column  prop="last"  label="btc美元"/>
+                 <el-table-column  prop="calc"  label="btc¥"/>
+                 <el-table-column  prop="last"  label="btc$"/>
             </el-table>
             <el-table :data="fcoinEthCoin">
                 <el-table-column  prop="name"  label="平台"/>
                 <el-table-column  prop="now"  label="时间"/>
-                <el-table-column  prop="calc"  label="eth人民币"/>
-                <el-table-column  prop="last"  label="eth美元"/>
+                <el-table-column  prop="calc"  label="eth¥"/>
+                <el-table-column  prop="last"  label="eth$"/>
             </el-table>
          </div>
          <div style="clear:both;">
              <el-table :data="coinExBtcCoin">
                   <el-table-column  prop="name"  label="平台"/>
                   <el-table-column  prop="now"  label="时间"/>
-                  <el-table-column  prop="calc"  label="btc人民币"/>
-                  <el-table-column  prop="last"  label="btc美元"/>
+                  <el-table-column  prop="calc"  label="btc¥"/>
+                  <el-table-column  prop="last"  label="btc$"/>
              </el-table>
              <el-table :data="coinExEthCoin">
                  <el-table-column  prop="name"  label="平台"/>
                  <el-table-column  prop="now"  label="时间"/>
-                 <el-table-column  prop="calc"  label="eth人民币"/>
-                 <el-table-column  prop="last"  label="eth美元"/>
+                 <el-table-column  prop="calc"  label="eth¥"/>
+                 <el-table-column  prop="last"  label="eth$"/>
              </el-table>
          </div>
          <audio src="./dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>

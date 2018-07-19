@@ -1,18 +1,16 @@
 <template>
     <div id="app">
-         <el-form ref="form" :model="form" label-width="180px" style="margin-left:0px;">
-             <el-form-item label="乘数" style="float:left;">
-                  <el-input  v-model="form.price" style="width:100px;"/>
+         <el-form ref="form" :model="form" label-width="100px">
+             <el-form-item label="乘数" style="float:left;" label-width="40px">
+                  <el-input  v-model="form.price" style="width:60px;"/>
              </el-form-item>
-             <el-form-item label="报警最小阈值" style="float:left;">
-                  <el-input  v-model="form.minPrice" style="width:180px;"/>
+             <el-form-item label="报警最小阈值" style="float:left;margin-left:5px;">
+                  <el-input  v-model="form.minPrice" style="width:100px;"/>
              </el-form-item>
              <el-form-item label="报警最大阈值" style="float:left;">
-                  <el-input  v-model="form.maxPrice" style="width:180px;"/>
-             </el-form-item>
-             <el-form-item style="float:right;">
-                 <el-button type="primary" @click="start">开始</el-button>
-                 <el-button @click="end">结束</el-button>
+                  <el-input  v-model="form.maxPrice" style="width:60px;"/>
+                  <el-button type="primary" @click="start">开始</el-button>
+                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
          <el-radio-group v-model="titleCoin">

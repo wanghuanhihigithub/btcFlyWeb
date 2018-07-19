@@ -390,8 +390,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -1918,23 +1916,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form', {
     ref: "form",
-    staticStyle: {
-      "margin-left": "0px"
-    },
     attrs: {
       "model": _vm.form,
-      "label-width": "180px"
+      "label-width": "100px"
     }
   }, [_c('el-form-item', {
     staticStyle: {
       "float": "left"
     },
     attrs: {
-      "label": "乘数"
+      "label": "乘数",
+      "label-width": "40px"
     }
   }, [_c('el-input', {
     staticStyle: {
-      "width": "100px"
+      "width": "60px"
     },
     model: {
       value: (_vm.form.price),
@@ -1945,14 +1941,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
     staticStyle: {
-      "float": "left"
+      "float": "left",
+      "margin-left": "5px"
     },
     attrs: {
       "label": "报警最小阈值"
     }
   }, [_c('el-input', {
     staticStyle: {
-      "width": "180px"
+      "width": "100px"
     },
     model: {
       value: (_vm.form.minPrice),
@@ -1970,7 +1967,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-input', {
     staticStyle: {
-      "width": "180px"
+      "width": "60px"
     },
     model: {
       value: (_vm.form.maxPrice),
@@ -1979,11 +1976,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.maxPrice"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "float": "right"
-    }
-  }, [_c('el-button', {
+  }), _vm._v(" "), _c('el-button', {
     attrs: {
       "type": "primary"
     },
@@ -3105,4 +3098,4 @@ webpackContext.id = 185;
 
 /***/ })
 ],[130]);
-//# sourceMappingURL=app.13037b0b035b12bbfbb5.js.map
+//# sourceMappingURL=app.3c34c6bc9ea4f88180ef.js.map

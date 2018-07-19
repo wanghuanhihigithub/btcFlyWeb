@@ -388,6 +388,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -1988,9 +1992,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": _vm.end
     }
   }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-radio-group', {
-    staticStyle: {
-      "margin-left": "140px"
-    },
     model: {
       value: (_vm.titleCoin),
       callback: function($$v) {
@@ -2048,6 +2049,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table-column', {
     attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
       "prop": "now",
       "label": "时间"
     }
@@ -2067,8 +2073,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table', {
     attrs: {
-      "data": _vm.huoBiBtcCoin,
-      "show-header": false
+      "data": _vm.huoBiBtcCoin
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -2092,10 +2097,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-table', {
     attrs: {
-      "data": _vm.huoBiEthCoin,
-      "show-header": false
+      "data": _vm.huoBiEthCoin
     }
   }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
       "label": "时间"
@@ -2116,8 +2125,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table', {
     attrs: {
-      "data": _vm.fcoinBtcCoin,
-      "show-header": false
+      "data": _vm.fcoinBtcCoin
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -2141,10 +2149,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-table', {
     attrs: {
-      "data": _vm.fcoinEthCoin,
-      "show-header": false
+      "data": _vm.fcoinEthCoin
     }
   }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
       "label": "时间"
@@ -2165,8 +2177,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-table', {
     attrs: {
-      "data": _vm.coinExBtcCoin,
-      "show-header": false
+      "data": _vm.coinExBtcCoin
     }
   }, [_c('el-table-column', {
     attrs: {
@@ -2190,10 +2201,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('el-table', {
     attrs: {
-      "data": _vm.coinExEthCoin,
-      "show-header": false
+      "data": _vm.coinExEthCoin
     }
   }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "now",
       "label": "时间"
@@ -3087,4 +3102,4 @@ webpackContext.id = 185;
 
 /***/ })
 ],[130]);
-//# sourceMappingURL=app.cc2839477d65105f89b4.js.map
+//# sourceMappingURL=app.fa0ec602cc3bd0fcc81f.js.map

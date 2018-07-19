@@ -15,7 +15,7 @@
                  <el-button @click="end">结束</el-button>
              </el-form-item>
          </el-form>
-         <el-radio-group v-model="titleCoin" style="margin-left:140px">
+         <el-radio-group v-model="titleCoin">
              <el-radio :label="1">oken</el-radio>
              <el-radio :label="2">火币</el-radio>
              <el-radio :label="3">fcoin</el-radio>
@@ -30,45 +30,49 @@
                  <el-table-column  prop="last"  label="btc美元"/>
             </el-table>
             <el-table :data="okenEthCoin">
+                <el-table-column  prop="name"  label="平台"/>
                 <el-table-column  prop="now"  label="时间"/>
                 <el-table-column  prop="calc"  label="eth人民币"/>
                 <el-table-column  prop="last"  label="eth美元"/>
             </el-table>
          </div>
          <div style="clear:both;">
-           <el-table :data="huoBiBtcCoin"  :show-header="false">
+           <el-table :data="huoBiBtcCoin">
                 <el-table-column  prop="name"  label="平台"/>
                 <el-table-column  prop="now"  label="时间"/>
                 <el-table-column  prop="calc"  label="btc人民币"/>
                 <el-table-column  prop="last"  label="btc美元"/>
            </el-table>
-           <el-table :data="huoBiEthCoin" :show-header="false">
+           <el-table :data="huoBiEthCoin">
+               <el-table-column  prop="name"  label="平台"/>
                <el-table-column  prop="now"  label="时间"/>
                <el-table-column  prop="calc"  label="eth人民币"/>
                <el-table-column  prop="last"  label="eth美元"/>
            </el-table>
          </div>
          <div style="clear:both;">
-            <el-table :data="fcoinBtcCoin" :show-header="false">
+            <el-table :data="fcoinBtcCoin">
                  <el-table-column  prop="name"  label="平台"/>
                  <el-table-column  prop="now"  label="时间"/>
                  <el-table-column  prop="calc"  label="btc人民币"/>
                  <el-table-column  prop="last"  label="btc美元"/>
             </el-table>
-            <el-table :data="fcoinEthCoin" :show-header="false">
+            <el-table :data="fcoinEthCoin">
+                <el-table-column  prop="name"  label="平台"/>
                 <el-table-column  prop="now"  label="时间"/>
                 <el-table-column  prop="calc"  label="eth人民币"/>
                 <el-table-column  prop="last"  label="eth美元"/>
             </el-table>
          </div>
          <div style="clear:both;">
-             <el-table :data="coinExBtcCoin"  :show-header="false">
+             <el-table :data="coinExBtcCoin">
                   <el-table-column  prop="name"  label="平台"/>
                   <el-table-column  prop="now"  label="时间"/>
                   <el-table-column  prop="calc"  label="btc人民币"/>
                   <el-table-column  prop="last"  label="btc美元"/>
              </el-table>
-             <el-table :data="coinExEthCoin"  :show-header="false">
+             <el-table :data="coinExEthCoin">
+                 <el-table-column  prop="name"  label="平台"/>
                  <el-table-column  prop="now"  label="时间"/>
                  <el-table-column  prop="calc"  label="eth人民币"/>
                  <el-table-column  prop="last"  label="eth美元"/>

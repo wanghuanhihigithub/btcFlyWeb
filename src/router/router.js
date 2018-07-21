@@ -7,7 +7,7 @@ import * as Mobile from '../views/mobile'
 
 
 export const constantRouterMap = [
-    {path:'/',component:Nav},
+    {path:'/',component:New},
     {path: '/search', component: Search},
     {path: '/setting', component: Setting},
     {path:'/oken', component:Oken},

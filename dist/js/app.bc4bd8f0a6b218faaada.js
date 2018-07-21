@@ -1378,7 +1378,7 @@ const userMap = {
 
 
 
-const constantRouterMap = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_0__views_nav___ }, { path: '/search', component: __WEBPACK_IMPORTED_MODULE_1__views_search__ }, { path: '/setting', component: __WEBPACK_IMPORTED_MODULE_2__views_setting__ }, { path: '/oken', component: __WEBPACK_IMPORTED_MODULE_3__views_oken__ }, { path: '/new', component: __WEBPACK_IMPORTED_MODULE_4__views_new__ }, { path: '/mobile', component: __WEBPACK_IMPORTED_MODULE_5__views_mobile__ }];
+const constantRouterMap = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_4__views_new__ }, { path: '/search', component: __WEBPACK_IMPORTED_MODULE_1__views_search__ }, { path: '/setting', component: __WEBPACK_IMPORTED_MODULE_2__views_setting__ }, { path: '/oken', component: __WEBPACK_IMPORTED_MODULE_3__views_oken__ }, { path: '/new', component: __WEBPACK_IMPORTED_MODULE_4__views_new__ }, { path: '/mobile', component: __WEBPACK_IMPORTED_MODULE_5__views_mobile__ }];
 /* harmony export (immutable) */ __webpack_exports__["a"] = constantRouterMap;
 
 
@@ -3098,4 +3098,4 @@ webpackContext.id = 185;
 
 /***/ })
 ],[130]);
-//# sourceMappingURL=app.3c34c6bc9ea4f88180ef.js.map
+//# sourceMappingURL=app.bc4bd8f0a6b218faaada.js.map

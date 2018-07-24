@@ -85,7 +85,7 @@ export default {
   name: 'hello',
   data: function(){
     return {
-        form:{price:0,minPrice:40000,maxPrice:50000},
+        form:{price:0,minPrice:40000,maxPrice:80000},
         titleCoin:1,
         okenBtcCoin:[],
         okenEthCoin:[],

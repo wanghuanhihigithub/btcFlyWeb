@@ -957,7 +957,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getCoinEx: function (fromType, toType) {
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinEx?fromType=' + fromType + "&toType=" + toType).then(res => {
-                var last = res.data.data.ticker.last;
+                debugger;
+                var last = eval('(' + res.data + ')').data.ticker.last;
                 var calc = (self.form.price * last).toFixed(2);
                 if (self.titleCoin == 4 && "btc" == toType) {
                     document.title = res.data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
@@ -3098,4 +3099,4 @@ webpackContext.id = 185;
 
 /***/ })
 ],[130]);
-//# sourceMappingURL=app.ee34affb94f30b44e38b.js.map
+//# sourceMappingURL=app.9b901b278525de9ba94a.js.map

@@ -961,7 +961,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(data);
                 var last = data.data.ticker.last;
                 var calc = (self.form.price * last).toFixed(2);
-                var date = new Date(data.date);
+                var date = new Date(data.data.date);
                 var year = date.getFullYear();
                 var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
                 var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
@@ -3108,4 +3108,4 @@ webpackContext.id = 185;
 
 /***/ })
 ],[130]);
-//# sourceMappingURL=app.aa28280e4d2483a0aaab.js.map
+//# sourceMappingURL=app.66e94d974effe73b995f.js.map

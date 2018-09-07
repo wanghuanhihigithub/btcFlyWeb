@@ -231,7 +231,7 @@ export default {
             }
         }).catch(error=>console.log(error));
       },
-      goAlarm:function(){ window.open("/alarm", '_blank');}
+      goAlarm:function(){ this.$router.push({"path":"/alarm"})}
   }
 }
 </script>

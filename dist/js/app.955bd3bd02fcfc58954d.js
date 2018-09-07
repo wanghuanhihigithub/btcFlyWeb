@@ -1047,7 +1047,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(error => console.log(error));
         },
         goAlarm: function () {
-            window.open("/alarm", '_blank');
+            this.$router.push({ "path": "/alarm" });
         }
     }
 });
@@ -3291,4 +3291,4 @@ webpackContext.id = 188;
 
 /***/ })
 ],[131]);
-//# sourceMappingURL=app.2e71d8eeb49c88368a42.js.map
+//# sourceMappingURL=app.955bd3bd02fcfc58954d.js.map

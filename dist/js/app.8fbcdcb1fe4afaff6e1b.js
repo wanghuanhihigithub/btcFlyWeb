@@ -353,7 +353,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     console.log(availableAmount);
                     debugger;
                     if (self.form.price != "" && self.form.price != availableAmount) {
-                        alert(true);
                         document.getElementById("dogAudio").play();
                     }
                     self.form.price = availableAmount;
@@ -3291,4 +3290,4 @@ webpackContext.id = 188;
 
 /***/ })
 ],[131]);
-//# sourceMappingURL=app.955bd3bd02fcfc58954d.js.map
+//# sourceMappingURL=app.8fbcdcb1fe4afaff6e1b.js.map

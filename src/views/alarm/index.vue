@@ -45,7 +45,6 @@ export default {
                 console.log(availableAmount);
                 debugger;
                 if(self.form.price != "" && self.form.price != availableAmount){
-                    alert(true)
                     document.getElementById("dogAudio").play()
                 }
                 self.form.price = availableAmount;

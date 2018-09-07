@@ -878,6 +878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -1044,6 +1045,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     self.coinExEthCoin = [{ name: "coinEx", now: now, calc: calc, last: last }];
                 }
             }).catch(error => console.log(error));
+        },
+        goAlarm: function () {
+            window.open("/alarm", '_blank');
         }
     }
 });
@@ -2670,7 +2674,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "controls": "controls",
       "id": "dogAudio"
     }
-  })], 1)
+  }), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.goAlarm
+    }
+  }, [_vm._v("进入告警页面")])], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -3280,4 +3291,4 @@ webpackContext.id = 188;
 
 /***/ })
 ],[131]);
-//# sourceMappingURL=app.edb8d304e9e1a404bbfa.js.map
+//# sourceMappingURL=app.2e71d8eeb49c88368a42.js.map

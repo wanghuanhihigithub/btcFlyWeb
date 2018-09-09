@@ -366,6 +366,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.interval = setInterval(function () {
                 var url = '/api/oken/change?baseCurrency=' + self.form.baseCurrency + "&nickName=" + self.form.nickName + "&quoteMinAmountPerOrder=" + self.form.quoteMinAmountPerOrder + "&side=" + self.form.side;
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(res => {
+                    if (!res.data) {
+                        alert("没有当前昵称的用户");
+                    }
                     var availableAmount = res.data.availableAmount;
                     console.log(availableAmount);
                     if (self.form.price != "" && self.form.price != availableAmount) {
@@ -3341,4 +3344,4 @@ webpackContext.id = 188;
 
 /***/ })
 ],[131]);
-//# sourceMappingURL=app.f8bed9a420199ccf1ff4.js.map
+//# sourceMappingURL=app.b2aa486a150bf9a27019.js.map

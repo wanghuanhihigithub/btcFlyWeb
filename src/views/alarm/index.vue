@@ -58,6 +58,9 @@ export default {
         this.interval = setInterval(function() {
             var url = '/api/oken/change?baseCurrency=' + self.form.baseCurrency + "&nickName=" + self.form.nickName + "&quoteMinAmountPerOrder=" + self.form.quoteMinAmountPerOrder + "&side=" + self.form.side
             axios.get(url).then(res=>{
+                if(!res.data){
+                    alert("没有当前昵称的用户")
+                }
                 var availableAmount = res.data.availableAmount;
                 console.log(availableAmount);
                 if(self.form.price != "" && self.form.price != availableAmount){

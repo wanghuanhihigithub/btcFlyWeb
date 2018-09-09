@@ -331,6 +331,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -338,26 +354,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'setting',
     data: function () {
         return {
-            form: { baseCurrency: 1, nickName: 30, quoteMinAmountPerOrder: '', side: '', price: '' }
+            form: { baseCurrency: "", nickName: 30, quoteMinAmountPerOrder: '', side: '', price: '' },
+            baseCurrencys: [{ value: "usdt", label: "usdt" }, { value: "btc", label: "btc" }],
+            sides: [{ value: "sell", label: "卖出" }, { value: "buy", label: "买入" }]
         };
     },
     mounted: function () {},
     methods: {
         onStart: function () {
             self = this;
-            setInterval(function () {
+            this.interval = setInterval(function () {
                 var url = '/api/oken/change?baseCurrency=' + self.form.baseCurrency + "&nickName=" + self.form.nickName + "&quoteMinAmountPerOrder=" + self.form.quoteMinAmountPerOrder + "&side=" + self.form.side;
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(res => {
-                    debugger;
                     var availableAmount = res.data.availableAmount;
                     console.log(availableAmount);
-                    debugger;
                     if (self.form.price != "" && self.form.price != availableAmount) {
+                        clearInterval(self.interval);
                         document.getElementById("dogAudio").play();
                     }
                     self.form.price = availableAmount;
                 }).catch(error => console.log(error));
             }, 3000);
+        },
+        onStop: function () {
+            document.getElementById("dogAudio").pause();
+            this.onStart();
         }
     }
 
@@ -2943,15 +2964,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": "币种"
     }
-  }, [_c('el-input', {
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
     model: {
       value: (_vm.form.baseCurrency),
       callback: function($$v) {
         _vm.form.baseCurrency = $$v
       },
-      expression: "form.baseCurrency "
+      expression: "form.baseCurrency"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
+  }, _vm._l((_vm.baseCurrencys), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "昵称"
     }
@@ -2979,7 +3011,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": "side"
     }
-  }, [_c('el-input', {
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择"
+    },
     model: {
       value: (_vm.form.side),
       callback: function($$v) {
@@ -2987,21 +3022,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.side"
     }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  }, _vm._l((_vm.sides), function(item) {
+    return _c('el-option', {
+      key: item.value,
+      attrs: {
+        "label": item.label,
+        "value": item.value
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
     on: {
       "click": _vm.onStart
     }
-  }, [_vm._v("开始")])], 1)], 1), _vm._v(" "), _c('audio', {
+  }, [_vm._v("开始")]), _vm._v(" "), _c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.onStop
+    }
+  }, [_vm._v("停止播放")])], 1)], 1), _vm._v(" "), _c('audio', {
     staticStyle: {
       "display": "none"
     },
     attrs: {
       "src": "./dog.wav",
       "controls": "controls",
-      "id": "dogAudio"
+      "id": "dogAudio",
+      "loop": "loop"
     }
   })], 1)
 },staticRenderFns: []}
@@ -3290,4 +3341,4 @@ webpackContext.id = 188;
 
 /***/ })
 ],[131]);
-//# sourceMappingURL=app.8fbcdcb1fe4afaff6e1b.js.map
+//# sourceMappingURL=app.f8bed9a420199ccf1ff4.js.map

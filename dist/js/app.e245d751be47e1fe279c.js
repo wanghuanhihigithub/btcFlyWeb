@@ -2694,7 +2694,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "display": "none"
     },
     attrs: {
-      "src": "./dog.wav",
+      "src": "./wav/dog.wav",
       "controls": "controls",
       "id": "dogAudio"
     }
@@ -3046,7 +3046,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "display": "none"
     },
     attrs: {
-      "src": "./dog.wav",
+      "src": "./wav/dog.wav",
       "controls": "controls",
       "id": "dogAudio",
       "loop": "loop"
@@ -3338,4 +3338,4 @@ webpackContext.id = 188;
 
 /***/ })
 ],[131]);
-//# sourceMappingURL=app.cb9b230e80cec9a8467d.js.map
+//# sourceMappingURL=app.e245d751be47e1fe279c.js.map

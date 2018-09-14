@@ -74,7 +74,7 @@
                  <el-table-column  prop="last"  label="eth美元"/>
              </el-table>
          </div>
-         <audio src="./wav/dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
+         <audio src="/dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
          <!--<el-button type="primary" @click="goAlarm">进入告警页面</el-button>-->
     </div>
 </template>

@@ -32,7 +32,7 @@
             <el-button type="primary" @click="onStop">停止播放</el-button>
           </el-form-item>
         </el-form>
-        <audio src="./wav/dog.wav" controls="controls" id="dogAudio"
+        <audio src="/dog.wav" controls="controls" id="dogAudio"
             style="display:none;" loop="loop"></audio>
     </div>
 </template>

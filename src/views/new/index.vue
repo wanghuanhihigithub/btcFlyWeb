@@ -75,7 +75,7 @@
              </el-table>
          </div>
          <audio src="./dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
-         <el-button type="primary" @click="goAlarm">进入告警页面</el-button>
+         <!--<el-button type="primary" @click="goAlarm">进入告警页面</el-button>-->
     </div>
 </template>
 

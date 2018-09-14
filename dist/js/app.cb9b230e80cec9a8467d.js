@@ -371,7 +371,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                     var availableAmount = res.data.availableAmount;
                     console.log(availableAmount);
-                    if (self.form.price != "" && self.form.price != availableAmount) {
+                    if (self.form.price && self.form.price != availableAmount) {
+                        console.log("ring====");
                         clearInterval(self.interval);
                         document.getElementById("dogAudio").play();
                     }
@@ -2697,14 +2698,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "controls": "controls",
       "id": "dogAudio"
     }
-  }), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.goAlarm
-    }
-  }, [_vm._v("进入告警页面")])], 1)
+  })], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -3344,4 +3338,4 @@ webpackContext.id = 188;
 
 /***/ })
 ],[131]);
-//# sourceMappingURL=app.b2aa486a150bf9a27019.js.map
+//# sourceMappingURL=app.cb9b230e80cec9a8467d.js.map

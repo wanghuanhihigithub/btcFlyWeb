@@ -63,7 +63,8 @@ export default {
                 }
                 var availableAmount = res.data.availableAmount;
                 console.log(availableAmount);
-                if(self.form.price != "" && self.form.price != availableAmount){
+                if(self.form.price  && self.form.price != availableAmount){
+                    console.log("ring====")
                     clearInterval(self.interval)
                     document.getElementById("dogAudio").play()
                 }

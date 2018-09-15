@@ -3287,7 +3287,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "prop": "oldAmout",
+      "prop": "oldAmount",
       "label": "原数量"
     }
   }), _vm._v(" "), _c('el-table-column', {
@@ -3592,4 +3592,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.54e9738b3152cad77302.js.map
+//# sourceMappingURL=app.e58b7e1ed37d49929950.js.map

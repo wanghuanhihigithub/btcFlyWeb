@@ -13,7 +13,7 @@
         <el-table :data="amountChanges" :row-style="rowStyle">
             <el-table-column  prop="name"          label="币种"/>
             <el-table-column  prop="type"          label="类型"/>
-            <el-table-column  prop="oldAmout"      label="原数量"/>
+            <el-table-column  prop="oldAmount"      label="原数量"/>
             <el-table-column  prop="nowAmount"     label="现数量"/>
         </el-table>
         <audio src="/order.wav" controls="controls" id="orderAudio"

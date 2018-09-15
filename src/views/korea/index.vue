@@ -36,6 +36,7 @@ export default {
     }
   },
   mounted: function(){
+    document.title = "汇率";
   },
   methods: {
      start:function(){
@@ -69,19 +70,19 @@ export default {
                 var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
                 date = year + "-" + month + "-" + day + " " +   hour + ":" + minute + ":" + second
                 self.ubitBtc = [];
-                self.ubitBtc.push({name:"ubit", createDate: date, chinaPrice : self.form.price - 150,
+                self.ubitBtc.push({name:"upbit", createDate: date, chinaPrice : self.form.price - 150,
                         koreaPrice : koreaPrice, parities:(koreaPrice / (chinaPrice -150 )).toFixed(2)});
-                self.ubitBtc.push({name:"ubit", createDate: date, chinaPrice : self.form.price - 100,
+                self.ubitBtc.push({name:"upbit", createDate: date, chinaPrice : self.form.price - 100,
                         koreaPrice : koreaPrice, parities:(koreaPrice / (chinaPrice -100 )).toFixed(2)});
-                self.ubitBtc.push({name:"ubit", createDate: date, chinaPrice : self.form.price - 50,
+                self.ubitBtc.push({name:"upbit", createDate: date, chinaPrice : self.form.price - 50,
                         koreaPrice : koreaPrice, parities:(koreaPrice / (chinaPrice -50 )).toFixed(2)});
-                self.ubitBtc.push({name:"ubit", createDate: date, chinaPrice : self.form.price,
+                self.ubitBtc.push({name:"upbit", createDate: date, chinaPrice : self.form.price,
                         koreaPrice : koreaPrice, parities:parities});
-                self.ubitBtc.push({name:"ubit", createDate: date, chinaPrice : self.form.price + 50,
+                self.ubitBtc.push({name:"upbit", createDate: date, chinaPrice : self.form.price + 50,
                         koreaPrice : koreaPrice, parities:(koreaPrice / (chinaPrice + 50 )).toFixed(2)});
-                self.ubitBtc.push({name:"ubit", createDate: date, chinaPrice : self.form.price + 100,
+                self.ubitBtc.push({name:"upbit", createDate: date, chinaPrice : self.form.price + 100,
                         koreaPrice : koreaPrice, parities:(koreaPrice / (chinaPrice + 100 )).toFixed(2)});
-                self.ubitBtc.push({name:"ubit", createDate: date, chinaPrice : self.form.price + 150,
+                self.ubitBtc.push({name:"upbit", createDate: date, chinaPrice : self.form.price + 150,
                         koreaPrice : koreaPrice, parities:(koreaPrice / (chinaPrice + 150 )).toFixed(2)});
             }
         }).catch(error=>console.log(error));

@@ -324,29 +324,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -364,19 +341,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onStart: function () {
             self = this;
             this.interval = setInterval(function () {
-                var url = '/api/oken/change?baseCurrency=' + self.form.baseCurrency + "&nickName=" + self.form.nickName + "&quoteMinAmountPerOrder=" + self.form.quoteMinAmountPerOrder + "&side=" + self.form.side;
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(res => {
-                    if (!res.data) {
-                        alert("没有当前昵称的用户");
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/api/oken/all").then(res => {
+                    debugger;
+                    /*if(!res.data){
+                        alert("没有当前昵称的用户")
                     }
                     var availableAmount = res.data.availableAmount;
                     console.log(availableAmount);
-                    if (self.form.price && self.form.price != availableAmount) {
-                        console.log("ring====");
-                        clearInterval(self.interval);
-                        document.getElementById("dogAudio").play();
+                    if(self.form.price  && self.form.price != availableAmount){
+                        console.log("ring====")
+                        clearInterval(self.interval)
+                        document.getElementById("dogAudio").play()
                     }
-                    self.form.price = availableAmount;
+                    self.form.price = availableAmount;*/
                 }).catch(error => console.log(error));
             }, 3000);
         },
@@ -433,7 +410,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         ubitBtc: []
                 };
         },
-        mounted: function () {},
+        mounted: function () {
+                document.title = "汇率";
+        },
         methods: {
                 start: function () {
                         if (this.isRunning) {
@@ -468,19 +447,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                         var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
                                         date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
                                         self.ubitBtc = [];
-                                        self.ubitBtc.push({ name: "ubit", createDate: date, chinaPrice: self.form.price - 150,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price - 150,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 150)).toFixed(2) });
-                                        self.ubitBtc.push({ name: "ubit", createDate: date, chinaPrice: self.form.price - 100,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price - 100,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 100)).toFixed(2) });
-                                        self.ubitBtc.push({ name: "ubit", createDate: date, chinaPrice: self.form.price - 50,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price - 50,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 50)).toFixed(2) });
-                                        self.ubitBtc.push({ name: "ubit", createDate: date, chinaPrice: self.form.price,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price,
                                                 koreaPrice: koreaPrice, parities: parities });
-                                        self.ubitBtc.push({ name: "ubit", createDate: date, chinaPrice: self.form.price + 50,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price + 50,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 50)).toFixed(2) });
-                                        self.ubitBtc.push({ name: "ubit", createDate: date, chinaPrice: self.form.price + 100,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price + 100,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 100)).toFixed(2) });
-                                        self.ubitBtc.push({ name: "ubit", createDate: date, chinaPrice: self.form.price + 150,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price + 150,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 150)).toFixed(2) });
                                 }
                         }).catch(error => console.log(error));
@@ -3180,29 +3159,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "币种"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.form.baseCurrency),
-      callback: function($$v) {
-        _vm.form.baseCurrency = $$v
-      },
-      expression: "form.baseCurrency"
-    }
-  }, _vm._l((_vm.baseCurrencys), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
       "label": "昵称"
     }
   }, [_c('el-input', {
@@ -3213,42 +3169,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "form.nickName "
     }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "quoteMinAmountPerOrder"
-    }
-  }, [_c('el-input', {
-    model: {
-      value: (_vm.form.quoteMinAmountPerOrder),
-      callback: function($$v) {
-        _vm.form.quoteMinAmountPerOrder = $$v
-      },
-      expression: "form.quoteMinAmountPerOrder"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "side"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.form.side),
-      callback: function($$v) {
-        _vm.form.side = $$v
-      },
-      expression: "form.side"
-    }
-  }, _vm._l((_vm.sides), function(item) {
-    return _c('el-option', {
-      key: item.value,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
       "type": "primary"
     },
@@ -3559,4 +3480,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.fb2bef74002483c5d041.js.map
+//# sourceMappingURL=app.32ed34a79f398d03d704.js.map

@@ -46,7 +46,7 @@ export default {
         this.isRunning = true;
             this.getUitBtc()
             self = this;
-            //this.ubitBtcInterval = setInterval(function() {self. getUitBtc()}, 1000)
+            this.ubitBtcInterval = setInterval(function() {self. getUitBtc()}, 1000)
      },
      end: function(){
          clearInterval(this.ubitBtcInterval)

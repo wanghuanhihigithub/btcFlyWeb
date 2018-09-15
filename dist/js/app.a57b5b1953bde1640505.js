@@ -443,7 +443,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         this.isRunning = true;
                         this.getUitBtc();
                         self = this;
-                        //this.ubitBtcInterval = setInterval(function() {self. getUitBtc()}, 1000)
+                        this.ubitBtcInterval = setInterval(function () {
+                                self.getUitBtc();
+                        }, 1000);
                 },
                 end: function () {
                         clearInterval(this.ubitBtcInterval);
@@ -3557,4 +3559,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.a55cb4f6686635b88e80.js.map
+//# sourceMappingURL=app.a57b5b1953bde1640505.js.map

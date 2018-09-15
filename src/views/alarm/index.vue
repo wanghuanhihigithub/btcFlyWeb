@@ -57,12 +57,7 @@ export default {
                 var usdtSell = res.data.usdt.data.sell;
                 var okenChanges = [];
                 var change = false;
-                if(new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > 1000 * 10){
-                    alert("定时获取oken网数据异常");
-                    document.getElementById("dogAudio").play();
-                    clearInterval(self.interval);
-                    return;
-                }
+
                 for(var i =0 ; i < btcBuy.length; i++){
                     var data = btcBuy[i]
                     if(data.creator.nickName == self.form.nickName){

@@ -363,7 +363,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     var usdtSell = res.data.usdt.data.sell;
                     var okenChanges = [];
                     var change = false;
-                    for (i in btcBuy) {
+                    for (var i = 0; i < btcBuy.length; i++) {
                         var data = btcBuy[i];
                         if (data.creator.nickName == self.form.nickName) {
                             if (!self.btcBuy) {
@@ -379,7 +379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     }
 
-                    for (i in btcSell) {
+                    for (var i = 0; i < btcSell.length; i++) {
                         var data = btcSell[i];
                         if (data.creator.nickName == self.form.nickName) {
                             if (!self.btcSell) {
@@ -395,7 +395,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     }
 
-                    for (i in usdtBuy) {
+                    for (var i = 0; i < usdtBuy.length; i++) {
                         var data = usdtBuy[i];
                         if (data.creator.nickName == self.form.nickName) {
                             if (!self.usdtBuy) {
@@ -411,7 +411,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         }
                     }
 
-                    for (i in usdtSell) {
+                    for (var i = 0; i < usdtSell.length; i++) {
                         var data = usdtSell[i];
                         if (data.creator.nickName == self.form.nickName) {
                             if (!self.usdtSell) {
@@ -3592,4 +3592,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.3743cb1261b56427138f.js.map
+//# sourceMappingURL=app.54e9738b3152cad77302.js.map

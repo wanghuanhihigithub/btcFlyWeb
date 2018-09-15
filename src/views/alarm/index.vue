@@ -55,7 +55,7 @@ export default {
                 var usdtSell = res.data.usdt.data.sell;
                 var okenChanges = [];
                 var change = false;
-                for(i in btcBuy){
+                for(var i =0 ; i < btcBuy.length; i++){
                     var data = btcBuy[i]
                     if(data.creator.nickName == self.form.nickName){
                         if(!self.btcBuy){
@@ -71,7 +71,7 @@ export default {
                     }
                 }
 
-                for(i in btcSell){
+                for(var i =0 ; i < btcSell.length; i++){
                     var data = btcSell[i]
                     if(data.creator.nickName == self.form.nickName){
                        if(!self.btcSell){
@@ -87,7 +87,7 @@ export default {
                     }
                 }
 
-                for(i in usdtBuy){
+                for(var i =0 ; i < usdtBuy.length; i++){
                     var data = usdtBuy[i]
                     if(data.creator.nickName == self.form.nickName){
                        if(!self.usdtBuy){
@@ -103,7 +103,7 @@ export default {
                     }
                 }
 
-                for(i in usdtSell){
+                for(var i =0 ; i < usdtSell.length; i++){
                    var data = usdtSell[i]
                    if(data.creator.nickName == self.form.nickName){
                        if(!self.usdtSell){

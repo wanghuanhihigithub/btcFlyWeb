@@ -338,7 +338,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'setting',
     data: function () {
         return {
-            form: { nickName: 30 },
+            form: { nickName: "★全网第一诚信" },
             amountChanges: [],
             btcBuy: "",
             btcSell: "",
@@ -375,10 +375,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为" + data.availableAmount);
                             }
                             okenChanges.push({ name: "btc", type: "买入", oldAmount: self.btcBuy, nowAmount: data.availableAmount });
-                            self.btcBuy == data.availableAmount;
+                            self.btcBuy = data.availableAmount;
+                        } else {
+                            self.btcBuy = "";
                         }
                     }
-
                     for (var i = 0; i < btcSell.length; i++) {
                         var data = btcSell[i];
                         if (data.creator.nickName == self.form.nickName) {
@@ -391,7 +392,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount);
                             }
                             okenChanges.push({ name: "btc", type: "买出", oldAmount: self.btcSell, nowAmount: data.availableAmount });
-                            self.btcSell == data.availableAmount;
+                            self.btcSell = data.availableAmount;
+                        } else {
+                            self.btcSell = "";
                         }
                     }
 
@@ -407,7 +410,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为" + data.availableAmount);
                             }
                             okenChanges.push({ name: "usdt", type: "买入", oldAmount: self.usdtBuy, nowAmount: data.availableAmount });
-                            self.usdtBuy == data.availableAmount;
+                            self.usdtBuy = data.availableAmount;
+                        } else {
+                            self.usdtBuy = "";
                         }
                     }
 
@@ -423,7 +428,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为" + data.availableAmount);
                             }
                             okenChanges.push({ name: "usdt", type: "卖出", oldAmount: self.usdtSell, nowAmount: data.availableAmount });
-                            self.usdtSell == data.availableAmount;
+                            self.usdtSell = data.availableAmount;
+                        } else {
+                            self.usdtSell = "";
                         }
                     }
                     if (change) {
@@ -3255,7 +3262,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onStart
     }
-  }, [_vm._v("开始")]), _vm._v(" "), _c('el-button', {
+  }, [_vm._v("开始监控")]), _vm._v(" "), _c('el-button', {
     attrs: {
       "type": "primary"
     },
@@ -3592,4 +3599,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.e58b7e1ed37d49929950.js.map
+//# sourceMappingURL=app.4ce7404a7f5bfd163183.js.map

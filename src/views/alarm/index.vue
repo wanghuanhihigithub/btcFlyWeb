@@ -5,7 +5,7 @@
                 <el-input  v-model="form.nickName"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onStart">开始</el-button>
+            <el-button type="primary" @click="onStart">开始监控</el-button>
             <el-button type="primary" @click="onStop">停止播放</el-button>
           </el-form-item>
         </el-form>
@@ -28,7 +28,7 @@ export default {
   name: 'setting',
   data: function(){
     return {
-        form: {nickName: 30},
+        form: {nickName: "★全网第一诚信"},
         amountChanges:[],
         btcBuy:"",
         btcSell:"",
@@ -67,10 +67,11 @@ export default {
                             console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为" + data.availableAmount)
                         }
                         okenChanges.push({name:"btc",type:"买入",oldAmount:self.btcBuy,nowAmount:data.availableAmount})
-                        self.btcBuy == data.availableAmount
+                        self.btcBuy = data.availableAmount
+                    }else{
+                        self.btcBuy = "";
                     }
                 }
-
                 for(var i =0 ; i < btcSell.length; i++){
                     var data = btcSell[i]
                     if(data.creator.nickName == self.form.nickName){
@@ -83,7 +84,9 @@ export default {
                              console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount)
                        }
                        okenChanges.push({name:"btc",type:"买出",oldAmount:self.btcSell,nowAmount:data.availableAmount})
-                       self.btcSell == data.availableAmount
+                       self.btcSell = data.availableAmount
+                    }else{
+                       self.btcSell = "";
                     }
                 }
 
@@ -99,7 +102,9 @@ export default {
                             console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为" + data.availableAmount)
                        }
                        okenChanges.push({name:"usdt",type:"买入",oldAmount:self.usdtBuy,nowAmount:data.availableAmount})
-                       self.usdtBuy == data.availableAmount
+                       self.usdtBuy = data.availableAmount
+                    }else{
+                       self.usdtBuy = "";
                     }
                 }
 
@@ -115,7 +120,9 @@ export default {
                           console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为" + data.availableAmount)
                        }
                        okenChanges.push({name:"usdt",type:"卖出",oldAmount:self.usdtSell,nowAmount:data.availableAmount})
-                       self.usdtSell == data.availableAmount
+                       self.usdtSell = data.availableAmount
+                   }else{
+                       self.usdtSell = "";
                    }
                 }
                 if(change){

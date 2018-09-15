@@ -365,12 +365,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     var usdtSell = res.data.usdt.data.sell;
                     var okenChanges = [];
                     var change = false;
-                    if (new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > 1000 * 10) {
-                        alert("定时获取oken网数据异常");
-                        document.getElementById("dogAudio").play();
-                        clearInterval(self.interval);
-                        return;
-                    }
+
                     for (var i = 0; i < btcBuy.length; i++) {
                         var data = btcBuy[i];
                         if (data.creator.nickName == self.form.nickName) {
@@ -3619,4 +3614,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.79539db11558c0630560.js.map
+//# sourceMappingURL=app.a9f159616795fdca9872.js.map

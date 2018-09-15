@@ -50,7 +50,6 @@ export default {
                 if(!res.data.btc && !res.data.usdt){
                     alert("服务器异常")
                 }
-                var btc = res.data.btc;
                 var btcBuy = res.data.btc.data.buy;
                 var btcSell = res.data.btc.data.sell;
                 var usdtBuy = res.data.usdt.data.buy;
@@ -58,9 +57,11 @@ export default {
                 var okenChanges = [];
                 var change = false;
 
+                var btcBuyFind = false;
                 for(var i =0 ; i < btcBuy.length; i++){
                     var data = btcBuy[i]
                     if(data.creator.nickName == self.form.nickName){
+                        btcBuyFind = true;
                         if(!self.btcBuy){
                             self.btcBuy = data.availableAmount;
                         }
@@ -71,19 +72,21 @@ export default {
                         }
                         okenChanges.push({name:"btc",type:"买入",oldAmount:self.btcBuy,nowAmount:data.availableAmount})
                         self.btcBuy = data.availableAmount
-                    }else{
-                        if(self.btcBuy){
-                             change = true
-                             self.desc += "当前用户的btc买入发生变化,从" + self.btcBuy + "变为0=="
-                             console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为0")
-                             okenChanges.push({name:"btc",type:"买入",oldAmount:self.btcBuy,nowAmount:0})
-                             self.btcBuy = "";
-                        }
                     }
                 }
+                if(self.btcBuy && !btcBuyFind){
+                      change = true
+                      self.desc += "当前用户的btc买入发生变化,从" + self.btcBuy + "变为0=="
+                      console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为0")
+                      okenChanges.push({name:"btc",type:"买入",oldAmount:self.btcBuy,nowAmount:0})
+                      self.btcBuy = "";
+                }
+
+                var btcSellFind = false;
                 for(var i =0 ; i < btcSell.length; i++){
                     var data = btcSell[i]
                     if(data.creator.nickName == self.form.nickName){
+                       btcSellFind = true;
                        if(!self.btcSell){
                           self.btcSell = data.availableAmount;
                        }
@@ -94,20 +97,22 @@ export default {
                        }
                        okenChanges.push({name:"btc",type:"卖出",oldAmount:self.btcSell,nowAmount:data.availableAmount})
                        self.btcSell = data.availableAmount
-                    }else{
-                       if(self.btcSell){
-                          change = true
-                          self.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为0=="
-                          console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为0")
-                          okenChanges.push({name:"btc",type:"卖出",oldAmount:self.btcSell,nowAmount:0})
-                          self.btcSell = "";
-                       }
                     }
                 }
+                if(self.btcSell && !btcSellFind){
+                       change = true
+                       self.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为0=="
+                       console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为0")
+                       okenChanges.push({name:"btc",type:"卖出",oldAmount:self.btcSell,nowAmount:0})
+                       self.btcSell = "";
+                }
 
+
+                var usdtBuyFind = false;
                 for(var i =0 ; i < usdtBuy.length; i++){
                     var data = usdtBuy[i]
                     if(data.creator.nickName == self.form.nickName){
+                       usdtBuyFind = true;
                        if(!self.usdtBuy){
                            self.usdtBuy = data.availableAmount;
                        }
@@ -118,20 +123,21 @@ export default {
                        }
                        okenChanges.push({name:"usdt",type:"买入",oldAmount:self.usdtBuy,nowAmount:data.availableAmount})
                        self.usdtBuy = data.availableAmount
-                    }else{
-                       if(self.usdtBuy){
-                            change = true
-                            self.desc += "当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0=="
-                            console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0")
-                            okenChanges.push({name:"usdt",type:"买入",oldAmount:self.usdtBuy,nowAmount:0})
-                            self.usdtBuy = "";
-                       }
                     }
                 }
+                if(self.usdtBuy && !usdtBuyFind){
+                    change = true
+                    self.desc += "当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0=="
+                    console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0")
+                    okenChanges.push({name:"usdt",type:"买入",oldAmount:self.usdtBuy,nowAmount:0})
+                    self.usdtBuy = "";
+                }
 
+                var usdtSellFind = false;
                 for(var i =0 ; i < usdtSell.length; i++){
                    var data = usdtSell[i]
                    if(data.creator.nickName == self.form.nickName){
+                       usdtSellFind = true;
                        if(!self.usdtSell){
                           self.usdtSell = data.availableAmount;
                        }
@@ -142,15 +148,15 @@ export default {
                        }
                        okenChanges.push({name:"usdt",type:"卖出",oldAmount:self.usdtSell,nowAmount:data.availableAmount})
                        self.usdtSell = data.availableAmount
-                   }else{
-                       if(self.usdtSell){
-                             change = true
-                             self.desc += "当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0=="
-                             console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0")
-                             okenChanges.push({name:"usdt",type:"卖出",oldAmount:self.usdtSell,nowAmount:0})
-                             self.usdtSell = "";
-                       }
                    }
+                }
+
+                if(self.usdtSell && !usdtSellFind){
+                     change = true
+                     self.desc += "当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0=="
+                     console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0")
+                     okenChanges.push({name:"usdt",type:"卖出",oldAmount:self.usdtSell,nowAmount:0})
+                     self.usdtSell = "";
                 }
                 if(change){
                     document.getElementById("orderAudio").play();

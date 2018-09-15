@@ -1,5 +1,5 @@
 <template>
-    <div style="padding:20px;" id="app">
+    <div style="padding:20px;">
         <el-form ref="form" :model="form" label-width="180px">
           <el-form-item label="币种">
             <el-select v-model="form.baseCurrency" placeholder="请选择">

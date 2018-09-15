@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
          <el-form ref="form" :model="form" label-width="180px">
              <el-form-item label="乘数" style="float:left;">
                   <el-input  v-model="form.price" style="width:100px;"/>

@@ -5,13 +5,11 @@ import * as Oken from '../views/oken'
 import * as New from '../views/new';
 import * as Mobile from '../views/mobile'
 import * as Alarm from '../views/alarm'
+import * as Korea from '../views/korea'
 
 export const constantRouterMap = [
     {path:'/',component:New},
-    {path: '/search', component: Search},
-    {path: '/setting', component: Setting},
-    {path:'/oken', component:Oken},
-    {path:'/new', component:New},
     {path:'/mobile', component:Mobile},
-    {path:'/alarm', component:Alarm}
+    {path:'/alarm', component:Alarm},
+    {path:'/korea', component:Korea}
 ];

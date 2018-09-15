@@ -380,7 +380,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             okenChanges.push({ name: "btc", type: "买入", oldAmount: self.btcBuy, nowAmount: data.availableAmount });
                             self.btcBuy = data.availableAmount;
                         } else {
-                            self.btcBuy = "";
+                            if (self.btcBuy) {
+                                change = true;
+                                self.desc += "当前用户的btc买入发生变化,从" + self.btcBuy + "变为0==";
+                                console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为0");
+                                okenChanges.push({ name: "btc", type: "买入", oldAmount: self.btcBuy, nowAmount: 0 });
+                                self.btcBuy = "";
+                            }
                         }
                     }
                     for (var i = 0; i < btcSell.length; i++) {
@@ -397,7 +403,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             okenChanges.push({ name: "btc", type: "卖出", oldAmount: self.btcSell, nowAmount: data.availableAmount });
                             self.btcSell = data.availableAmount;
                         } else {
-                            self.btcSell = "";
+                            if (self.btcSell) {
+                                change = true;
+                                self.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为0==";
+                                console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为0");
+                                okenChanges.push({ name: "btc", type: "卖出", oldAmount: self.btcSell, nowAmount: 0 });
+                                self.btcSell = "";
+                            }
                         }
                     }
 
@@ -415,7 +427,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             okenChanges.push({ name: "usdt", type: "买入", oldAmount: self.usdtBuy, nowAmount: data.availableAmount });
                             self.usdtBuy = data.availableAmount;
                         } else {
-                            self.usdtBuy = "";
+                            if (self.usdtBuy) {
+                                change = true;
+                                self.desc += "当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0==";
+                                console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0");
+                                okenChanges.push({ name: "usdt", type: "买入", oldAmount: self.usdtBuy, nowAmount: 0 });
+                                self.usdtBuy = "";
+                            }
                         }
                     }
 
@@ -433,7 +451,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             okenChanges.push({ name: "usdt", type: "卖出", oldAmount: self.usdtSell, nowAmount: data.availableAmount });
                             self.usdtSell = data.availableAmount;
                         } else {
-                            self.usdtSell = "";
+                            if (self.usdtSell) {
+                                change = true;
+                                self.desc += "当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0==";
+                                console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0");
+                                okenChanges.push({ name: "usdt", type: "卖出", oldAmount: self.usdtSell, nowAmount: 0 });
+                                self.usdtSell = "";
+                            }
                         }
                     }
                     if (change) {
@@ -3614,4 +3638,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.a9f159616795fdca9872.js.map
+//# sourceMappingURL=app.f242849a11586dad069a.js.map

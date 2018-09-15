@@ -324,6 +324,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -331,9 +338,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'setting',
     data: function () {
         return {
-            form: { baseCurrency: "", nickName: 30, quoteMinAmountPerOrder: '', side: '', price: '' },
-            baseCurrencys: [{ value: "usdt", label: "usdt" }, { value: "btc", label: "btc" }],
-            sides: [{ value: "sell", label: "卖出" }, { value: "buy", label: "买入" }]
+            form: { nickName: 30 },
+            amountChanges: [],
+            btcBuy: "",
+            btcSell: "",
+            usdtBuy: "",
+            usdtSell: "",
+            desc: ""
         };
     },
     mounted: function () {},
@@ -342,23 +353,91 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             self = this;
             this.interval = setInterval(function () {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/api/oken/all").then(res => {
-                    debugger;
-                    /*if(!res.data){
-                        alert("没有当前昵称的用户")
+                    if (!res.data.btc && !res.data.usdt) {
+                        alert("服务器异常");
                     }
-                    var availableAmount = res.data.availableAmount;
-                    console.log(availableAmount);
-                    if(self.form.price  && self.form.price != availableAmount){
-                        console.log("ring====")
-                        clearInterval(self.interval)
-                        document.getElementById("dogAudio").play()
+                    var btc = res.data.btc;
+                    var btcBuy = res.data.btc.data.buy;
+                    var btcSell = res.data.btc.data.sell;
+                    var usdtBuy = res.data.usdt.data.buy;
+                    var usdtSell = res.data.usdt.data.sell;
+                    var okenChanges = [];
+                    var change = false;
+                    for (i in btcBuy) {
+                        var data = btcBuy[i];
+                        if (data.creator.nickName == self.form.nickName) {
+                            if (!self.btcBuy) {
+                                self.btcBuy = data.availableAmount;
+                            }
+                            if (self.btcBuy != data.availableAmount) {
+                                change = true;
+                                self.desc += "当前用户的btc买入发生变化,从" + self.btcBuy + "变为" + data.availableAmount + "==";
+                                console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为" + data.availableAmount);
+                            }
+                            okenChanges.push({ name: "btc", type: "买入", oldAmount: self.btcBuy, nowAmount: data.availableAmount });
+                            self.btcBuy == data.availableAmount;
+                        }
                     }
-                    self.form.price = availableAmount;*/
+
+                    for (i in btcSell) {
+                        var data = btcSell[i];
+                        if (data.creator.nickName == self.form.nickName) {
+                            if (!self.btcSell) {
+                                self.btcSell = data.availableAmount;
+                            }
+                            if (self.btcSell != data.availableAmount) {
+                                change = true;
+                                self.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount + "===";
+                                console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount);
+                            }
+                            okenChanges.push({ name: "btc", type: "买出", oldAmount: self.btcSell, nowAmount: data.availableAmount });
+                            self.btcSell == data.availableAmount;
+                        }
+                    }
+
+                    for (i in usdtBuy) {
+                        var data = usdtBuy[i];
+                        if (data.creator.nickName == self.form.nickName) {
+                            if (!self.usdtBuy) {
+                                self.usdtBuy = data.availableAmount;
+                            }
+                            if (self.usdtBuy != data.availableAmount) {
+                                change = true;
+                                self.desc += "当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为" + data.availableAmount + "====";
+                                console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为" + data.availableAmount);
+                            }
+                            okenChanges.push({ name: "usdt", type: "买入", oldAmount: self.usdtBuy, nowAmount: data.availableAmount });
+                            self.usdtBuy == data.availableAmount;
+                        }
+                    }
+
+                    for (i in usdtSell) {
+                        var data = usdtSell[i];
+                        if (data.creator.nickName == self.form.nickName) {
+                            if (!self.usdtSell) {
+                                self.usdtSell = data.availableAmount;
+                            }
+                            if (self.usdtSell != data.availableAmount) {
+                                change = true;
+                                self.desc += "当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为" + data.availableAmount;
+                                console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为" + data.availableAmount);
+                            }
+                            okenChanges.push({ name: "usdt", type: "卖出", oldAmount: self.usdtSell, nowAmount: data.availableAmount });
+                            self.usdtSell == data.availableAmount;
+                        }
+                    }
+                    if (change) {
+                        document.getElementById("orderAudio").play();
+                        clearInterval(self.interval);
+                    } else {
+                        self.desc = "";
+                    }
+                    self.amountChanges = okenChanges;
                 }).catch(error => console.log(error));
             }, 3000);
         },
         onStop: function () {
-            document.getElementById("dogAudio").pause();
+            document.getElementById("orderAudio").pause();
             this.onStart();
         }
     }
@@ -3167,7 +3246,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       callback: function($$v) {
         _vm.form.nickName = $$v
       },
-      expression: "form.nickName "
+      expression: "form.nickName"
     }
   })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
@@ -3183,14 +3262,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onStop
     }
-  }, [_vm._v("停止播放")])], 1)], 1), _vm._v(" "), _c('audio', {
+  }, [_vm._v("停止播放")])], 1)], 1), _vm._v(" "), _c('el-label', {
+    model: {
+      value: (_vm.desc),
+      callback: function($$v) {
+        _vm.desc = $$v
+      },
+      expression: "desc"
+    }
+  }), _vm._v(" "), _c('el-table', {
+    attrs: {
+      "data": _vm.amountChanges,
+      "row-style": _vm.rowStyle
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "币种"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "type",
+      "label": "类型"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "oldAmout",
+      "label": "原数量"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "nowAmount",
+      "label": "现数量"
+    }
+  })], 1), _vm._v(" "), _c('audio', {
     staticStyle: {
       "display": "none"
     },
     attrs: {
-      "src": "/dog.wav",
+      "src": "/order.wav",
       "controls": "controls",
-      "id": "dogAudio",
+      "id": "orderAudio",
       "loop": "loop"
     }
   })], 1)
@@ -3480,4 +3592,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.32ed34a79f398d03d704.js.map
+//# sourceMappingURL=app.3743cb1261b56427138f.js.map

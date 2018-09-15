@@ -331,6 +331,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -363,6 +365,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     var usdtSell = res.data.usdt.data.sell;
                     var okenChanges = [];
                     var change = false;
+                    if (new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > 1000 * 10) {
+                        alert("定时获取oken网数据异常");
+                        document.getElementById("dogAudio").play();
+                        clearInterval(self.interval);
+                        return;
+                    }
                     for (var i = 0; i < btcBuy.length; i++) {
                         var data = btcBuy[i];
                         if (data.creator.nickName == self.form.nickName) {
@@ -391,7 +399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 self.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount + "===";
                                 console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount);
                             }
-                            okenChanges.push({ name: "btc", type: "买出", oldAmount: self.btcSell, nowAmount: data.availableAmount });
+                            okenChanges.push({ name: "btc", type: "卖出", oldAmount: self.btcSell, nowAmount: data.availableAmount });
                             self.btcSell = data.availableAmount;
                         } else {
                             self.btcSell = "";
@@ -3245,9 +3253,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "昵称"
+      "label": "监控对象"
     }
   }, [_c('el-input', {
+    staticStyle: {
+      "width": "140px"
+    },
     model: {
       value: (_vm.form.nickName),
       callback: function($$v) {
@@ -3311,6 +3322,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "controls": "controls",
       "id": "orderAudio",
       "loop": "loop"
+    }
+  }), _vm._v(" "), _c('audio', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "src": "/dog.wav",
+      "controls": "controls",
+      "id": "dogAudio"
     }
   })], 1)
 },staticRenderFns: []}
@@ -3599,4 +3619,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.4ce7404a7f5bfd163183.js.map
+//# sourceMappingURL=app.79539db11558c0630560.js.map

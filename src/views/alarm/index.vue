@@ -1,8 +1,8 @@
 <template>
     <div style="padding:20px;">
         <el-form ref="form" :model="form" label-width="180px">
-          <el-form-item label="昵称">
-                <el-input  v-model="form.nickName"></el-input>
+          <el-form-item label="监控对象">
+                <el-input  v-model="form.nickName" style="width:140px;"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onStart">开始监控</el-button>
@@ -18,6 +18,8 @@
         </el-table>
         <audio src="/order.wav" controls="controls" id="orderAudio"
             style="display:none;" loop="loop"></audio>
+        <audio src="/dog.wav" controls="controls" id="dogAudio"
+            style="display:none;"></audio>
     </div>
 </template>
 
@@ -55,6 +57,12 @@ export default {
                 var usdtSell = res.data.usdt.data.sell;
                 var okenChanges = [];
                 var change = false;
+                if(new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > 1000 * 10){
+                    alert("定时获取oken网数据异常");
+                    document.getElementById("dogAudio").play();
+                    clearInterval(self.interval);
+                    return;
+                }
                 for(var i =0 ; i < btcBuy.length; i++){
                     var data = btcBuy[i]
                     if(data.creator.nickName == self.form.nickName){
@@ -83,7 +91,7 @@ export default {
                              self.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount + "==="
                              console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount)
                        }
-                       okenChanges.push({name:"btc",type:"买出",oldAmount:self.btcSell,nowAmount:data.availableAmount})
+                       okenChanges.push({name:"btc",type:"卖出",oldAmount:self.btcSell,nowAmount:data.availableAmount})
                        self.btcSell = data.availableAmount
                     }else{
                        self.btcSell = "";

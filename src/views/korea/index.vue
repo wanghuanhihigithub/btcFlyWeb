@@ -30,7 +30,7 @@ export default {
   name: 'hello',
   data: function(){
     return {
-        form:{price:45000},
+        form:{price:45000, commission:0},
         isRunning:false,
         ubitBtc:[]
     }

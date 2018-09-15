@@ -428,7 +428,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: 'hello',
         data: function () {
                 return {
-                        form: { price: 45000 },
+                        form: { price: 45000, commission: 0 },
                         isRunning: false,
                         ubitBtc: []
                 };
@@ -3559,4 +3559,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.a57b5b1953bde1640505.js.map
+//# sourceMappingURL=app.fb2bef74002483c5d041.js.map

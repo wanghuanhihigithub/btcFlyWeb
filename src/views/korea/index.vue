@@ -58,7 +58,7 @@ export default {
         self = this
         axios.get('/api/ubit/btc').then(res=>{
             if(res.data.length>0){
-                var chinaPrice = self.form.price - self.form.commission;
+                var chinaPrice = self.form.price +  self.form.commission;
                 var koreaPrice = res.data[0]["trade_price"];
                 var parities = (koreaPrice / chinaPrice).toFixed(2);
                 var date = new Date(res.data[0]["trade_timestamp"])

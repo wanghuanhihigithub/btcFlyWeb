@@ -572,7 +572,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         self = this;
                         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/ubit/btc').then(res => {
                                 if (res.data.length > 0) {
-                                        var chinaPrice = self.form.price - self.form.commission;
+                                        var chinaPrice = self.form.price + self.form.commission;
                                         var koreaPrice = res.data[0]["trade_price"];
                                         var parities = (koreaPrice / chinaPrice).toFixed(2);
                                         var date = new Date(res.data[0]["trade_timestamp"]);
@@ -3668,4 +3668,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.f5e4c0717768b0e3a762.js.map
+//# sourceMappingURL=app.cf9167e530bd4d5a3036.js.map

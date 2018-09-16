@@ -549,9 +549,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         ubitBtc: []
                 };
         },
-        mounted: function () {
-                document.title = "汇率";
-        },
+        mounted: function () {},
         methods: {
                 start: function () {
                         if (this.isRunning) {
@@ -592,13 +590,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 100)).toFixed(2) });
                                         self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price - 50,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 50)).toFixed(2) });
+                                        document.title = self.form.price + " " + parities;
                                         self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price,
                                                 koreaPrice: koreaPrice, parities: parities });
-                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price + 50,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: parseInt(self.form.price) + 50,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 50)).toFixed(2) });
-                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price + 100,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: parseInt(self.form.price) + 100,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 100)).toFixed(2) });
-                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price + 150,
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: parseInt(self.form.price) + 150,
                                                 koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 150)).toFixed(2) });
                                 }
                         }).catch(error => console.log(error));
@@ -3669,4 +3668,4 @@ webpackContext.id = 191;
 
 /***/ })
 ],[132]);
-//# sourceMappingURL=app.3839e1931a2724db0942.js.map
+//# sourceMappingURL=app.f5e4c0717768b0e3a762.js.map

@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c95971-fe70-4532-813c-63e2dda093b3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/test/index.vue" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/app.553058eb0e27516ce683.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/app.553058eb0e27516ce683.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/manifest.ebfdbbe6c5372dcc1c7d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/manifest.ebfdbbe6c5372dcc1c7d.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/vendor.615b6e342290f80366cb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/vendor.615b6e342290f80366cb.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/views/dashboard/index.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/views/nav/index.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/views/nav/index1.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/views/search/index.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/views/setting/index.vue" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/app.773bd78e2a23d5b00845.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/app.773bd78e2a23d5b00845.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/manifest.7aa420db805097652ccf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/manifest.7aa420db805097652ccf.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/vendor.6c584d2da6e4f094b5f3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/vendor.6c584d2da6e4f094b5f3.js.map" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router.js" afterPath="$PROJECT_DIR$/src/router/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/new/index.vue" afterPath="$PROJECT_DIR$/src/views/new/index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/test/index.vue" afterPath="$PROJECT_DIR$/src/views/test/index.vue" />
     </list>
     <ignored path="btcFlyWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,14 +35,14 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/new/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+            <state relative-caret-position="354">
+              <caret line="152" column="8" selection-start-line="152" selection-start-column="8" selection-end-line="152" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router/router.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="242">
@@ -61,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/test/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="156">
+              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -138,8 +131,9 @@
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/src/views/alarm/index.vue" />
         <option value="$PROJECT_DIR$/src/views/korea/index.vue" />
-        <option value="$PROJECT_DIR$/src/views/new/index.vue" />
         <option value="$PROJECT_DIR$/src/router/router.js" />
+        <option value="$PROJECT_DIR$/src/views/test/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/new/index.vue" />
       </list>
     </option>
   </component>
@@ -279,6 +273,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btcFlyWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btcFlyWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -919,7 +935,7 @@
       <workItem from="1537112958397" duration="754000" />
       <workItem from="1537146278814" duration="1828000" />
       <workItem from="1537408696229" duration="747000" />
-      <workItem from="1537444060818" duration="236000" />
+      <workItem from="1537444060818" duration="672000" />
     </task>
     <task id="LOCAL-00001" summary="前端更新">
       <created>1528896477713</created>
@@ -1047,11 +1063,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537020488567</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="代码提错了&#10;">
+      <created>1537444512247</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1537444512247</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258914000" />
+    <option name="totallyTimeSpent" value="259350000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1378" height="733" extended-state="0" />
@@ -1068,7 +1091,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49344262" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9409836" sideWeight="0.4969743" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6327212" sideWeight="0.47276855" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28714523" sideWeight="0.47276855" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14795144" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1139,7 +1162,8 @@
     <MESSAGE value="音频问题解决" />
     <MESSAGE value="ws" />
     <MESSAGE value="1111" />
-    <option name="LAST_COMMIT_MESSAGE" value="1111" />
+    <MESSAGE value="代码提错了&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="代码提错了&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1414,22 +1438,6 @@
     <entry file="file://$PROJECT_DIR$/src/views/dashboard/index.vue" />
     <entry file="file://$PROJECT_DIR$/src/views/search/index.vue" />
     <entry file="file://$PROJECT_DIR$/src/views/setting/index.vue" />
-    <entry file="file://$PROJECT_DIR$/src/views/test/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/new/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router/router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1437,6 +1445,22 @@
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/new/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="152" column="8" selection-start-line="152" selection-start-column="8" selection-end-line="152" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/test/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

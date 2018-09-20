@@ -360,7 +360,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             this.isRunning = true;
             this.interval = setInterval(function () {
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/api/oken/all").then(res => {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/virtual/oken").then(res => {
+                    debugger;
                     if (!res.data.btc && !res.data.usdt) {
                         alert("服务器异常");
                     }
@@ -2938,4 +2939,4 @@ webpackContext.id = 178;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.00f26b8b89318d64fa63.js.map
+//# sourceMappingURL=app.1fb50bf7ace74cefa900.js.map

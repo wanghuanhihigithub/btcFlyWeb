@@ -52,7 +52,8 @@ export default {
         }
         this.isRunning = true;
         this.interval = setInterval(function() {
-            axios.get("/api/oken/all").then(res=>{
+            axios.get("/virtual/oken").then(res=>{
+                debugger;
                 if(!res.data.btc && !res.data.usdt){
                     alert("服务器异常")
                 }

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c95971-fe70-4532-813c-63e2dda093b3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/new/index.vue" afterPath="$PROJECT_DIR$/src/views/new/index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/korea/index.vue" afterPath="$PROJECT_DIR$/src/views/korea/index.vue" />
     </list>
     <ignored path="btcFlyWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/new/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="240" column="8" selection-start-line="240" selection-start-column="8" selection-end-line="240" selection-end-column="8" />
+            <state relative-caret-position="226">
+              <caret line="231" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="240" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -66,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/korea/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="55" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="98" selection-end-column="9" />
+            <state relative-caret-position="355">
+              <caret line="240" column="8" selection-start-line="240" selection-start-column="8" selection-end-line="240" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -122,10 +122,10 @@
         <option value="$PROJECT_DIR$/src/views/mobile/index.vue" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/src/views/alarm/index.vue" />
-        <option value="$PROJECT_DIR$/src/views/korea/index.vue" />
         <option value="$PROJECT_DIR$/src/router/router.js" />
         <option value="$PROJECT_DIR$/src/views/test/index.vue" />
         <option value="$PROJECT_DIR$/src/views/new/index.vue" />
+        <option value="$PROJECT_DIR$/src/views/korea/index.vue" />
       </list>
     </option>
   </component>
@@ -949,7 +949,7 @@
       <workItem from="1537112958397" duration="754000" />
       <workItem from="1537146278814" duration="1828000" />
       <workItem from="1537408696229" duration="747000" />
-      <workItem from="1537444060818" duration="1333000" />
+      <workItem from="1537444060818" duration="1447000" />
     </task>
     <task id="LOCAL-00001" summary="前端更新">
       <created>1528896477713</created>
@@ -1088,7 +1088,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260011000" />
+    <option name="totallyTimeSpent" value="260125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1378" height="733" extended-state="0" />
@@ -1454,14 +1454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/korea/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="55" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="98" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/test/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
@@ -1472,7 +1464,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/new/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
+        <state relative-caret-position="226">
+          <caret line="231" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="240" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/korea/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
           <caret line="240" column="8" selection-start-line="240" selection-start-column="8" selection-end-line="240" selection-end-column="8" />
           <folding />
         </state>

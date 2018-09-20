@@ -1,5 +1,81 @@
 <template>
     <div>
+         <el-form ref="form" :model="form" label-width="180px">
+             <el-form-item label="乘数" style="float:left;">
+                  <el-input  v-model="form.price" style="width:100px;"/>
+             </el-form-item>
+             <el-form-item label="报警最小阈值" style="float:left;">
+                  <el-input  v-model="form.minPrice" style="width:180px;"/>
+             </el-form-item>
+             <el-form-item label="报警最大阈值" style="float:left;">
+                  <el-input  v-model="form.maxPrice" style="width:180px;"/>
+             </el-form-item>
+             <el-form-item style="float:right;">
+                 <el-button type="primary" @click="start">开始</el-button>
+                 <el-button @click="end">结束</el-button>
+             </el-form-item>
+         </el-form>
+         <el-radio-group v-model="titleCoin" style="margin-left:140px">
+             <el-radio :label="1">oken</el-radio>
+             <el-radio :label="2">火币</el-radio>
+             <el-radio :label="3">fcoin</el-radio>
+             <el-radio :label="4">coinEx</el-radio>
+         </el-radio-group>
+         <div style="height:20px;"/>
+         <div>
+            <el-table :data="okenBtcCoin" style="width:56%;float:left;">
+                 <el-table-column  prop="name"  label="平台"/>
+                 <el-table-column  prop="now"  label="时间"/>
+                 <el-table-column  prop="calc"  label="btc人民币"/>
+                 <el-table-column  prop="last"  label="btc美元"/>
+            </el-table>
+            <el-table :data="okenEthCoin" style="width:42%;">
+                <el-table-column  prop="now"  label="时间"/>
+                <el-table-column  prop="calc"  label="eth人民币"/>
+                <el-table-column  prop="last"  label="eth美元"/>
+            </el-table>
+         </div>
+         <div style="clear:both;">
+           <el-table :data="huoBiBtcCoin" style="width:56%;float:left;" :show-header="false">
+                <el-table-column  prop="name"  label="平台"/>
+                <el-table-column  prop="now"  label="时间"/>
+                <el-table-column  prop="calc"  label="btc人民币"/>
+                <el-table-column  prop="last"  label="btc美元"/>
+           </el-table>
+           <el-table :data="huoBiEthCoin" style="width:42%;" :show-header="false">
+               <el-table-column  prop="now"  label="时间"/>
+               <el-table-column  prop="calc"  label="eth人民币"/>
+               <el-table-column  prop="last"  label="eth美元"/>
+           </el-table>
+         </div>
+         <div style="clear:both;">
+            <el-table :data="fcoinBtcCoin" style="width:56%;float:left;" :show-header="false">
+                 <el-table-column  prop="name"  label="平台"/>
+                 <el-table-column  prop="now"  label="时间"/>
+                 <el-table-column  prop="calc"  label="btc人民币"/>
+                 <el-table-column  prop="last"  label="btc美元"/>
+            </el-table>
+            <el-table :data="fcoinEthCoin" style="width:42%;" :show-header="false">
+                <el-table-column  prop="now"  label="时间"/>
+                <el-table-column  prop="calc"  label="eth人民币"/>
+                <el-table-column  prop="last"  label="eth美元"/>
+            </el-table>
+         </div>
+         <div style="clear:both;">
+             <el-table :data="coinExBtcCoin" style="width:56%;float:left;" :show-header="false">
+                  <el-table-column  prop="name"  label="平台"/>
+                  <el-table-column  prop="now"  label="时间"/>
+                  <el-table-column  prop="calc"  label="btc人民币"/>
+                  <el-table-column  prop="last"  label="btc美元"/>
+             </el-table>
+             <el-table :data="coinExEthCoin" style="width:42%;" :show-header="false">
+                 <el-table-column  prop="now"  label="时间"/>
+                 <el-table-column  prop="calc"  label="eth人民币"/>
+                 <el-table-column  prop="last"  label="eth美元"/>
+             </el-table>
+         </div>
+         <audio src="/dog.wav" controls="controls" id="dogAudio" style="display:none;"></audio>
+         <!--<el-button type="primary" @click="goAlarm">进入告警页面</el-button>-->
     </div>
 </template>
 
@@ -9,7 +85,19 @@ import axios from 'axios'
 export default {
   name: 'hello',
   data: function(){
-    return {}
+    return {
+        form:{price:0,minPrice:40000,maxPrice:80000},
+        titleCoin:1,
+        okenBtcCoin:[],
+        okenEthCoin:[],
+        isRunning:false,
+        huoBiBtcCoin:[],
+        huoBiEthCoin:[],
+        fcoinBtcCoin:[],
+        fcoinEthCoin:[],
+        coinExBtcCoin:[],
+        coinExEthCoin:[]
+    }
   },
   mounted: function(){
   },

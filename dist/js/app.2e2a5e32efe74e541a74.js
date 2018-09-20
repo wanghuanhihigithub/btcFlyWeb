@@ -874,13 +874,101 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'hello',
     data: function () {
-        return {};
+        return {
+            form: { price: 0, minPrice: 40000, maxPrice: 80000 },
+            titleCoin: 1,
+            okenBtcCoin: [],
+            okenEthCoin: [],
+            isRunning: false,
+            huoBiBtcCoin: [],
+            huoBiEthCoin: [],
+            fcoinBtcCoin: [],
+            fcoinEthCoin: [],
+            coinExBtcCoin: [],
+            coinExEthCoin: []
+        };
     },
     mounted: function () {},
     methods: {
@@ -2157,7 +2245,340 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div')
+  return _c('div', [_c('el-form', {
+    ref: "form",
+    attrs: {
+      "model": _vm.form,
+      "label-width": "180px"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
+    attrs: {
+      "label": "乘数"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "100px"
+    },
+    model: {
+      value: (_vm.form.price),
+      callback: function($$v) {
+        _vm.form.price = $$v
+      },
+      expression: "form.price"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
+    attrs: {
+      "label": "报警最小阈值"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "180px"
+    },
+    model: {
+      value: (_vm.form.minPrice),
+      callback: function($$v) {
+        _vm.form.minPrice = $$v
+      },
+      expression: "form.minPrice"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
+    attrs: {
+      "label": "报警最大阈值"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "180px"
+    },
+    model: {
+      value: (_vm.form.maxPrice),
+      callback: function($$v) {
+        _vm.form.maxPrice = $$v
+      },
+      expression: "form.maxPrice"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "right"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.start
+    }
+  }, [_vm._v("开始")]), _vm._v(" "), _c('el-button', {
+    on: {
+      "click": _vm.end
+    }
+  }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-radio-group', {
+    staticStyle: {
+      "margin-left": "140px"
+    },
+    model: {
+      value: (_vm.titleCoin),
+      callback: function($$v) {
+        _vm.titleCoin = $$v
+      },
+      expression: "titleCoin"
+    }
+  }, [_c('el-radio', {
+    attrs: {
+      "label": 1
+    }
+  }, [_vm._v("oken")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 2
+    }
+  }, [_vm._v("火币")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 3
+    }
+  }, [_vm._v("fcoin")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": 4
+    }
+  }, [_vm._v("coinEx")])], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "height": "20px"
+    }
+  }), _vm._v(" "), _c('div', [_c('el-table', {
+    staticStyle: {
+      "width": "56%",
+      "float": "left"
+    },
+    attrs: {
+      "data": _vm.okenBtcCoin
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "btc人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "btc美元"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "42%"
+    },
+    attrs: {
+      "data": _vm.okenEthCoin
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "eth人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "eth美元"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "clear": "both"
+    }
+  }, [_c('el-table', {
+    staticStyle: {
+      "width": "56%",
+      "float": "left"
+    },
+    attrs: {
+      "data": _vm.huoBiBtcCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "btc人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "btc美元"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "42%"
+    },
+    attrs: {
+      "data": _vm.huoBiEthCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "eth人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "eth美元"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "clear": "both"
+    }
+  }, [_c('el-table', {
+    staticStyle: {
+      "width": "56%",
+      "float": "left"
+    },
+    attrs: {
+      "data": _vm.fcoinBtcCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "btc人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "btc美元"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "42%"
+    },
+    attrs: {
+      "data": _vm.fcoinEthCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "eth人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "eth美元"
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "clear": "both"
+    }
+  }, [_c('el-table', {
+    staticStyle: {
+      "width": "56%",
+      "float": "left"
+    },
+    attrs: {
+      "data": _vm.coinExBtcCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "btc人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "btc美元"
+    }
+  })], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "42%"
+    },
+    attrs: {
+      "data": _vm.coinExEthCoin,
+      "show-header": false
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "now",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "calc",
+      "label": "eth人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "last",
+      "label": "eth美元"
+    }
+  })], 1)], 1), _vm._v(" "), _c('audio', {
+    staticStyle: {
+      "display": "none"
+    },
+    attrs: {
+      "src": "/dog.wav",
+      "controls": "controls",
+      "id": "dogAudio"
+    }
+  })], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -2414,4 +2835,4 @@ webpackContext.id = 178;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.885f4f84fbc5eabfe23b.js.map
+//# sourceMappingURL=app.2e2a5e32efe74e541a74.js.map

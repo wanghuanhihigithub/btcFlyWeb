@@ -13,7 +13,7 @@ webpackJsonp([1],[
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mockjs__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mockjs__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mockjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mockjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ServiceData__ = __webpack_require__(130);
@@ -39,7 +39,7 @@ __WEBPACK_IMPORTED_MODULE_0_mockjs___default.a.mock(/\/servicedata/, 'get', __WE
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_user__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__getters__ = __webpack_require__(133);
 
@@ -157,7 +157,7 @@ module.exports = {"lang":"zh-CN","pages":{"login":{"title":"系统登录","place
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_i18n__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_i18n__ = __webpack_require__(163);
 
 
 const config = __webpack_require__(128);
@@ -168,7 +168,7 @@ const locale = config.locale || "zh-CN";
 const languages = config.languages || ['zh-CN', 'cn'];
 const messages = {};
 languages.map(lang => {
-    messages[lang] = Object.assign(__webpack_require__(179)(`./${lang}`), __webpack_require__(145)(`./${lang}`).default);
+    messages[lang] = Object.assign(__webpack_require__(178)(`./${lang}`), __webpack_require__(145)(`./${lang}`).default);
 });
 const $i18n = new __WEBPACK_IMPORTED_MODULE_1_vue_i18n__["a" /* default */]({
     locale,
@@ -185,7 +185,7 @@ window.$i18n = $i18n;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router_js__ = __webpack_require__(132);
 
 
@@ -232,7 +232,7 @@ var Component = __webpack_require__(7)(
   /* script */
   __webpack_require__(121),
   /* template */
-  __webpack_require__(173),
+  __webpack_require__(172),
   /* styles */
   null,
   /* scopeId */
@@ -537,233 +537,78 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'hello',
-    data: function () {
-        return {
-            form: { price: 0, minPrice: 40000, maxPrice: 80000 },
-            titleCoin: 1,
-            okenBtcCoin: [],
-            okenEthCoin: [],
-            isRunning: false,
-            huoBiBtcCoin: [],
-            huoBiEthCoin: [],
-            fcoinBtcCoin: [],
-            fcoinEthCoin: [],
-            coinExBtcCoin: [],
-            coinExEthCoin: []
-        };
-    },
-    mounted: function () {},
-    methods: {
-        start: function () {
-            if (this.isRunning) {
-                alert("已经开始执行，不能再开始");
-                return;
-            }
-            this.isRunning = true;
-            this.getOken("usdt", "btc");
-            this.getOken("usdt", "eth");
-            this.getHuoBi("usdt", "btc");
-            this.getHuoBi("usdt", "eth");
-            this.getFcoin("usdt", "btc");
-            this.getFcoin("usdt", "eth");
-            this.getCoinEx("usdt", "btc");
-            this.getCoinEx("usdt", "eth");
-            this.okenUsdtBtcInterval = setInterval(function () {
-                self.getOken("usdt", "btc");
-            }, 1000);
-            this.okenUsdtEthInterval = setInterval(function () {
-                self.getOken("usdt", "eth");
-            }, 1000);
-            this.huoBiUsdtBtcInterval = setInterval(function () {
-                self.getHuoBi("usdt", "btc");
-            }, 1000);
-            this.huoBiUsdtEthInterval = setInterval(function () {
-                self.getHuoBi("usdt", "eth");
-            }, 1000);
-            this.fcoinUsdtBtcInterval = setInterval(function () {
-                self.getFcoin("usdt", "btc");
-            }, 1000);
-            this.fcoinUsdtEthInterval = setInterval(function () {
-                self.getFcoin("usdt", "eth");
-            }, 1000);
-            this.coinExUsdtBtcInterval = setInterval(function () {
-                self.getCoinEx("usdt", "btc");
-            }, 2000);
-            this.coinExUsdtEthInterval = setInterval(function () {
-                self.getCoinEx("usdt", "eth");
-            }, 2000);
+        name: 'hello',
+        data: function () {
+                return {
+                        form: { price: 45000, commission: 0 },
+                        isRunning: false,
+                        ubitBtc: []
+                };
         },
-        end: function () {
-            clearInterval(this.okenUsdtBtcInterval);
-            clearInterval(this.okenUsdtEthInterval);
-            clearInterval(this.huoBiUsdtBtcInterval);
-            clearInterval(this.huoBiUsdtEthInterval);
-            clearInterval(this.fcoinUsdtBtcInterval);
-            clearInterval(this.fcoinUsdtEthInterval);
-            clearInterval(this.coinExUsdtBtcInterval);
-            clearInterval(this.coinExUsdtEthInterval);
-            this.isRunning = false;
-        },
-        getOken: function (fromType, toType) {
-            self = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/oken?fromType=' + fromType + "&toType=" + toType).then(res => {
-                //返回的String类型 因此需要转换
-                var data = eval('(' + res.data + ')');
-                console.log("oken网" + fromType + "-" + toType + ":", data);
-                var last = data.last;
-                var calc = (self.form.price * last).toFixed(2);
-                var date = new Date(data.timestamp);
-                var year = date.getFullYear();
-                var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-                var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-                var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-                var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-                var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-                var now = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
-                if (self.titleCoin == 1 && "btc" == toType) {
-                    document.title = minute + ":" + second + "  " + calc.split(".")[0] + "  " + self.form.price;
-                    self.ring(calc);
+        mounted: function () {},
+        methods: {
+                start: function () {
+                        if (this.isRunning) {
+                                alert("已经开始执行，不能再开始");
+                                return;
+                        }
+                        this.isRunning = true;
+                        this.getUitBtc();
+                        self = this;
+                        this.ubitBtcInterval = setInterval(function () {
+                                self.getUitBtc();
+                        }, 1000);
+                },
+                end: function () {
+                        clearInterval(this.ubitBtcInterval);
+                        this.isRunning = false;
+                        alert("已停止");
+                },
+                getUitBtc: function () {
+                        self = this;
+                        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/virtual/upbit').then(res => {
+                                if (res.status == 200 && res.data) {
+                                        var chinaPrice = parseInt(self.form.price) + parseInt(self.form.commission);
+                                        var koreaPrice = res.data["trade_price"];
+                                        var parities = (koreaPrice / chinaPrice).toFixed(2);
+                                        var date = new Date(res.data["trade_timestamp"]);
+                                        var year = date.getFullYear();
+                                        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                                        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                                        var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                                        var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                                        var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+                                        date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+                                        self.ubitBtc = [];
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price - 150,
+                                                koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 150)).toFixed(2) });
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price - 100,
+                                                koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 100)).toFixed(2) });
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price - 50,
+                                                koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice - 50)).toFixed(2) });
+                                        document.title = self.form.price + " " + parities;
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: self.form.price,
+                                                koreaPrice: koreaPrice, parities: parities });
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: parseInt(self.form.price) + 50,
+                                                koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 50)).toFixed(2) });
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: parseInt(self.form.price) + 100,
+                                                koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 100)).toFixed(2) });
+                                        self.ubitBtc.push({ name: "upbit", createDate: date, chinaPrice: parseInt(self.form.price) + 150,
+                                                koreaPrice: koreaPrice, parities: (koreaPrice / (chinaPrice + 150)).toFixed(2) });
+                                }
+                        }).catch(error => console.log(error));
+                },
+                rowStyle: function (row, index) {
+                        if (index == 3) {
+                                return { "background-color": "pink" };
+                        }
                 }
-                if ("btc" == toType) {
-                    self.okenBtcCoin = [{ name: "oken", now: now, calc: calc, last: last }];
-                }
-                if ("eth" == toType) {
-                    self.okenEthCoin = [{ name: "oken", now: now, calc: calc, last: last }];
-                }
-            }).catch(error => console.log(error));
-        },
-        getHuoBi: function (fromType, toType) {
-            self = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/huoBi?fromType=' + fromType + "&toType=" + toType).then(res => {
-                var data = eval('(' + res.data + ')');
-                console.log("huoBi " + fromType + "-" + toType + ":", data);
-                var calc = (self.form.price * data.close).toFixed(2);
-                if (self.titleCoin == 2 && "btc" == toType) {
-                    document.title = data.createdTime.split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-                    self.ring(calc);
-                }
-                if ("btc" == toType) {
-                    self.huoBiBtcCoin = [{ name: "huoBi", now: data.createdTime, calc: calc, last: data.close }];
-                }
-                if ("eth" == toType) {
-                    self.huoBiEthCoin = [{ name: "huoBi", now: data.createdTime, calc: calc, last: data.close }];
-                }
-            }).catch(error => console.log(error));
-        },
-        getFcoin: function (fromType, toType) {
-            self = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/fcoin?fromType=' + fromType + "&toType=" + toType).then(res => {
-                var data = eval('(' + res.data + ')');
-                console.log("fcoin " + fromType + "-" + toType + ":", data);
-                var calc = (self.form.price * data[0]).toFixed(2);
-                if (self.titleCoin == 3 && "btc" == toType) {
-                    document.title = data[data.length - 1].split(" ")[1].substring(3, 8) + "  " + calc.split(".")[0] + "  " + self.form.price;
-                    self.ring(calc);
-                }
-                if ("btc" == toType) {
-                    self.fcoinBtcCoin = [{ name: "fcoin", now: data[data.length - 1], calc: calc, last: data[0] }];
-                }
-                if ("eth" == toType) {
-                    self.fcoinEthCoin = [{ name: "fcoin", now: data[data.length - 1], calc: calc, last: data[0] }];
-                }
-            }).catch(error => console.log(error));
-        },
-        ring: function (price) {
-            if (price > this.form.maxPrice | price < this.form.minPrice) {
-                document.getElementById("dogAudio").play();
-            }
-        },
-        getCoinEx: function (fromType, toType) {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/coinEx?fromType=' + fromType + "&toType=" + toType).then(res => {
-                var data = eval('(' + res.data + ')');
-                console.log(data);
-                var last = data.data.ticker.last;
-                var calc = (self.form.price * last).toFixed(2);
-                var date = new Date(data.data.date);
-                var year = date.getFullYear();
-                var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-                var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-                var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-                var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-                var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-                var now = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
-                if (self.titleCoin == 4 && "btc" == toType) {
-                    document.title = second + ":" + second + "  " + calc.split(".")[0] + "  " + self.form.price;
-                    self.ring(calc);
-                }
-                if ("btc" == toType) {
-                    self.coinExBtcCoin = [{ name: "coinEx", now: now, calc: calc, last: last }];
-                }
-                if ("eth" == toType) {
-                    self.coinExEthCoin = [{ name: "coinEx", now: now, calc: calc, last: last }];
-                }
-            }).catch(error => console.log(error));
-        },
-        goAlarm: function () {
-            this.$router.push({ "path": "/alarm" });
+
         }
-    }
 });
 
 /***/ }),
@@ -1555,15 +1400,15 @@ const userMap = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_new__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_new__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_new___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_new__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_mobile__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_mobile__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_mobile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_mobile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_alarm__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_alarm__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_alarm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_alarm__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_korea__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_korea__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_korea___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_korea__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_test__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_test__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_test___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_test__);
 
 
@@ -1603,7 +1448,7 @@ const getters = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_login__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_cookie__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_cookie__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_js_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_js_cookie__);
 
 
@@ -1859,26 +1704,40 @@ webpackContext.id = 145;
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 158 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 158 */,
 /* 159 */,
 /* 160 */,
 /* 161 */,
 /* 162 */,
 /* 163 */,
-/* 164 */,
-/* 165 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(7)(
   /* script */
   __webpack_require__(122),
   /* template */
-  __webpack_require__(175),
+  __webpack_require__(174),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(7)(
+  /* script */
+  __webpack_require__(123),
+  /* template */
+  __webpack_require__(170),
   /* styles */
   null,
   /* scopeId */
@@ -1895,36 +1754,13 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 function injectStyle (ssrContext) {
-  __webpack_require__(157)
-}
-var Component = __webpack_require__(7)(
-  /* script */
-  __webpack_require__(123),
-  /* template */
-  __webpack_require__(171),
-  /* styles */
-  injectStyle,
-  /* scopeId */
-  "data-v-35b29bc6",
-  /* moduleIdentifier (server only) */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 167 */
-/***/ (function(module, exports, __webpack_require__) {
-
-function injectStyle (ssrContext) {
   __webpack_require__(156)
 }
 var Component = __webpack_require__(7)(
   /* script */
   __webpack_require__(124),
   /* template */
-  __webpack_require__(170),
+  __webpack_require__(169),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -1937,17 +1773,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 168 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function injectStyle (ssrContext) {
-  __webpack_require__(158)
+  __webpack_require__(157)
 }
 var Component = __webpack_require__(7)(
   /* script */
   __webpack_require__(125),
   /* template */
-  __webpack_require__(172),
+  __webpack_require__(171),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -1960,14 +1796,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 169 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(7)(
   /* script */
   __webpack_require__(126),
   /* template */
-  __webpack_require__(174),
+  __webpack_require__(173),
   /* styles */
   null,
   /* scopeId */
@@ -1980,7 +1816,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 170 */
+/* 169 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2303,6 +2139,105 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "dogAudio"
     }
   })], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      "padding": "20px"
+    }
+  }, [_c('el-form', {
+    ref: "form",
+    attrs: {
+      "model": _vm.form,
+      "label-width": "180px"
+    }
+  }, [_c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
+    attrs: {
+      "label": "人民币价格"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "140px"
+    },
+    model: {
+      value: (_vm.form.price),
+      callback: function($$v) {
+        _vm.form.price = $$v
+      },
+      expression: "form.price"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    },
+    attrs: {
+      "label": "手续费"
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "140px"
+    },
+    model: {
+      value: (_vm.form.commission),
+      callback: function($$v) {
+        _vm.form.commission = $$v
+      },
+      expression: "form.commission"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    staticStyle: {
+      "float": "left"
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.start
+    }
+  }, [_vm._v("开始")]), _vm._v(" "), _c('el-button', {
+    on: {
+      "click": _vm.end
+    }
+  }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-table', {
+    attrs: {
+      "data": _vm.ubitBtc,
+      "row-style": _vm.rowStyle
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "name",
+      "label": "平台"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "createDate",
+      "label": "时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "chinaPrice",
+      "label": "btc人民币"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "koreaPrice",
+      "label": "btc韩元"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "parities",
+      "label": "汇率"
+    }
+  })], 1)], 1)
 },staticRenderFns: []}
 
 /***/ }),
@@ -2651,347 +2586,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('el-form', {
-    ref: "form",
-    attrs: {
-      "model": _vm.form,
-      "label-width": "180px"
-    }
-  }, [_c('el-form-item', {
-    staticStyle: {
-      "float": "left"
-    },
-    attrs: {
-      "label": "乘数"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "100px"
-    },
-    model: {
-      value: (_vm.form.price),
-      callback: function($$v) {
-        _vm.form.price = $$v
-      },
-      expression: "form.price"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "float": "left"
-    },
-    attrs: {
-      "label": "报警最小阈值"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "180px"
-    },
-    model: {
-      value: (_vm.form.minPrice),
-      callback: function($$v) {
-        _vm.form.minPrice = $$v
-      },
-      expression: "form.minPrice"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "float": "left"
-    },
-    attrs: {
-      "label": "报警最大阈值"
-    }
-  }, [_c('el-input', {
-    staticStyle: {
-      "width": "180px"
-    },
-    model: {
-      value: (_vm.form.maxPrice),
-      callback: function($$v) {
-        _vm.form.maxPrice = $$v
-      },
-      expression: "form.maxPrice"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    staticStyle: {
-      "float": "right"
-    }
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.start
-    }
-  }, [_vm._v("开始")]), _vm._v(" "), _c('el-button', {
-    on: {
-      "click": _vm.end
-    }
-  }, [_vm._v("结束")])], 1)], 1), _vm._v(" "), _c('el-radio-group', {
-    staticStyle: {
-      "margin-left": "140px"
-    },
-    model: {
-      value: (_vm.titleCoin),
-      callback: function($$v) {
-        _vm.titleCoin = $$v
-      },
-      expression: "titleCoin"
-    }
-  }, [_c('el-radio', {
-    attrs: {
-      "label": 1
-    }
-  }, [_vm._v("oken")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 2
-    }
-  }, [_vm._v("火币")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 3
-    }
-  }, [_vm._v("fcoin")]), _vm._v(" "), _c('el-radio', {
-    attrs: {
-      "label": 4
-    }
-  }, [_vm._v("coinEx")])], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "height": "20px"
-    }
-  }), _vm._v(" "), _c('div', [_c('el-table', {
-    staticStyle: {
-      "width": "56%",
-      "float": "left"
-    },
-    attrs: {
-      "data": _vm.okenBtcCoin
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "btc人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "btc美元"
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    staticStyle: {
-      "width": "42%"
-    },
-    attrs: {
-      "data": _vm.okenEthCoin
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "eth人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "eth美元"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "clear": "both"
-    }
-  }, [_c('el-table', {
-    staticStyle: {
-      "width": "56%",
-      "float": "left"
-    },
-    attrs: {
-      "data": _vm.huoBiBtcCoin,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "btc人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "btc美元"
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    staticStyle: {
-      "width": "42%"
-    },
-    attrs: {
-      "data": _vm.huoBiEthCoin,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "eth人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "eth美元"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "clear": "both"
-    }
-  }, [_c('el-table', {
-    staticStyle: {
-      "width": "56%",
-      "float": "left"
-    },
-    attrs: {
-      "data": _vm.fcoinBtcCoin,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "btc人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "btc美元"
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    staticStyle: {
-      "width": "42%"
-    },
-    attrs: {
-      "data": _vm.fcoinEthCoin,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "eth人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "eth美元"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticStyle: {
-      "clear": "both"
-    }
-  }, [_c('el-table', {
-    staticStyle: {
-      "width": "56%",
-      "float": "left"
-    },
-    attrs: {
-      "data": _vm.coinExBtcCoin,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "name",
-      "label": "平台"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "btc人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "btc美元"
-    }
-  })], 1), _vm._v(" "), _c('el-table', {
-    staticStyle: {
-      "width": "42%"
-    },
-    attrs: {
-      "data": _vm.coinExEthCoin,
-      "show-header": false
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "now",
-      "label": "时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "calc",
-      "label": "eth人民币"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "last",
-      "label": "eth美元"
-    }
-  })], 1)], 1), _vm._v(" "), _c('audio', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "src": "/dog.wav",
-      "controls": "controls",
-      "id": "dogAudio"
-    }
-  })], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 173 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     attrs: {
       "id": "app"
@@ -3000,7 +2594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3099,7 +2693,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3203,10 +2797,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
+/* 175 */,
 /* 176 */,
 /* 177 */,
-/* 178 */,
-/* 179 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -3237,8 +2831,8 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 179;
+webpackContext.id = 178;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.6331effe0ce821642dfd.js.map
+//# sourceMappingURL=app.79519b2f51181eca5f80.js.map

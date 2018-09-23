@@ -32,7 +32,7 @@ export default {
   name: 'setting',
   data: function(){
     return {
-        form: {nickName: "★全网第一诚信",desc:""},
+        form: {nickName: "",desc:""},
         amountChanges:[],
         btcBuy:"",
         btcSell:"",
@@ -48,7 +48,7 @@ export default {
     var url = document.URL;
     if(url.indexOf("?") > -1){
         this.admin = true;
-        this.form.nickName = "";
+        this.form.nickName = "★全网第一诚信";
     }
   },
   methods: {

@@ -342,7 +342,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'setting',
     data: function () {
         return {
-            form: { nickName: "★全网第一诚信", desc: "" },
+            form: { nickName: "", desc: "" },
             amountChanges: [],
             btcBuy: "",
             btcSell: "",
@@ -358,7 +358,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var url = document.URL;
         if (url.indexOf("?") > -1) {
             this.admin = true;
-            this.form.nickName = "";
+            this.form.nickName = "★全网第一诚信";
         }
     },
     methods: {
@@ -2892,4 +2892,4 @@ webpackContext.id = 178;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.bee5998c481cf11d73df.js.map
+//# sourceMappingURL=app.3a0a55ab0a09655d5962.js.map

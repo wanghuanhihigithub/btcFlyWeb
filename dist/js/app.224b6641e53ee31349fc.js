@@ -377,12 +377,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     self.initData();
                     var okenChanges = [];
                     if (self.admin) {
-                        if (self.handlerData(res.data.btc.data.buy, self.btcBuy, "btc", "买入", okenChanges) | self.handlerData(res.data.btc.data.sell, self.btcSell, "btc", "卖出", okenChanges) | self.handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges) | self.handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges) | self.handlerData(res.data.eth.data.buy, self.ethBuy, "eth", "买入", okenChanges) | self.handlerData(res.data.eth.data.sell, self.ethSell, "eth", "卖出", okenChanges)) {
+                        if (self.handlerData(res.data.btc.data.buy, "btcBuy", "btc", "买入", okenChanges) | self.handlerData(res.data.btc.data.sell, "btcSell", "btc", "卖出", okenChanges) | self.handlerData(res.data.usdt.data.buy, "usdtBuy", "usdt", "买入", okenChanges) | self.handlerData(res.data.usdt.data.sell, "usdtSell", "usdt", "卖出", okenChanges) | self.handlerData(res.data.eth.data.buy, "ethBuy", "eth", "买入", okenChanges) | self.handlerData(res.data.eth.data.sell, "ethSell", "eth", "卖出", okenChanges)) {
                             document.getElementById("orderAudio").play();
                             clearInterval(self.interval);
                         }
                     } else {
-                        if (self.handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges) | self.handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges)) {
+                        if (self.handlerData(res.data.usdt.data.buy, "usdtBuy", "usdt", "买入", okenChanges) | self.handlerData(res.data.usdt.data.sell, "usdtSell", "usdt", "卖出", okenChanges)) {
                             document.getElementById("orderAudio").play();
                             clearInterval(self.interval);
                         }
@@ -404,24 +404,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = dataList[i];
                 if (data.creator.nickName == this.form.nickName) {
                     personCoinFind = true;
-                    if (!oldCoinValue) {
-                        oldCoinValue = data.availableAmount;
+                    if (!this[oldCoinValue]) {
+                        this[oldCoinValue] = data.availableAmount;
                     }
-                    if (oldCoinValue != data.availableAmount) {
+                    if (this[oldCoinValue] != data.availableAmount) {
                         change = true;
-                        self.form.desc += coinType + type + oldCoinValue + "--->" + data.availableAmount;
+                        self.form.desc += coinType + type + this[oldCoinValue] + "--->" + data.availableAmount;
                     }
-                    okenChanges.push({ name: coinType, type: type, oldAmount: oldCoinValue,
+                    okenChanges.push({ name: coinType, type: type, oldAmount: this[oldCoinValue],
                         nowAmount: data.availableAmount, createdDate: this.convertTimestampToString(data["createdDate"]) });
                     oldCoinValue = data.availableAmount;
                 }
             }
 
-            if (oldCoinValue && !personCoinFind) {
+            if (this[oldCoinValue] && !personCoinFind) {
                 change = true;
-                self.form.desc += coinType + type + oldCoinValue + "--->" + data.availableAmount;
-                okenChanges.push({ name: coinType, type: type, oldAmount: oldCoinValue, nowAmount: 0 });
-                oldCoinValue = "";
+                self.form.desc += coinType + type + this[oldCoinValue] + "--->" + data.availableAmount;
+                okenChanges.push({ name: coinType, type: type, oldAmount: this[oldCoinValue], nowAmount: 0 });
+                this[oldCoinValue] = "";
             }
             return change;
         },
@@ -2891,4 +2891,4 @@ webpackContext.id = 178;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.a89eafd5ad983dbaea04.js.map
+//# sourceMappingURL=app.224b6641e53ee31349fc.js.map

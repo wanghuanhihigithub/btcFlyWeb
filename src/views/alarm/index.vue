@@ -15,6 +15,7 @@
         </el-form>
         <el-table :data="amountChanges" :row-style="rowStyle">
             <el-table-column  prop="name"          label="币种"/>
+            <el-table-column  prop="createdDate"   label="挂单时间"/>
             <el-table-column  prop="type"          label="类型"/>
             <el-table-column  prop="oldAmount"      label="原数量"/>
             <el-table-column  prop="nowAmount"     label="现数量"/>
@@ -55,190 +56,78 @@ export default {
         this.isRunning = true;
         this.interval = setInterval(function() {
             axios.get("/virtual/oken").then(res=>{
-                debugger;
-                if(!res.data.btc && !res.data.usdt){
-                    alert("服务器异常")
+                if(!res.data.btc && !res.data.usdt && !res.data.eth){
+                    alert("服务器异常,请联系管理员")
+                    return;
                 }
-                var btcBuy = res.data.btc.data.buy;
-                var btcSell = res.data.btc.data.sell;
-                var usdtBuy = res.data.usdt.data.buy;
-                var usdtSell = res.data.usdt.data.sell;
-                var ethBuy = res.data.eth.data.buy;
-                var ethSell = res.data.eth.data.sell;
+                self.initData();
                 var okenChanges = [];
                 var change = false;
 
-                if(new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > (1000 * 30 + 8 * 60 * 60 * 1000)){
+                /*if(new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > (1000 * 30 + 8 * 60 * 60 * 1000)){
                       alert("定时获取oken网数据异常");
                       self.form.desc = "定时获取oken网买入卖出数据异常，请联系管理员";
                       clearInterval(self.interval);
                       return;
-                }else{
-                    self.form.desc = "";
+                }*/
+                if(handlerData(res.data.btc.data.buy, self.btcBuy, "btc", "买入", okenChanges)){
+                    change = true;
                 }
-
-                var btcBuyFind = false;
-                for(var i =0 ; i < btcBuy.length; i++){
-                    var data = btcBuy[i]
-                    if(data.creator.nickName == self.form.nickName){
-                        btcBuyFind = true;
-                        if(!self.btcBuy){
-                            self.btcBuy = data.availableAmount;
-                        }
-                        if(self.btcBuy != data.availableAmount){
-                            change = true
-                            self.form.desc += "当前用户的btc买入发生变化,从" + self.btcBuy + "变为" + data.availableAmount + "=="
-                            console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为" + data.availableAmount)
-                        }
-                        okenChanges.push({name:"btc",type:"买入",oldAmount:self.btcBuy,nowAmount:data.availableAmount})
-                        self.btcBuy = data.availableAmount
-                    }
+                if(handlerData(res.data.btc.data.sell, self.btcSell, "btc", "卖出", okenChanges)){
+                    change = true;
                 }
-                if(self.btcBuy && !btcBuyFind){
-                      change = true
-                      self.form.desc += "当前用户的btc买入发生变化,从" + self.btcBuy + "变为0=="
-                      console.log("当前用户的btc买入发生变化,从" + self.btcBuy + "变为0")
-                      okenChanges.push({name:"btc",type:"买入",oldAmount:self.btcBuy,nowAmount:0})
-                      self.btcBuy = "";
+                if(handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges)){
+                    change = true;
                 }
-
-                var btcSellFind = false;
-                for(var i =0 ; i < btcSell.length; i++){
-                    var data = btcSell[i]
-                    if(data.creator.nickName == self.form.nickName){
-                       btcSellFind = true;
-                       if(!self.btcSell){
-                          self.btcSell = data.availableAmount;
-                       }
-                       if(self.btcSell != data.availableAmount){
-                             change = true
-                             self.form.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount + "==="
-                             console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为" + data.availableAmount)
-                       }
-                       okenChanges.push({name:"btc",type:"卖出",oldAmount:self.btcSell,nowAmount:data.availableAmount})
-                       self.btcSell = data.availableAmount
-                    }
+                if(handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges)){
+                    change = true;
                 }
-                if(self.btcSell && !btcSellFind){
-                       change = true
-                       self.form.desc += "当前用户的btc卖出发生变化,从" + self.btcSell + "变为0=="
-                       console.log("当前用户的btc卖出发生变化,从" + self.btcSell + "变为0")
-                       okenChanges.push({name:"btc",type:"卖出",oldAmount:self.btcSell,nowAmount:0})
-                       self.btcSell = "";
+                if(handlerData(res.data.eth.data.buy, self.ethBuy, "eth", "买入", okenChanges)){
+                    change = true;
                 }
-
-
-                var usdtBuyFind = false;
-                for(var i =0 ; i < usdtBuy.length; i++){
-                    var data = usdtBuy[i]
-                    if(data.creator.nickName == self.form.nickName){
-                       usdtBuyFind = true;
-                       if(!self.usdtBuy){
-                           self.usdtBuy = data.availableAmount;
-                       }
-                       if(self.usdtBuy != data.availableAmount){
-                            change = true
-                            self.form.desc += "当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为" + data.availableAmount + "===="
-                            console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为" + data.availableAmount)
-                       }
-                       okenChanges.push({name:"usdt",type:"买入",oldAmount:self.usdtBuy,nowAmount:data.availableAmount})
-                       self.usdtBuy = data.availableAmount
-                    }
+                if(handlerData(res.data.eth.data.sell, self.ethSell, "eth", "卖出", okenChanges)){
+                    change = true;
                 }
-                if(self.usdtBuy && !usdtBuyFind){
-                    change = true
-                    self.form.desc += "当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0=="
-                    console.log("当前用户的usdt买入发生变化,从" + self.usdtBuy + "变为0")
-                    okenChanges.push({name:"usdt",type:"买入",oldAmount:self.usdtBuy,nowAmount:0})
-                    self.usdtBuy = "";
-                }
-
-                var usdtSellFind = false;
-                for(var i =0 ; i < usdtSell.length; i++){
-                   var data = usdtSell[i]
-                   if(data.creator.nickName == self.form.nickName){
-                       usdtSellFind = true;
-                       if(!self.usdtSell){
-                          self.usdtSell = data.availableAmount;
-                       }
-                       if(self.usdtSell != data.availableAmount){
-                          change = true
-                          self.form.desc += "当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为" + data.availableAmount;
-                          console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为" + data.availableAmount)
-                       }
-                       okenChanges.push({name:"usdt",type:"卖出",oldAmount:self.usdtSell,nowAmount:data.availableAmount})
-                       self.usdtSell = data.availableAmount
-                   }
-                }
-
-                if(self.usdtSell && !usdtSellFind){
-                     change = true
-                     self.form.desc += "当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0=="
-                     console.log("当前用户的usdt卖出发生变化,从" + self.usdtSell + "变为0")
-                     okenChanges.push({name:"usdt",type:"卖出",oldAmount:self.usdtSell,nowAmount:0})
-                     self.usdtSell = "";
-                }
-
-                var ethBuyFind = false;
-                for(var i =0 ; i < ethBuy.length; i++){
-                      var data = ethBuy[i]
-                      if(data.creator.nickName == self.form.nickName){
-                        ethBuyFind = true;
-                        if(!self.ethBuy){
-                            self.ethBuy = data.availableAmount;
-                        }
-                        if(self.ethBuy != data.availableAmount){
-                         change = true
-                         self.form.desc += "当前用户的eth买入发生变化,从" + self.ethBuy + "变为" + data.availableAmount + "===="
-                         console.log("当前用户的eth买入发生变化,从" + self.ethBuy + "变为" + data.availableAmount)
-                        }
-                        okenChanges.push({name:"eth",type:"买入",oldAmount:self.ethBuy,nowAmount:data.availableAmount})
-                         self.ethBuy = data.availableAmount
-                        }
-                      }
-                if(self.ethBuy && !ethBuyFind){
-                      change = true
-                      self.form.desc += "当前用户的eth买入发生变化,从" + self.ethBuy + "变为0=="
-                      console.log("当前用户的eth买入发生变化,从" + self.ethBuy + "变为0")
-                      okenChanges.push({name:"eth",type:"买入",oldAmount:self.ethBuy,nowAmount:0})
-                      self.ethBuy = "";
-                }
-
-                var ethSellFind = false;
-                for(var i =0 ; i < ethSell.length; i++){
-                      var data = ethSell[i]
-                      if(data.creator.nickName == self.form.nickName){
-                            ethSellFind = true;
-                            if(!self.ethSell){
-                                  self.ethSell = data.availableAmount;
-                            }
-                            if(self.ethSell != data.availableAmount){
-                                 change = true
-                                 self.form.desc += "当前用户的eth卖出发生变化,从" + self.ethSell + "变为" + data.availableAmount;
-                                 console.log("当前用户的eth卖出发生变化,从" + self.ethSell + "变为" + data.availableAmount)
-                            }
-                            okenChanges.push({name:"eth",type:"卖出",oldAmount:self.ethSell,nowAmount:data.availableAmount})
-                                 self.ethSell = data.availableAmount
-                            }
-                      }
-
-                      if(self.usdtSell && !usdtSellFind){
-                            change = true
-                            self.form.desc += "当前用户的eth卖出发生变化,从" + self.ethSell + "变为0=="
-                            console.log("当前用户的eth卖出发生变化,从" + self.ethSell + "变为0")
-                            okenChanges.push({name:"eth",type:"卖出",oldAmount:self.ethSell,nowAmount:0})
-                            self.ethSell = "";
-                      }
-
                 if(change){
                     document.getElementById("orderAudio").play();
                     clearInterval(self.interval)
-                }else{
-                    self.form.desc = "";
                 }
                 self.amountChanges = okenChanges;
             }).catch(error=>console.log(error));
         }, 3000)
+    },
+    initData:function(){
+        this.form.desc = "";
+        this.amountChanges = [];
+    },
+    //处理数据 dataList币种列表 oldCoinValue旧币值 coinType币种类型, type买入还是卖出
+    handlerData: function(dataList, oldCoinValue ,coinType, type, okenChanges){
+        var personCoinFind = false;//是否找到此人的当前币种
+        var change = false;//当前币种是否发生变化
+        for(var i =0 ; i < dataList.length; i++){
+           var data = dataList[i];
+           if(data.creator.nickName == this.form.nickName){
+             personCoinFind = true;
+             if(!oldCoinValue){
+                oldCoinValue = data.availableAmount;
+             }
+             if(oldCoinValue != data.availableAmount){
+               change = true
+               self.form.desc += coinType + type + oldCoinValue + "--->" + data.availableAmount;
+             }
+             okenChanges.push({name:coinType,type:type,oldAmount:oldCoinValue,
+                nowAmount:data.availableAmount,createdDate:this.convertTimestampToString(data["createdDate"])})
+             oldCoinValue = data.availableAmount
+           }
+        }
+
+        if(oldCoinValue && !personCoinFind){
+             change = true
+             self.form.desc += coinType + type + oldCoinValue + "--->" + data.availableAmount;
+             okenChanges.push({name:coinType,type:type,oldAmount:oldCoinValue,nowAmount:0})
+             oldCoinValue = "";
+        }
+        return change;
     },
     onStop: function(){
         document.getElementById("orderAudio").pause();
@@ -249,6 +138,16 @@ export default {
         this.isRunning = false;
         document.getElementById("orderAudio").pause();
         clearInterval(this.interval)
+    },
+    convertTimestampToString:function(timestamp){
+        var date = new Date(timestamp);
+        var year = date.getFullYear()
+        var month =  (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)
+        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
+        var hour = date.getHours() < 10 ? "0" + date.getHours(): date.getHours()
+        var minute = date.getMinutes() < 10 ? "0"  + date.getMinutes() : date.getMinutes()
+        var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()
+        return year + "-" + month + "-" + day + " " +   hour + ":" + minute + ":" + second
     }
   }
 

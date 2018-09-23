@@ -40,11 +40,15 @@ export default {
         usdtSell:"",
         ethBuy:"",
         ethSell:"",
-        isRunning:false
+        isRunning:false,
+        admin:false
     }
   },
   mounted: function(){
-
+    var url = document.URL;
+    if(url.indexOf("?") > -1){
+        this.admin = true;
+    }
   },
   methods: {
     onStart: function(){
@@ -62,21 +66,24 @@ export default {
                 }
                 self.initData();
                 var okenChanges = [];
-                /*if(new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > (1000 * 30 + 8 * 60 * 60 * 1000)){
-                      alert("定时获取oken网数据异常");
-                      self.form.desc = "定时获取oken网买入卖出数据异常，请联系管理员";
-                      clearInterval(self.interval);
-                      return;
-                }*/
-                if(self.handlerData(res.data.btc.data.buy, self.btcBuy, "btc", "买入", okenChanges) |
-                   self.handlerData(res.data.btc.data.sell, self.btcSell, "btc", "卖出", okenChanges) |
-                   self.handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges) |
-                   self.handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges) |
-                   self.handlerData(res.data.eth.data.buy, self.ethBuy, "eth", "买入", okenChanges) |
-                   self.handlerData(res.data.eth.data.sell, self.ethSell, "eth", "卖出", okenChanges)){
-                      document.getElementById("orderAudio").play();
-                      clearInterval(self.interval)
+                if(self.admin){
+                    if(self.handlerData(res.data.btc.data.buy, self.btcBuy, "btc", "买入", okenChanges) |
+                       self.handlerData(res.data.btc.data.sell, self.btcSell, "btc", "卖出", okenChanges) |
+                       self.handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges) |
+                       self.handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges) |
+                       self.handlerData(res.data.eth.data.buy, self.ethBuy, "eth", "买入", okenChanges) |
+                       self.handlerData(res.data.eth.data.sell, self.ethSell, "eth", "卖出", okenChanges)){
+                       document.getElementById("orderAudio").play();
+                       clearInterval(self.interval)
+                    }
+                }else{
+                    if(self.handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges) |
+                       self.handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges)){
+                         document.getElementById("orderAudio").play();
+                         clearInterval(self.interval)
+                    }
                 }
+
                 self.amountChanges = okenChanges;
             }).catch(error=>console.log(error));
         }, 3000)

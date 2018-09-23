@@ -370,33 +370,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                     self.initData();
                     var okenChanges = [];
-                    var change = false;
-
                     /*if(new Date().getTime() - new Date(btcBuy[0]["createdDate"]) > (1000 * 30 + 8 * 60 * 60 * 1000)){
                           alert("定时获取oken网数据异常");
                           self.form.desc = "定时获取oken网买入卖出数据异常，请联系管理员";
                           clearInterval(self.interval);
                           return;
                     }*/
-                    if (handlerData(res.data.btc.data.buy, self.btcBuy, "btc", "买入", okenChanges)) {
-                        change = true;
-                    }
-                    if (handlerData(res.data.btc.data.sell, self.btcSell, "btc", "卖出", okenChanges)) {
-                        change = true;
-                    }
-                    if (handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges)) {
-                        change = true;
-                    }
-                    if (handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges)) {
-                        change = true;
-                    }
-                    if (handlerData(res.data.eth.data.buy, self.ethBuy, "eth", "买入", okenChanges)) {
-                        change = true;
-                    }
-                    if (handlerData(res.data.eth.data.sell, self.ethSell, "eth", "卖出", okenChanges)) {
-                        change = true;
-                    }
-                    if (change) {
+                    if (self.handlerData(res.data.btc.data.buy, self.btcBuy, "btc", "买入", okenChanges) | self.handlerData(res.data.btc.data.sell, self.btcSell, "btc", "卖出", okenChanges) | self.handlerData(res.data.usdt.data.buy, self.usdtBuy, "usdt", "买入", okenChanges) | self.handlerData(res.data.usdt.data.sell, self.usdtSell, "usdt", "卖出", okenChanges) | self.handlerData(res.data.eth.data.buy, self.ethBuy, "eth", "买入", okenChanges) | self.handlerData(res.data.eth.data.sell, self.ethSell, "eth", "卖出", okenChanges)) {
                         document.getElementById("orderAudio").play();
                         clearInterval(self.interval);
                     }
@@ -2903,4 +2883,4 @@ webpackContext.id = 178;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.9bd0bbda8fff936764b1.js.map
+//# sourceMappingURL=app.d34968c54421fdd4034d.js.map

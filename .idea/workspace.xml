@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c95971-fe70-4532-813c-63e2dda093b3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/js/app.9bd0bbda8fff936764b1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/js/app.9bd0bbda8fff936764b1.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/js/manifest.54474718f1bf11652af9.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/js/manifest.54474718f1bf11652af9.js.map" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/app.953c9a4b87f45351baf4.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/test.html" afterPath="$PROJECT_DIR$/dist/test.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/alarm/index.vue" afterPath="$PROJECT_DIR$/src/views/alarm/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/test.html" afterPath="$PROJECT_DIR$/static/test.html" />
     </list>
     <ignored path="btcFlyWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,8 +59,8 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/alarm/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -970,7 +961,7 @@
       <workItem from="1537408696229" duration="747000" />
       <workItem from="1537444060818" duration="2236000" />
       <workItem from="1537450591563" duration="753000" />
-      <workItem from="1537696967865" duration="3580000" />
+      <workItem from="1537696967865" duration="3965000" />
     </task>
     <task id="LOCAL-00001" summary="前端更新">
       <created>1528896477713</created>
@@ -1109,7 +1100,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265247000" />
+    <option name="totallyTimeSpent" value="265632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1378" height="733" extended-state="0" />
@@ -1494,8 +1485,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/alarm/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+        <state relative-caret-position="198">
+          <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
           <folding />
         </state>
       </provider>

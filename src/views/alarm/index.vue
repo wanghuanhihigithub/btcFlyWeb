@@ -48,6 +48,7 @@ export default {
     var url = document.URL;
     if(url.indexOf("?") > -1){
         this.admin = true;
+        this.form.nickName = "";
     }
   },
   methods: {
@@ -115,7 +116,7 @@ export default {
 
         if(this[oldCoinValue] && !personCoinFind){
              change = true
-             self.form.desc += coinType + type + this[oldCoinValue] + "--->" + data.availableAmount;
+             self.form.desc += coinType + type + this[oldCoinValue] + "--->" + 0;
              okenChanges.push({name:coinType,type:type,oldAmount:this[oldCoinValue],nowAmount:0})
              this[oldCoinValue] = "";
         }

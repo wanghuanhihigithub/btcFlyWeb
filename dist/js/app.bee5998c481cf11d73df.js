@@ -358,6 +358,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var url = document.URL;
         if (url.indexOf("?") > -1) {
             this.admin = true;
+            this.form.nickName = "";
         }
     },
     methods: {
@@ -419,7 +420,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this[oldCoinValue] && !personCoinFind) {
                 change = true;
-                self.form.desc += coinType + type + this[oldCoinValue] + "--->" + data.availableAmount;
+                self.form.desc += coinType + type + this[oldCoinValue] + "--->" + 0;
                 okenChanges.push({ name: coinType, type: type, oldAmount: this[oldCoinValue], nowAmount: 0 });
                 this[oldCoinValue] = "";
             }
@@ -2891,4 +2892,4 @@ webpackContext.id = 178;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.224b6641e53ee31349fc.js.map
+//# sourceMappingURL=app.bee5998c481cf11d73df.js.map

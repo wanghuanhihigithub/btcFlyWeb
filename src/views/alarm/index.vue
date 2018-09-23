@@ -10,7 +10,7 @@
             <el-button type="primary" @click="onStopListening">停止监控</el-button>
           </el-form-item>
           <el-form-item label="监控结果">
-              <el-input  v-model="form.desc" style="width:1000px;"></el-input>
+              <el-input  v-model="form.desc" style="width:1000px;" :disabled="true"></el-input>
           </el-form-item>
         </el-form>
         <el-table :data="amountChanges" :row-style="rowStyle">
@@ -37,6 +37,8 @@ export default {
         btcSell:"",
         usdtBuy:"",
         usdtSell:"",
+        ethBuy:"",
+        ethSell:"",
         isRunning:false
     }
   },
@@ -61,6 +63,8 @@ export default {
                 var btcSell = res.data.btc.data.sell;
                 var usdtBuy = res.data.usdt.data.buy;
                 var usdtSell = res.data.usdt.data.sell;
+                var ethBuy = res.data.eth.data.buy;
+                var ethSell = res.data.eth.data.sell;
                 var okenChanges = [];
                 var change = false;
 
@@ -174,6 +178,58 @@ export default {
                      okenChanges.push({name:"usdt",type:"卖出",oldAmount:self.usdtSell,nowAmount:0})
                      self.usdtSell = "";
                 }
+
+                var ethBuyFind = false;
+                for(var i =0 ; i < ethBuy.length; i++){
+                      var data = ethBuy[i]
+                      if(data.creator.nickName == self.form.nickName){
+                        ethBuyFind = true;
+                        if(!self.ethBuy){
+                            self.ethBuy = data.availableAmount;
+                        }
+                        if(self.ethBuy != data.availableAmount){
+                         change = true
+                         self.form.desc += "当前用户的eth买入发生变化,从" + self.ethBuy + "变为" + data.availableAmount + "===="
+                         console.log("当前用户的eth买入发生变化,从" + self.ethBuy + "变为" + data.availableAmount)
+                        }
+                        okenChanges.push({name:"eth",type:"买入",oldAmount:self.ethBuy,nowAmount:data.availableAmount})
+                         self.ethBuy = data.availableAmount
+                        }
+                      }
+                if(self.ethBuy && !ethBuyFind){
+                      change = true
+                      self.form.desc += "当前用户的eth买入发生变化,从" + self.ethBuy + "变为0=="
+                      console.log("当前用户的eth买入发生变化,从" + self.ethBuy + "变为0")
+                      okenChanges.push({name:"eth",type:"买入",oldAmount:self.ethBuy,nowAmount:0})
+                      self.ethBuy = "";
+                }
+
+                var ethSellFind = false;
+                for(var i =0 ; i < ethSell.length; i++){
+                      var data = ethSell[i]
+                      if(data.creator.nickName == self.form.nickName){
+                            ethSellFind = true;
+                            if(!self.ethSell){
+                                  self.ethSell = data.availableAmount;
+                            }
+                            if(self.ethSell != data.availableAmount){
+                                 change = true
+                                 self.form.desc += "当前用户的eth卖出发生变化,从" + self.ethSell + "变为" + data.availableAmount;
+                                 console.log("当前用户的eth卖出发生变化,从" + self.ethSell + "变为" + data.availableAmount)
+                            }
+                            okenChanges.push({name:"eth",type:"卖出",oldAmount:self.ethSell,nowAmount:data.availableAmount})
+                                 self.ethSell = data.availableAmount
+                            }
+                      }
+
+                      if(self.usdtSell && !usdtSellFind){
+                            change = true
+                            self.form.desc += "当前用户的eth卖出发生变化,从" + self.ethSell + "变为0=="
+                            console.log("当前用户的eth卖出发生变化,从" + self.ethSell + "变为0")
+                            okenChanges.push({name:"eth",type:"卖出",oldAmount:self.ethSell,nowAmount:0})
+                            self.ethSell = "";
+                      }
+
                 if(change){
                     document.getElementById("orderAudio").play();
                     clearInterval(self.interval)

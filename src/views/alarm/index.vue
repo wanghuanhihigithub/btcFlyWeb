@@ -41,7 +41,9 @@ export default {
         ethBuy:"",
         ethSell:"",
         isRunning:false,
-        admin:false
+        admin:false,
+        eosBuy:"",
+        eosSell:""
     }
   },
   mounted: function(){
@@ -61,7 +63,7 @@ export default {
         this.isRunning = true;
         this.interval = setInterval(function() {
             axios.get("/virtual/oken").then(res=>{
-                if(!res.data.btc && !res.data.usdt && !res.data.eth){
+                if(!res.data.btc && !res.data.usdt && !res.data.eth && !res.data.eos){
                     alert("服务器异常,请联系管理员")
                     return;
                 }
@@ -73,7 +75,10 @@ export default {
                        self.handlerData(res.data.usdt.data.buy, "usdtBuy", "usdt", "买入", okenChanges) |
                        self.handlerData(res.data.usdt.data.sell, "usdtSell", "usdt", "卖出", okenChanges) |
                        self.handlerData(res.data.eth.data.buy, "ethBuy", "eth", "买入", okenChanges) |
-                       self.handlerData(res.data.eth.data.sell, "ethSell", "eth", "卖出", okenChanges)){
+                       self.handlerData(res.data.eth.data.sell, "ethSell", "eth", "卖出", okenChanges)|
+                       self.handlerData(res.data.eos.data.sell, "eosSell", "eos", "卖出", okenChanges) |
+                       self.handlerData(res.data.eos.data.buy, "eosBuy", "eos", "买入", okenChanges)
+                       ){
                        document.getElementById("orderAudio").play();
                        clearInterval(self.interval)
                     }

@@ -878,7 +878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'hello',
     data: function () {
         return {
-            form: { price: 0, minPrice: 40000, maxPrice: 80000 },
+            form: { price: 0, minPrice: 20000, maxPrice: 80000 },
             titleCoin: 1,
             okenBtcCoin: [],
             okenEthCoin: [],
@@ -2678,4 +2678,4 @@ webpackContext.id = 177;
 
 /***/ })
 ],[129]);
-//# sourceMappingURL=app.f14fe18edda077132fd1.js.map
+//# sourceMappingURL=app.6b9143e06d9ffe4dbf60.js.map
